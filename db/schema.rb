@@ -10,7 +10,122 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_050850) do
+ActiveRecord::Schema.define(version: 2019_12_10_064123) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "address"
+    t.string "postal_code"
+    t.string "name"
+    t.integer "end_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "arrivals", force: :cascade do |t|
+    t.integer "cd_id"
+    t.integer "count"
+    t.datetime "datetime"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "artists", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "end_user_id"
+    t.integer "cd_id"
+    t.integer "count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "discs", force: :cascade do |t|
+    t.string "name"
+    t.integer "cd_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "end_users", force: :cascade do |t|
+    t.string "last_name"
+    t.string "first_name"
+    t.string "kana_last_name"
+    t.string "kana_first_name"
+    t.string "mail"
+    t.string "postal_code"
+    t.string "phone_number"
+    t.string "adddress"
+    t.string "password"
+    t.string "password_confimation"
+    t.boolean "is_deleted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "labels", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "end_user_id"
+    t.integer "cd_id"
+    t.integer "nember"
+    t.integer "tax"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "payment_method"
+    t.string "postal_code"
+    t.integer "end_usre_id"
+    t.string "last_name"
+    t.string "first_name"
+    t.string "kana_last_name"
+    t.string "kana_first_name"
+    t.string "mail"
+    t.string "phone_number"
+    t.integer "shipping_fee"
+    t.integer "total_amout"
+    t.string "delivery_target_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.string "jacket_image_id"
+    t.integer "price"
+    t.datetime "release_date"
+    t.integer "artist_id"
+    t.integer "label_id"
+    t.integer "genre_id"
+    t.datetime "deleted_at"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "songs", force: :cascade do |t|
+    t.string "name"
+    t.integer "disc_id"
+    t.integer "song_order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
