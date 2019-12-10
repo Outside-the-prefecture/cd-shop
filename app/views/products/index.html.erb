@@ -1,1 +1,30 @@
 kkkk
+
+<table>
+  <thead>
+  	<% @products.each do |product| %>
+  	 <tr>
+  	 	<td>
+  	 	  <%= attachment_image_tag product, :jacket_image, fallback: "",size: "100*100" %>
+  	 	  <%= product.name %>
+  	 	  <%= product.price %>
+  	 	</td>
+  	 	<td>
+  	 	  <%= attachment_image_tag product, :jacket_image, fallback: "",size: "100*100" %>
+  	 	  <%= product.name %>
+  	 	  <%= product.price %>
+  	 	</td>
+  	 	<td>
+  	 	  <%= attachment_image_tag product, :jacket_image, fallback: "",size: "100*100" %>
+  	 	  <%= product.name %>
+  	 	  <%= product.price %>
+  	 	</td>
+  	 	<td>
+  	 	  <%= attachment_image_tag product, :jacket_image, fallback: "",size: "100*100" %>
+  	 	  <%= product.name %>
+  	 	  <%= product.price %>
+  	 	</td>
+  	 </tr>
+  	<% end %>
+  </thead>
+</table>
