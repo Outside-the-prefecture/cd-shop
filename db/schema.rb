@@ -133,10 +133,8 @@ ActiveRecord::Schema.define(version: 2019_12_10_084604) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "firstname"
     t.string "last_name"
     t.string "first_name"
     t.string "kana_last_name"
