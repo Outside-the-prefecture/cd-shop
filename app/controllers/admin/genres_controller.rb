@@ -8,6 +8,8 @@ class Admin::GenresController < ApplicationController
 			@artist=Artist.new
 			@genre=Genre.new
 			@product=Product.new
+			@disc=@product.discs.build
+			@song=@disc.songs.build
 			@labels=Label.all
 			@artists=Artists.all
 			@genres=Genre.all
