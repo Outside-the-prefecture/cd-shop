@@ -1,0 +1,62 @@
+<div>
+  <%= attachment_image_tag @product, :jacket_image, :fill, 100, 100, format: 'jpeg', size: '40x40', fallback: "no_image.jpg" %>
+</div>
+
+<table>
+	<tr>
+	  <th>商品情報</th>
+	</tr>
+	<tr>
+	  <td><%= @product.artists.name %></td>
+	</tr>
+	<tr>
+	  <td><%= @product.lebels.name %></td>
+	</tr>
+	<tr>
+	  <td><%= @product.genres.name %></td>
+	</tr>
+</table>
+
+<table>
+	<tr>
+	  <th>曲順リスト</th>
+	</tr>
+	<% @discs.each do |disc| %>
+		<tr>
+		   <td><%= disc.name %></td>
+		</tr>
+	  <% disc.songs.each do |song| %>
+		<tr>
+			<td><%= song.name %></td>
+	    </tr>
+      <% end %>
+    <% end %>
+</table>
+
+<table>
+	<tr>
+		<td><%= @product.name %></td>
+	</tr>
+	<tr>
+		<td><%= @product.release_date %></td>
+	</tr>
+	<tr>
+		<td>
+			<% @arrivals.each do |arrival| %>
+			<% count=0 %>
+			<% count+=arrival.count %>
+			<% end %>
+			<% @orderitems.each do |orderitem| %>
+			<% number=0 %>
+			<% number+=orderitem.number %>
+			<% end %>
+			<%= count-number %>
+		</td>
+	</tr>
+	<tr>
+		<td><%= @product.price %></td>
+	</tr>
+	<tr>
+		<td>送料全国一律500円</td>
+	</tr>
+</table>
