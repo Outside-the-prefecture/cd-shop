@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "users/:user_id/orders/finish" => "orders#finish"
   patch 'users/:id', to: 'users#destroy'
   resources :users,only: [:show,:edit,:update] do
-  	resources :cart_items,only: [:index]
+  	resources :cart_items,only: [:index,:create]
   	resources :histories,only: [:show]
   	resources :orders,only: [:new,:create]
   end
