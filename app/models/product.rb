@@ -5,7 +5,7 @@ class Product < ApplicationRecord
 	has_many :order_items
 
 	has_many :discs, dependent: :destroy
-	accepts_nested_attributes_for :discs, allow: true
+	accepts_nested_attributes_for :discs, allow_destroy: true
 
 	belongs_to :artist
 	belongs_to :label
