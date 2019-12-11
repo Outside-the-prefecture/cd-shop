@@ -1,5 +1,17 @@
 class ApplicationController < ActionController::Base
+	def search
+		@artist_or_genre_or_song_or_product=params[:option]
+		if @artist_or_genre_or_song_or_product=="1"
+			@artists=Artist.search(params[:search],@artist_or_genre_or_song_or_product)
+		elsif @artist_or_genre_or_song_or_product=="2"
+			  @genres=Genre.search(params[:search],@artist_or_genre_or_song_or_product)
+		elsif @artist_or_genre_or_song_or_product=="3"
+			  @songs=Song.search(params[:search],@artist_or_genre_or_song_or_product)
+		else  @artist_or_genre_or_song_or_product=="4"
+			  @products=Product.search(params[:search],@artist_or_genre_or_song_or_product)
+			end
 
+	end
 
 
 
