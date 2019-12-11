@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :manegers
   root "products#index"
   devise_for :users
   get "products/:id" => "products#show"

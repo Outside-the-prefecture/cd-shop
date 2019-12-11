@@ -11,4 +11,5 @@ class ProductsController < ApplicationController
 		@arrivals=@product.arrivals
 		@cartitem=CartItem.new
 	end
+
 end
