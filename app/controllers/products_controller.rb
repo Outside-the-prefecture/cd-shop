@@ -9,5 +9,6 @@ class ProductsController < ApplicationController
 		@songs=disc.songs
 		@orderitems=@product.order_items
 		@arrivals=@product.arrivals
+		@cartitem=CartItem.new
 	end
 end
