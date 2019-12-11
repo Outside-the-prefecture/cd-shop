@@ -60,3 +60,7 @@
 		<td>送料全国一律500円</td>
 	</tr>
 </table>
+
+<%=form_for(@cartitem) do |f| %>
+	<%= f.submit "商品をカートに入れる" %>
+<% end %>
