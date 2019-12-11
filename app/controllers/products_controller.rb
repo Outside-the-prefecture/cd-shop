@@ -10,4 +10,5 @@ class ProductsController < ApplicationController
 		@orderitems=@product.order_items
 		@arrivals=@product.arrivals
 	end
+
 end
