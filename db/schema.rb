@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_12_11_082528) do
   end
 
   create_table "arrivals", force: :cascade do |t|
-    t.integer "cd_id"
+    t.integer "product_id"
     t.integer "count"
     t.datetime "datetime"
     t.datetime "created_at", null: false
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2019_12_11_082528) do
 
   create_table "discs", force: :cascade do |t|
     t.string "name"
-    t.integer "cd_id"
+    t.integer "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
