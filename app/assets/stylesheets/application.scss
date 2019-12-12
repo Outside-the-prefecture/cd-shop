@@ -31,3 +31,15 @@ header {
 .head{
 	color: white;
 }
+.user-info{
+	border: solid 1px black;
+	width: 400px;
+	text-align: center;
+	position: relative; top:70px; left:100px;
+}
+.user-info-heading{
+	position: absolute; top:250px; left:100px;
+}
+.btn-warning{
+	position: relative; top:-10px; left:130px;
+}
