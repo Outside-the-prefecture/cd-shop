@@ -24,10 +24,33 @@
   box-sizing: border-box;
 }
 header {
-	background-color: black;
-	height: 150px;
-	color: white;
+	background-color: white;
+	height: 130px;
+	background:linear-gradient(180deg,white 0%,white 40%,whitesmoke 60%,whitesmoke 100%);
 }
-.head{
-	color: white;
+.cd{
+	font-size: 30px;
+	color: blue;
+	font-family: 'arial black';
+	padding-top: 10px;
+	padding-left: 30px;
+	float: left; 
 }
+.my{
+	font-size: 40px;
+	color: #75A9FF;
+	float: left; 
+	padding-top: 10px;
+}
+.search{
+	padding-top: 7px;
+	text-indent: 0.5in;
+}
+
+.log{
+	font-size: 20px;
+	padding-bottom: 50px;
+}
+
+
+
