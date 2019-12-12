@@ -94,8 +94,7 @@ ActiveRecord::Schema.define(version: 2019_12_11_082528) do
     t.integer "end_user_id"
 
     t.integer "product_id"
-
-    t.integer "number"
+    t.integer "nember"
     t.integer "tax"
     t.integer "price"
     t.datetime "created_at", null: false
