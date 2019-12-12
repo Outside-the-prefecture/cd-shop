@@ -31,15 +31,23 @@ header {
 .head{
 	color: white;
 }
+.info{
+	text-align: center;
+}
 .user-info{
 	border: solid 1px black;
 	width: 400px;
-	text-align: center;
-	position: relative; top:70px; left:100px;
-}
-.user-info-heading{
-	position: absolute; top:250px; left:100px;
+	float: left;
+	padding: 20px;
 }
 .btn-warning{
-	position: relative; top:-10px; left:130px;
+	margin-left: 250px;
+}
+.btn-danger{
+	flost: left;
+	margin: 70px;
+	margin-top: 135px;
+}
+.body{
+	margin-left: 40px;
 }
