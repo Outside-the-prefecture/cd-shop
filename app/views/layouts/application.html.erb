@@ -10,7 +10,45 @@
   </head>
 
   <body>
-      <%= link_to "ログイン", new_user_session_path %>
+    <header>
+      <hgroup>
+        <h1>CD-SHOP</h1>
+          <% if user_signed_in? %>
+            <%= form_tag(root_path, :method=>'get')do %>
+            <%=select_tag(:option,options_for_select([["artist","1"],["genre","2"],["song","3"],["product","4"]]))%>
+            <%= text_field_tag :search %>
+            <%= submit_tag 'Search'%>
+          <% end %>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <%=link_to "ログアウト" ,destroy_user_session_path,method: :delete %>
+          </li>
+          <li>
+            <%=link_to current_user.name ,user_path(current_user) %>
+          </li>
+          <li>
+            <%=link_to "商品一覧" ,root_path %>
+          </li>
+          <li>
+            <%=link_to "カート一覧" ,user_cart_items_path(current_user) %>
+          </li>
+        </ul>
+        <% else %>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <%=link_to "ログイン" ,user_session_path %>
+          </li>
+          <li>
+            <%=link_to "サインアップ" ,new_user_registration_path %>
+          </li>
+          <li>
+            <%=link_to "商品一覧" ,root_path %>
+          </li>
+        </ul>
+     <% end %>
+      </hgroup>
+    </header>
     <%= yield %>
   </body>
 </html>
