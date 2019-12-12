@@ -11,4 +11,8 @@ class Product < ApplicationRecord
 	belongs_to :label
 	belongs_to :genre
 
+
+	attachment :jacket_image
+
+
 end
