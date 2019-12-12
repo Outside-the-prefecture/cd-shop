@@ -1,1 +1,33 @@
 <h2>アカウントサービス</h2>
+
+<div class="user-info-heading">
+	<h3>ユーザー情報</h3>
+</div>
+<div class="user-info">
+	<p><%= @user.last_name %><%= @user.first_name %></p>
+	<p><%= @user.address %></p>
+	<p><%= @user.phone_number %></p>
+	<p><%= @user.email %></p>
+	<p><%= @user.password %></p>
+		<%= link_to edit_user_path(@user),class: "btn btn-warning btn-xs" do %>
+			<span>プロフィール編集</span>
+		<% end %>
+</div>
+
+<div>
+	<h3>購入履歴</h3>
+</div>
+<% @orders.each do |order| %>
+	<div class="user-history">
+		<p>購入日<%= order.created_at %></p>
+		<p>送付先<%= order.delivery_target_address %></p>
+		<p>総額<%= order.total_amount %></p>
+		<%= link_to "購入詳細",user_history_path(user_id: @user.id , id: order.id) %>
+	<% order.order_items.each do |order_item| %>
+		<% order_item.products.each do |product| %>
+		  <%= product.name %>
+		<% end %>
+	<% end %>
+<% end %>
+
+

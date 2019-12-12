@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
+		@orders = Order.find_by(user_id:@user_id)
 	end
 
 	def edit
