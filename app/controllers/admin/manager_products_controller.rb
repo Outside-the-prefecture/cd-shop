@@ -32,7 +32,6 @@ class Admin::ManagerProductsController < ApplicationController
 			@product=Product.new
 			@disc=@product.discs.build
 			@song=@disc.songs.build
-
 			@labels=Label.all
 			@artists=Artist.all
 			@genres=Genre.all
