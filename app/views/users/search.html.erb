@@ -1,0 +1,85 @@
+<% if @artist_or_genre_or_song_or_product=="1" %>
+ <% if @artist.nil? %>
+ <h2>0件の検索結果</h2>
+ <% else %>
+ <h4 class="hit"><%= "#{@products.count}件の検索結果"%></h4>
+	<h1>artist</h1>
+	<table class="table table-striped">
+		<thead>
+		<tr>
+			<th></th>
+			<th><strong><%= @artist.name %>1</strong></th>
+		</tr>
+	</thead>
+		<% @products.each do |product| %>
+		<thead>
+			<tr>
+				<td></td>
+				<td><%= link_to product.name,product_path(product.id) %></td>
+			</tr>
+		</thead>
+		<% end %>
+	</table>
+  <% end %>
+<% elsif @artist_or_genre_or_song_or_product=="2" %>
+<% if @genre.nil? %>
+<h2>0件の検索結果</h2>
+<% else %>
+ <h4 class="hit"><%= "#{@products.count}件の検索結果"%></h4>
+    <h2>genre</h2>
+    <table class="table table-striped">
+    	<thead>
+    		<tr>
+    			<th></th>
+    			<th><strong><%= @genre.name %></strong></th>
+    		</tr>
+    	</thead>
+    	<% @products.each do |product| %>
+    	<thead>
+    	    <tr>
+    	    	<td></td>
+				<td><%= link_to product.name,product_path(product.id) %></td>
+    		</tr>
+    	</thead>
+    	<% end %>
+    </table>
+    <% end %>
+<% elsif @artist_or_genre_or_song_or_product=="3" %>
+<% if @songs.nil? %>
+<h2>0件の検索結果</h2>
+ <% else %>
+ <h4 class="hit"><%= "#{@songs.count}件の検索結果"%></h4>
+    <h2>song</h2>
+    <table class="table table-striped">
+    	<% @songs.each do |song| %>
+    	<thead>
+    	    <tr>
+    	    	<td><%= link_to song.name %></td>
+				<td><%= link_to song.disc.product.name,product_path(song.disc.product.id) %></td>
+    		</tr>
+    	</thead>
+    	<% end %>
+    </table>
+ <% end %>
+<% else %>
+<% if @product.nil? %>
+<h2>0件の検索結果</h2>
+<% else %>
+ <h4 class="hit"><%= "#{@product.count}件の検索結果"%></h4>
+    <h2>product</h2>
+    <table class="table table-striped">
+    	<thead>
+    		<tr>
+    			<th></th>
+    			<th><strong><%= @product.name %></strong></th>
+    		</tr>
+    	</thead>
+    	<thead>
+    	    <tr>
+    	    	<td></td>
+				<td><%= link_to @product.name,product_path(@product) %></td>
+    		</tr>
+    	</thead>
+    </table>
+    <% end %>
+    <% end %>

@@ -14,8 +14,7 @@
       <hgroup>
         <h1>CD-SHOP</h1>
           <% if user_signed_in? %>
-          
-            <%= form_tag(root_path, :method=>'get')do %>
+            <%= form_tag(search_path, :method=>'get')do %
             <%=select_tag(:option,options_for_select([["artist","1"],["genre","2"],["song","3"],["product","4"]]))%>
             <%= text_field_tag :search %>
             <%= submit_tag 'Search'%>
@@ -26,7 +25,7 @@
             <%=link_to "ログアウト" ,destroy_user_session_path,method: :delete %>
           </li>
           <li>
-            <%=link_to current_user.name ,user_path(current_user) %>
+            <%=link_to current_user.last_name ,user_path(current_user) %>
           </li>
           <li>
             <%=link_to "商品一覧" ,root_path %>

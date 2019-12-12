@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :manegers
   root "products#index"
   devise_for :users
-  get "products/:id" => "products#show"
   get "users/:user_id/orders/finish" => "orders#finish"
   patch 'users/:id', to: 'users#destroy'
+  get "search" => "users#search"
+  resources :products,only: [:show]
   resources :users,only: [:show,:edit,:update] do
   	resources :cart_items,only: [:index,:create]
   	resources :histories,only: [:show]
