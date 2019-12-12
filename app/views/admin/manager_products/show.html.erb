@@ -1,0 +1,72 @@
+  <div class="container">
+  	<div class="row">
+  		<div class="col-xs-6">
+  			<div>
+  				<%= attachment_image_tag @product, :jacket_image, :fill, 100, 100, format: 'jpeg', size: '200x200', fallback: "no_image.jpg" %>
+  			</div>
+  		</div>
+
+  		<div class="col-xs-6">
+  			<table>
+  				<tr>
+  					<h4>商品情報</h4>
+  				</tr>
+  				<tr>
+  					<td>アーティスト</td>
+  					<td><%= @product.artist.name %></td>
+  				</tr>
+  				<tr>
+  					<td>レーベル</td>
+  					<td><%= @product.label.name %></td>
+  				</tr>
+  				<tr>
+  					<td>ジャンル</td>
+  					<td><%= @product.genre.name %></td>
+  				</tr>
+  			</table>
+
+  			<table>
+  				<tr>
+  					<th>ディスク名</th>
+  				</tr>
+  				<% @discs.each do |disc| %>
+  				<tr>
+  					<td><%= disc.name %></td>
+  				</tr>
+  				<th>曲名</th>
+  				<% disc.songs.each do |song| %>
+  				<tr>
+  					<td><%= song.name %></td>
+  				</tr>
+  				<% end %>
+  				<% end %>
+  			</table>
+
+  			<table>
+  				<tr>
+  					<td><%= @product.name %></td>
+  				</tr>
+  				<tr>
+  					<td><%= @product.release_date %></td>
+  				</tr>
+  				<tr>
+  					<td>
+  						<% @arrivals.each do |arrival| %>
+  						<% count=0 %>
+  						<% count+=arrival.count %>
+  						<% end %>
+  						<% @orderitems.each do |orderitem| %>
+  						<% number=0 %>
+  						<% number+=orderitem.number %>
+  						<% end %>
+  					</td>
+  				</tr>
+  				<tr>
+  					<td><%= @product.price %></td>
+  				</tr>
+  				<tr>
+  					<td>送料全国一律500円</td>
+  				</tr>
+  			</table>
+  		</div>
+  		<%= link_to '削除',  admin_manager_product_path, class: "btn btn-danger" ,method: :delete ,"data-confirm" => "本当に削除しますか?"%></span></td>
