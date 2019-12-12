@@ -4,7 +4,7 @@ class Product < ApplicationRecord
 	has_many :cart_items
 	has_many :users, through: :cart_items
 	has_many :order_items
-	has_many :order, through: :order_items
+	has_many :orders, through: :order_items
 
 	has_many :discs, dependent: :destroy
 	accepts_nested_attributes_for :discs, allow_destroy: true
