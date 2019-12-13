@@ -1,0 +1,32 @@
+<h3 class="user-index">会員登録ユーザー一覧</h3>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-1">
+				<table class="table table-striped user-index-table">
+					<thead>
+						<tr class="row">
+							<th class="col-md-2">id</th>
+							<th class="col-md-4">ユーザ名</th>
+							<th class="col-md-6">メールアドレス</th>
+						</tr>
+					</thead>
+					<% @users.each do |user| %>
+					<thead>
+					    <tr class="row">
+							<td class="col-md-2"><%= user.id %></td>
+						    <td class="col-md-4">
+						    	<%= link_to admin_manager_path(user.id) do %>
+						    	<span>
+							    	<%= user.last_name %>
+							    	<%= user.first_name %>
+							    </span>
+							</td>
+						        <% end %>
+						    <td class="col-md-6"><%= user.email %></td>
+					    </tr>
+					</thead>
+					<% end %>
+				</table>
+			</div>
+		</div>
+	</div>

@@ -21,26 +21,26 @@
               <%= submit_tag 'Search'%>
               <% end %></div>
         <ul class="nav navbar-nav navbar-right">
-          <li>
+          <li class="border">
             <%=link_to "ログアウト" ,destroy_user_session_path,method: :delete ,class: "fas fa-sign-out-alt" %>
           </li>
-          <li>
-            <%=link_to current_user.last_name ,user_path(current_user) %>
+          <li class="border">
+            <%=link_to current_user.last_name ,user_path(current_user),class: "fa fa-user" %>
+          </li>
+          <li class="border">
+            <%=link_to "商品一覧" ,root_path,class: "" %>
           </li>
           <li>
-            <%=link_to "商品一覧" ,root_path %>
-          </li>
-          <li>
-            <%=link_to "カート一覧" ,user_cart_items_path(current_user) %>
+            <%=link_to "カート一覧" ,user_cart_items_path(current_user),class: "fa fa-shopping-cart" %>
           </li>
         </ul>
         <% else %>
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <%=link_to "ログイン" ,user_session_path %>
-          </li> 
+            <%=link_to "ログイン" ,user_session_path,class: "fa fa-sign-in" %>
+          </li>
           <li>
-            <%=link_to "サインアップ" ,new_user_registration_path,class: "btn btn-info" %>
+            <%=link_to "サインアップ" ,new_user_registration_path,class: "fas fa-user-plus" %>
           </li>
           <li>
             <%=link_to "商品一覧" ,root_path %>
