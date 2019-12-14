@@ -1,0 +1,64 @@
+<h3>
+	<%= @user.last_name %>
+	<%= @user.first_name %>
+</h3>
+
+<%= link_to user_registration_path(@user.id),class: "btn btn-danger actions" do %>
+<span>退会</span>
+<% end %>
+<%= link_to edit_admin_manager_path(@user.id),class: "btn btn-success actions" do %>
+<span>編集</span>
+<% end %>
+
+<% @orders.each do |order| %>
+<%= order.created_at %>
+<%= order.payment_method %>
+<%= order.delivery_target_address %>
+
+<table>
+	<thead>
+		<tr>
+			<th>商品名</th>
+			<th>数量</th>
+			<th>状況</th>
+			<th>小計(税込)</th>
+			<th>送料</th>
+			<th>合計金額(税込)</th>
+		</tr>
+	</thead>
+	<thead>
+		<% order.order_items do |order_item| %>
+			<tr>
+				<td>
+					<%= order_item.product.name %>
+				</td>
+				<td>
+					<%=order_item.number %>
+				</td>
+				<td>
+					<%= order_item.product.status %>
+				</td>
+				<td>
+					<%= order_item.product.price %>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+		<% end %>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>
+					<%= order.shipping_fee %>
+				</td>
+				<td>
+					<%= order.total_amout %>
+				</td>
+			</tr>
+	</thead>
+</table>
+<% end %>
+
+
