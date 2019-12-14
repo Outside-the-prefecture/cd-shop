@@ -11,7 +11,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
     	t.string :mail
     	t.string :phone_number
     	t.integer :shipping_fee
-    	t.integer :total_amout
+    	t.integer :total_amount
     	t.string :delivery_target_address
 
       t.timestamps

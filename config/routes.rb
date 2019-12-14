@@ -5,13 +5,16 @@ Rails.application.routes.draw do
   patch 'users/:id', to: 'users#destroy'
   get "search" => "users#search"
 
-
   resources :products,only: [:show]
   resources :users,only: [:show,:edit,:update] do
-  	resources :cart_items,only: [:index,:create]
+  	resources :cart_items,only: [:index]
   	resources :histories,only: [:show]
   	resources :orders,only: [:new,:create]
   end
+
+  get "users/:user_id/cart_items/:id" => "cart_items#destroy"
+  get "users/:user_id/:product_id/cart_items" => "cart_items#create"
+
   namespace :admin do
   	resources :managers,only: [:index,:show,:edit,:update,:destroy]
   	resources :manager_products

@@ -14,9 +14,17 @@ class Admin::ManagersController < ApplicationController
 
 	def update
 		@user=User.find(params[:id])
+		if @user.update(user_params)
+			redirect_to admin_manager_path(@user)
+		else
+			render :edit
+		end
 	end
 
 	def destroy
+		@user=User.find(params[:id])
+		@user.destroy
+		redirect_to admin_managers_path
 	end
 
 end
