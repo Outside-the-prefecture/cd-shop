@@ -46,23 +46,23 @@
   		</div>
 
   		<h4>アーティスト登録</h4>
-  		<div class="col-xs-6">
-  			<%= form_for @artist, url:admin_artists_path do |f| %>
-  			<%= f.text_field :name %>
-  			<%= f.submit 'アーティスト追加'  %>
-  			<% end %>
+      <div class="col-xs-6">
+        <%= form_for @artist, url:admin_artists_path do |f| %>
+        <%= f.text_field :name %>
+        <%= f.submit 'アーティスト追加'  %>
+        <% end %>
 
-  			<h4>レーベル追加</h4>
-  			<%= form_for @label, url:admin_labels_path do |f| %>
-  			<%= f.text_field :name %>
-  			<%= f.submit 'レーベル追加'  %>
-  			<% end %>
+        <h4>レーベル追加</h4>
+        <%= form_for @label, url:admin_labels_path do |f| %>
+        <%= f.text_field :name %>
+        <%= f.submit 'レーベル追加'  %>
+        <% end %>
 
-  			<h4>ジャンル追加</h4>
-  			<%= form_for @genre, url:admin_genres_path do |f| %>
-  			<%= f.text_field :name %>
-  			<%= f.submit 'ジャンル追加'  %>
-  			<% end %>
+        <h4>ジャンル追加</h4>
+        <%= form_for @genre, url:admin_genres_path do |f| %>
+        <%= f.text_field :name %>
+        <%= f.submit 'ジャンル追加'  %>
+        <% end %>
 
-  		</div>
+      </div>
 
