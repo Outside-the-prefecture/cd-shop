@@ -7,6 +7,6 @@ class AddLastnameToUsers < ActiveRecord::Migration[5.2]
     add_column :users, :postal_code, :string
     add_column :users, :phone_number, :string
     add_column :users, :address, :string
-    add_column :users, :is_deleted, :boolean
+    add_column :users, :deleted_at, :datetime
   end
 end

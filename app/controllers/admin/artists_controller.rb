@@ -13,7 +13,7 @@ class Admin::ArtistsController < ApplicationController
 			@labels=Label.all
 			@artists=Artists.all
 			@genres=Genre.all
-			render "manager_product/new"
+			render "manager_products/new"
 		end
 	end
 	private
