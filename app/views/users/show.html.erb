@@ -28,7 +28,7 @@
 		<% end %>
 	</div>
 
-	<%= link_to user_registration_path(@user),method: :delete,data:{confirm: "本当に退会しますか？"},class: "btn btn-danger destroy" do %>
+	<%= link_to user_path(@user.id),method: :delete, data:{confirm: "本当に退会しますか？"},class: "btn btn-danger destroy" do %>
 	<span>退会</span>
 	<% end %>
 
