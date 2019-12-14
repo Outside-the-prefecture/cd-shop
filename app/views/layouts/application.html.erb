@@ -36,13 +36,13 @@
         </ul>
         <% else %>
         <ul class="nav navbar-nav navbar-right">
-          <li>
+          <li class="border out">
             <%=link_to "ログイン" ,user_session_path,class: "fa fa-sign-in" %>
           </li>
-          <li>
+          <li class="border out">
             <%=link_to "サインアップ" ,new_user_registration_path,class: "fas fa-user-plus" %>
           </li>
-          <li>
+          <li class="out">
             <%=link_to "商品一覧" ,root_path %>
           </li>
         </ul>
