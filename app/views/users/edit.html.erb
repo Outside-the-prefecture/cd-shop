@@ -1,0 +1,34 @@
+<h2>編集</h2>
+
+<%= form_for(@user) do |f| %>
+  <lavel>姓</lavel>
+    <%= f.text_field :last_name, autofocas: true %><br/>
+  <lavel>名</lavel>
+    <%= f.text_field :first_name %><br/>
+  <lavel>カナ性</lavel>
+    <%= f.text_field :kana_last_name %><br/>
+
+  <lavel>カナ名</lavel>
+    <%= f.text_field :kana_first_name %><br/>
+
+  <lavel>メールアドレス</lavel>
+    <%= f.text_field :email %><br/>
+
+  <lavel>電話番号</lavel>
+    <%= f.text_field :phone_number %><br/>
+
+  <lavel>郵便番号</lavel>
+    <%= f.text_field :postal_code %><br/>
+
+<div class="addresses">
+  <lavel>住所</lavel>
+    <%= f.fields_for :addresses do |address| %><br/>
+    <%= render "address_fields", f: address %>
+  	<% end %>
+    <div class="links">
+  		<%= link_to_add_association "住所追加", f, :addresses %>
+  	</div>
+</div>
+
+    <%= f.submit "更新" %><br/>
+<% end %>

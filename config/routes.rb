@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   root "products#index"
   devise_for :users
   get "users/:user_id/orders/finish" => "orders#finish"
-  patch 'users/:id', to: 'users#destroy'
   get "search" => "users#search"
 
   resources :products,only: [:show]
@@ -14,6 +13,7 @@ Rails.application.routes.draw do
 
   get "users/:user_id/cart_items/:id" => "cart_items#destroy"
   get "users/:user_id/:product_id/cart_items" => "cart_items#create"
+  patch 'users/:id', to: 'users#destroy'
 
   namespace :admin do
   	resources :managers,only: [:index,:show,:edit,:update,:destroy]
