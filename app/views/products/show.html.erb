@@ -46,6 +46,7 @@
   					<td><%= @product.release_date %></td>
           </tr>
 
+
   				<tr>
   					<td>
   						<% @arrivals.each do |arrival| %>
@@ -72,12 +73,17 @@
 
         </form>
 
-     </td>
-   </tr>
+     <%= form_for(@cartitem , url: user_cart_items_path(current_user) )  do |f| %>
+     <%= f.number_field :count %>
+     <%= f.hidden_field :product_id, :value => @product.id %>
+     <%= f.submit "カートに入れる", class: "btn btn-sm btn-primary" %>
+     <% end %>
 
- </div>
+   </form>
+ </td>
+</tr>
 </div>
 </div>
-
+</div>
 
 
