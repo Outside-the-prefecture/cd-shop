@@ -1,77 +1,88 @@
 <% if @artist_or_genre_or_song_or_product=="1" %>
- <% if @artists.count==0 %>
- <h2>その歌手はいません</h2>
- <% else %>
-  <% @artists.each do |artist| %>
- <h4 class="hit"><%= "#{artist.products.count}件の検索結果"%></h4>
-	<h1>artist</h1>
-	<table class="table table-striped">
-		<thead>
-		<tr>
-			<th></th>
-			<th><strong><%= artist.name %></strong></th>
-		</tr>
-	</thead>
-		<% artist.products.each do |product| %>
-		<thead>
-			<tr>
-				<td></td>
-				<td><%= link_to product.name,product_path(product.id) %></td>
-			</tr>
-		</thead>
-		<% end %>
-	</table>
+    <% if @artists.count==0 %>
+        <h2>その歌手は登録されていません。</h2>
+    <% else %>
+        <% @artists.each do |artist| %>
+            <h4 class="hit"><%= "#{artist.products.count}件の検索結果"%></h4>
+            <h1>artist</h1>
+            <% if artist.products.count==0 %>
+                <%= "#{artist.name}の商品は取り扱っておりません。" %>
+            <% else %>
+                <table class="table table-striped">
+                    <thead>
+                    		<tr>
+                    			<th></th>
+                    			<th><strong><%= artist.name %></strong></th>
+                    		</tr>
+                    </thead>
+                    <% artist.products.each do |product| %>
+                    	<thead>
+                    		<tr>
+                    			<td></td>
+                    			<td><%= link_to product.name,product_path(product.id) %></td>
+                    		</tr>
+                        </thead>
+                    <% end %>
+                </table>
+            <% end %>
+        <% end %>
     <% end %>
-  <% end %>
+
 <% elsif @artist_or_genre_or_song_or_product=="2" %>
-<% if @genres.count==0 %>
-<h2>そのジャンルはありません</h2>
-<% else %>
-<% @genres.each do |genre| %>
- <h4 class="hit"><%= "#{genre.products.count}件の検索結果"%></h4>
-    <h2>genre</h2>
-    <table class="table table-striped">
-    	<thead>
-    		<tr>
-    			<th></th>
-    			<th><strong><%= genre.name %></strong></th>
-    		</tr>
-    	</thead>
-    	<% genre.products.each do |product| %>
-    	<thead>
-    	    <tr>
-    	    	<td></td>
-				<td><%= link_to product.name,product_path(product.id) %></td>
-    		</tr>
-    	</thead>
-    	<% end %>
-    </table>
+    <% if @genres.count==0 %>
+        <h2>そのジャンルはありません</h2>
+    <% else %>
+        <% @genres.each do |genre| %>
+            <h4 class="hit"><%= "#{genre.products.count}件の検索結果"%></h4>
+            <h2>genre</h2>
+            <% if genre.products.count==0 %>
+                    <%= "#{genre.name}の商品は取り扱っておりません。" %>
+            <% else %>
+                <table class="table table-striped">
+                    <thead>
+                    	<tr>
+                    		<th></th>
+                    		<th><strong><%= genre.name %></strong></th>
+                    	</tr>
+                    </thead>
+                    <% genre.products.each do |product| %>
+                    	<thead>
+                    	    <tr>
+                    	    	<td></td>
+                				<td><%= link_to product.name,product_path(product.id) %></td>
+                    		</tr>
+                    	</thead>
+                    <% end %>
+                </table>
+            <% end %>
+        <% end %>
     <% end %>
-    <% end %>
+
 <% elsif @artist_or_genre_or_song_or_product=="3" %>
- <h4 class="hit"><%= "#{@songs.count}件の検索結果"%></h4>
+    <h4 class="hit"><%= "#{@songs.count}件の検索結果"%></h4>
     <h2>song</h2>
     <table class="table table-striped">
-    	<% @songs.each do |song| %>
-    	<thead>
-    	    <tr>
-    	    	<td><%= link_to song.name %></td>
-				<td><%= link_to song.disc.product.name,product_path(song.disc.product.id) %></td>
-    		</tr>
-    	</thead>
-    	<% end %>
+        <% @songs.each do |song| %>
+        	<thead>
+        	    <tr>
+        	    	<td><%= link_to song.name %></td>
+    				<td><%= link_to song.disc.product.name,product_path(song.disc.product.id) %></td>
+        		</tr>
+        	</thead>
+        <% end %>
     </table>
+
 <% else %>
- <h4 class="hit"><%= "#{@products.count}件の検索結果"%></h4>
+    <h4 class="hit"><%= "#{@products.count}件の検索結果"%></h4>
     <h2>product</h2>
     <table class="table table-striped">
-    	<thead>
+        <thead>
             <% @products.each do |product| %>
-    	    <tr>
-    	    	<td></td>
-				<td><%= link_to product.name,product_path(product) %></td>
-    		</tr>
+        	    <tr>
+        	    	<td></td>
+    				<td><%= link_to product.name,product_path(product) %></td>
+        		</tr>
             <% end %>
-    	</thead>
+        </thead>
     </table>
-    <% end %>
+<% end %>

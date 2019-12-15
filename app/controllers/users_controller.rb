@@ -5,9 +5,13 @@ class UsersController < ApplicationController
 	end
 
 	def edit
+		@user=User.find(params[:id])
+		@user.addresses.build
 	end
 
 	def update
+		@user=User.find(params[:id])
+		@user.update(address_params)
 
 	end
 
@@ -28,6 +32,11 @@ class UsersController < ApplicationController
 		else  @artist_or_genre_or_song_or_product=="4"
 			  @products=Product.where(name: params[:search])
 		end
+	end
+
+	private
+	def address_params
+		params.require(:user).permit(:last_name,:first_name,:kana_last_name,:kana_first_name,:email,:password,:password_confirmation,:phone_number,:postal_code,addresses_attributes: [:address,:postal_code, :_destroy, :id])
 	end
 
 end
