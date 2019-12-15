@@ -75,7 +75,7 @@
 
      <%= form_for(@cartitem , url: user_cart_items_path(current_user) )  do |f| %>
      <%= f.number_field :count %>
-     <%= f.hidden_field :product_id, :value => @product.id %>
+     <%= f.hidden_field :product, :value => @product.id %>
      <%= f.submit "カートに入れる", class: "btn btn-sm btn-primary" %>
      <% end %>
 
