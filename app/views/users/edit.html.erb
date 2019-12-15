@@ -1,26 +1,28 @@
 <h2>編集</h2>
 
 <%= form_for(@user) do |f| %>
-  <lavel>姓</lavel>
+  <lavel>姓</lavel><br/>
     <%= f.text_field :last_name, autofocas: true %><br/>
-  <lavel>名</lavel>
+
+  <lavel>名</lavel><br/>
     <%= f.text_field :first_name %><br/>
-  <lavel>カナ性</lavel>
+
+  <lavel>カナ性</lavel><br/>
     <%= f.text_field :kana_last_name %><br/>
 
-  <lavel>カナ名</lavel>
+  <lavel>カナ名</lavel><br/>
     <%= f.text_field :kana_first_name %><br/>
 
-  <lavel>メールアドレス</lavel>
+  <lavel>メールアドレス</lavel><br/>
     <%= f.text_field :email %><br/>
 
-  <lavel>電話番号</lavel>
+  <lavel>電話番号</lavel><br/>
     <%= f.text_field :phone_number %><br/>
 
-  <lavel>郵便番号</lavel>
+  <lavel>郵便番号</lavel><br/>
     <%= f.text_field :postal_code %><br/>
 
-  <label>住所</label>
+  <label>住所</label><br/>
     <%= f.text_field :address %><br/>
 
 <div class="addresses">
