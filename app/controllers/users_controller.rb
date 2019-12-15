@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@orders = @user.orders
+		@addresses = @user.addresses
 	end
 
 	def edit
@@ -40,7 +41,7 @@ class UsersController < ApplicationController
 private
 
 def user_params
-	params.require(:user).permit(:last_name, :first_name, :kana_last_name, :kana_first_name, :email, :phone_number, :postal_code, :address)
+	params.require(:user).permit(:last_name, :first_name, :kana_last_name, :kana_first_name, :email, :phone_number, :postal_code, :address, addresses_attributes: [:address,:user_id,:id,:_destroy])
 end
 
 end

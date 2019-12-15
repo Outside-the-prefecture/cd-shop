@@ -8,18 +8,28 @@
 	<div class="user-info">
 		<div class="info">
 			<p>
+				<label>名前：</label>
 				<%= @user.last_name %><%= @user.first_name %>
 			</p>
+			<p>
+				<label>住所：</label>
+				<%= @user.address %>
+			</p>
+		<% @addresses.each do |address| %>
 	        <p>
-	        	<%= @user.address %>
+	        	<%= address.address %>
 	        </p>
+	    <% end %>
 	        <p>
+	        	<lavel>郵便番号：</lavel>
 	        	<%= @user.postal_code %>
 	        </p>
 	        <p>
+	        	<lavel>電話番号：</lavel>
 	        	<%= @user.phone_number %>
 	        </p>
 	        <p>
+	        	<label>メールアドレス：</label>
 	        	<%= @user.email %>
 	        </p>
 	    </div>
