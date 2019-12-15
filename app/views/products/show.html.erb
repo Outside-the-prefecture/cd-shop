@@ -66,13 +66,6 @@
   				</tr>
   			</table>
 
-        <%= form_tag("/users/#{current_user.id}/#{@product.id}/cart_items", method: :post) do %>
-        <%= hidden_field_tag :product, @product.id %>
-        <input type="submit" value="送信する">
-        <% end %>
-
-        </form>
-
      <%= form_for(@cartitem , url: user_cart_items_path(current_user) )  do |f| %>
      <%= f.number_field :count %>
      <%= f.hidden_field :product, :value => @product.id %>
