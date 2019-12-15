@@ -5,13 +5,13 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		@user=User.find(params[:id])
-		@user.addresses.build
+		@user = User.find(params[:id])
 	end
 
 	def update
-		@user=User.find(params[:id])
-		@user.update(address_params)
+		@user = User.find(params[:id])
+		@user.update(user_params)
+		redirect_to user_path(@user.id)
 
 	end
 
@@ -34,9 +34,13 @@ class UsersController < ApplicationController
 		end
 	end
 
-	private
-	def address_params
-		params.require(:user).permit(:last_name,:first_name,:kana_last_name,:kana_first_name,:email,:password,:password_confirmation,:phone_number,:postal_code,addresses_attributes: [:address,:postal_code, :_destroy, :id])
-	end
+
+
+
+private
+
+def user_params
+	params.require(:user).permit(:last_name, :first_name, :kana_last_name, :kana_first_name, :email, :phone_number, :postal_code, :address)
+end
 
 end

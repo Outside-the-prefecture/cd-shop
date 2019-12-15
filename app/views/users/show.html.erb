@@ -14,13 +14,13 @@
 	        	<%= @user.address %>
 	        </p>
 	        <p>
+	        	<%= @user.postal_code %>
+	        </p>
+	        <p>
 	        	<%= @user.phone_number %>
 	        </p>
 	        <p>
 	        	<%= @user.email %>
-	        </p>
-	        <p>
-	        	<%= @user.password %>
 	        </p>
 	    </div>
 	    <%= link_to edit_user_path(@user),class: "btn btn-warning btn-xs" do %>
