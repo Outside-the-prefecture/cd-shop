@@ -11,6 +11,34 @@
   				<tr>
   					<h4>商品情報</h4>
   				</tr>
+          <tr>
+            <td>商品名</td>
+            <td><%= @product.name %></td>
+          </tr>
+          <tr>
+            <td>発売日</td>
+            <td><%= @product.release_date %></td>
+          </tr>
+          <tr>
+            <td>在庫数</td>
+            <td>
+              <% @arrivals.each do |arrival| %>
+              <% @count+=arrival.count %>
+              <% end %>
+              <% @orderitems.each do |orderitem| %>
+              <% @number+=orderitem.number %>
+              <% end %>
+              <%= @count-@number %>
+            </td>
+          </tr>
+          <tr>
+            <td>価格</td>
+           <td><%= @product.price %></td>
+         </tr>
+         <tr>
+           <td>送料</td>
+           <td>500円</td>
+         </tr>
   				<tr>
   					<td>アーティスト</td>
   					<td><%= @product.artist.name %></td>
@@ -26,10 +54,10 @@
   			</table>
 
   			<table>
-  				<tr>
-  					<th>ディスク名</th>
-  				</tr>
   				<% @discs.each do |disc| %>
+          <tr>
+            <th>ディスク名</th>
+          </tr>
   				<tr>
   					<td><%= disc.name %></td>
   				</tr>
@@ -41,32 +69,6 @@
   				<% end %>
   				<% end %>
   			</table>
-
-  			<table>
-  				<tr>
-  					<td><%= @product.name %></td>
-  				</tr>
-  				<tr>
-  					<td><%= @product.release_date %></td>
-  				</tr>
-          <tr>
-            <td>
-              <% @arrivals.each do |arrival| %>
-              <% count=0 %>
-              <% count+=arrival.count %>
-              <% end %>
-              <% @orderitems.each do |orderitem| %>
-              <% number=0 %>
-              <% number+=orderitem.number %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-           <td><%= @product.price %></td>
-         </tr>
-         <tr>
-           <td>送料全国一律500円</td>
-         </tr>
-       </table>
      </div>
      <%= link_to '削除',  admin_manager_product_path, class: "btn btn-danger" ,method: :delete ,"data-confirm" => "本当に削除しますか?"%></span></td>
+

@@ -7,12 +7,10 @@ Rails.application.routes.draw do
   resources :products,only: [:show]
   resources :users,only: [:show,:edit,:update] do
   	resources :cart_items,only: [:index ,:create , :destroy]
+
   	resources :histories,only: [:show]
   	resources :orders,only: [:new,:create]
   end
-
-
-
 
   delete 'users/:id', to: 'users#destroy'
 
