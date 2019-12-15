@@ -1,15 +1,6 @@
 <h1>カート一覧</h1>
 
 <table>
-<!-- 	<thead>
-		<tr>
-			<th>商品名</th>
-			<th>販売価格</th>
-			<th>数量</th>
-			<th>変更</th>
-			<th>小計</th>
-		</tr>
-	</thead> -->
 	<thead>
 		<% @cartitems.each do |cartitem| %>
 			<tr>
@@ -24,12 +15,12 @@
 					<br>
 					<%= cartitem.count %>個
 					<br>
-					<%= link_to "削除",user_path(user_id: @user.id, id: cartitem.id) %>
+					<%= link_to "削除",user_cart_item_path(user_id: @user.id, id: cartitem.id),method: :delete %>
 					<br>
-					￥<%= cartitem.product.price*cartitem.count %>
+					￥<%= cartitem.product.price %>
 				</td>
 
-				<% @totalprice+=cartitem.product.price*cartitem.count %>
+				<% @totalprice+=cartitem.product.price %>
 			</tr>
 		<% end %>
 	</thead>

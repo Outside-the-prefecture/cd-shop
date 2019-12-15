@@ -5,6 +5,8 @@ class Admin::ManagerProductsController < ApplicationController
 
 	def show
 		@product=Product.find(params[:id])
+		@count=0
+		@number=0
 		@discs=@product.discs
 		@orderitems=@product.order_items
 		@arrivals=@product.arrivals
@@ -63,7 +65,7 @@ class Admin::ManagerProductsController < ApplicationController
 		params.require(:product).permit(:name,:jacket_image,:price,:release_date,:artist_id,:label_id,:genre_id, discs_attributes: [:name,:product_id, songs_attributes: [:name,:disc_id,:song_order]])
 	end
 
-	def product_params
+	def update_product_params
 		params.require(:product).permit(:name,:jacket_image,:price,:release_date,:artist_id,:label_id,:genre_id, discs_attributes: [:name,:product_id,:id,:_destroy, songs_attributes: [:name,:disc_id,:song_order,:id,:_destroy]])
 	end
 

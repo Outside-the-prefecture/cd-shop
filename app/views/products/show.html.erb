@@ -65,7 +65,7 @@
   				</tr>
   			</table>
 
-        <%= form_tag("/users/#{current_user.id}/cart_items", method: :post) do %>
+        <%= form_tag("/users/#{current_user.id}/#{@product.id}/cart_items", method: :post) do %>
         <%= hidden_field_tag :product, @product.id %>
         <input type="submit" value="送信する">
         <% end %>

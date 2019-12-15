@@ -6,7 +6,7 @@ class CartItemsController < ApplicationController
 	end
 
 	def create
-	    @product=Product.find(params[:product])
+	    @product=Product.find(params[:product_id])
 		@cartitem=CartItem.new
 		@cartitem.product_id=@product.id
 		@cartitem.user_id=current_user.id
@@ -25,7 +25,7 @@ class CartItemsController < ApplicationController
 	end
 
 	def destroy
-		@user=User.find(id: [:user_id])
+		@user=User.find(params[:user_id])
 		@cartitem=CartItem.find(params[:id])
 		@cartitem.destroy
 		redirect_to user_cart_items_path(@user.id)
