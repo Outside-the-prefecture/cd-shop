@@ -1,0 +1,58 @@
+<table>
+	<thead>
+		<tr>
+			<th>注文ID</th>
+			<th>注文日時</th>
+			<th>合計金額</th>
+			<th>支払い方法</th>
+			<th>送付先</th>
+		</tr>
+	</thead>
+	<thead>
+		<tr>
+			<td><%= @order.id %></td>
+			<td><%= @order.created_at %></td>
+			<td><%= @order.total_amount %></td>
+			<td><%= @order.payment_method %></td>
+			<td><%= @order.delivery_target_address %></td>
+		</tr>
+	</thead>
+</table>
+<h2>注文内訳</h2>
+<table>
+	<thead>
+		<tr>
+			<th>商品ID</th>
+			<th>商品名</th>
+			<th>価格</th>
+			<th>注文数</th>
+			<th>小計</th>
+			<th>送料</th>
+			<th>合計</th>
+		</tr>
+	</thead>
+	<thead>
+		<% @orderitems.each do |orderitem| %>
+			<tr>
+				<td><%= orderitem.product.id %></td>
+				<td><%= orderitem.product.name %></td>
+				<td><%= orderitem.product.price %></td>
+				<td><%= orderitem.count %></td>
+				<td>
+					<%= orderitem.product.price*orderitem.count %>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+		<% end %>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><%= @order.shipping_fee %></td>
+			<td><%= @order.total_amount %></td>
+		</tr>
+	</thead>
+</table>
