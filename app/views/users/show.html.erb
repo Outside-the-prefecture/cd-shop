@@ -14,13 +14,13 @@
 	        	<%= @user.address %>
 	        </p>
 	        <p>
+	        	<%= @user.postal_code %>
+	        </p>
+	        <p>
 	        	<%= @user.phone_number %>
 	        </p>
 	        <p>
 	        	<%= @user.email %>
-	        </p>
-	        <p>
-	        	<%= @user.password %>
 	        </p>
 	    </div>
 	    <%= link_to edit_user_path(@user),class: "btn btn-warning btn-xs" do %>
@@ -28,7 +28,7 @@
 		<% end %>
 	</div>
 
-	<%= link_to user_registration_path(@user),class: "btn btn-danger destroy" do %>
+	<%= link_to user_path(@user.id),method: :delete, data:{confirm: "本当に退会しますか？"},class: "btn btn-danger destroy" do %>
 	<span>退会</span>
 	<% end %>
 

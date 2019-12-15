@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   root "products#index"
   devise_for :users
-  get "users/:user_id/orders/finish" => "orders#finish"
-  patch 'users/:id', to: 'users#destroy'
-  get "search" => "users#search"
 
+  get "users/:user_id/orders/finish" => "orders#finish"
+  get "search" => "users#search"
   resources :products,only: [:show]
   resources :users,only: [:show,:edit,:update] do
   	resources :cart_items,only: [:index]
@@ -12,8 +11,11 @@ Rails.application.routes.draw do
   	resources :orders,only: [:new,:create]
   end
 
-  get "users/:user_id/cart_items/:id" => "cart_items#destroy"
+
+
+  delete "users/:user_id/cart_items/:id" => "cart_items#destroy"
   post "users/:user_id/cart_items" => "cart_items#create"
+  delete 'users/:id', to: 'users#destroy'
 
   namespace :admin do
   	resources :managers,only: [:index,:show,:edit,:update,:destroy]
@@ -23,5 +25,6 @@ Rails.application.routes.draw do
   	resources :genres,only: [:create]
   	resources :labels,only: [:create]
   end
+  patch 'users/:id', to: 'users#destroy'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

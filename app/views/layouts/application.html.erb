@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= csrf_meta_tag %>
       <script src="https://kit.fontawesome.com/e08b590ac6.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="style.css">
 
@@ -28,7 +29,7 @@
             <%=link_to current_user.last_name ,user_path(current_user),class: "fa fa-user" %>
           </li>
           <li class="border">
-            <%=link_to "商品一覧" ,root_path,class: "" %>
+            <%=link_to "商品一覧" ,root_path,class: "fas fa-compact-disc" %>
           </li>
           <li>
             <%=link_to "カート一覧" ,user_cart_items_path(current_user.id),class: "fa fa-shopping-cart" %>
@@ -36,14 +37,14 @@
         </ul>
         <% else %>
         <ul class="nav navbar-nav navbar-right">
-          <li>
+          <li class="border out">
             <%=link_to "ログイン" ,user_session_path,class: "fa fa-sign-in" %>
           </li>
-          <li>
+          <li class="border out">
             <%=link_to "サインアップ" ,new_user_registration_path,class: "fas fa-user-plus" %>
           </li>
-          <li>
-            <%=link_to "商品一覧" ,root_path %>
+          <li class="out">
+            <%=link_to "商品一覧" ,root_path,class: "fas fa-compact-disc" %>
           </li>
         </ul>
      <% end %>
