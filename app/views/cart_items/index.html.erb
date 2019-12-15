@@ -26,9 +26,8 @@
 					<br>
 					<%= link_to "削除",user_path(user_id: @user.id, id: cartitem.id) %>
 					<br>
-					￥<%= cartitem.product.price*cartitem.count %>
+					 ￥<%= cartitem.product.price*cartitem.count %>
 				</td>
-
 				<% @totalprice+=cartitem.product.price*cartitem.count %>
 			</tr>
 		<% end %>

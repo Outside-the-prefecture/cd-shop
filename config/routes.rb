@@ -6,15 +6,14 @@ Rails.application.routes.draw do
   get "search" => "users#search"
   resources :products,only: [:show]
   resources :users,only: [:show,:edit,:update] do
-  	resources :cart_items,only: [:index]
+  	resources :cart_items,only: [:index ,:create , :destroy]
   	resources :histories,only: [:show]
   	resources :orders,only: [:new,:create]
   end
 
 
 
-  delete "users/:user_id/cart_items/:id" => "cart_items#destroy"
-  post "users/:user_id/cart_items" => "cart_items#create"
+
   delete 'users/:id', to: 'users#destroy'
 
   namespace :admin do
