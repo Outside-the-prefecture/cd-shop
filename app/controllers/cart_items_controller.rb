@@ -5,11 +5,10 @@ class CartItemsController < ApplicationController
 	end
 
 	def create
-		@user=User.find(id: [:current_user.id])
-		@product=Product.find(id: [:product_id])
-		@cartitem=CartItem.new(cart_item_params)
+	    @product=Product.find(params[:product])
+		@cartitem=CartItem.new
 		@cartitem.product_id=@product.id
-		@cartitem.user_id=@user.id
+		@cartitem.user_id=current_user.id
 
 		if @cartitem.save
 			redirect_to product_path(@product.id)
@@ -30,4 +29,5 @@ class CartItemsController < ApplicationController
 		@cartitem.destroy
 		redirect_to user_cart_items_path(@user.id)
 	end
+
 end
