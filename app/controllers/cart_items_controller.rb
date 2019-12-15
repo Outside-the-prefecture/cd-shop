@@ -8,7 +8,7 @@ class CartItemsController < ApplicationController
 	def create
 	    @product=Product.find(params[:cart_item][:product])
 		@cartitem=CartItem.new
-		@cartitem.count= params[:count]
+		@cartitem.count= params[:cart_item][:count]
 		@cartitem.product_id=@product.id
 		@cartitem.user_id=current_user.id
 
