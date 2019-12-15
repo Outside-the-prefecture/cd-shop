@@ -44,8 +44,19 @@
   				</tr>
   				<tr>
   					<td><%= @product.release_date %></td>
-  				</tr>
+          </tr>
 
+  				<tr>
+  					<td>
+  						<% @arrivals.each do |arrival| %>
+  						<% @count+=arrival.count %>
+  						<% end %>
+  						<% @orderitems.each do |orderitem| %>
+  						<% @number+=orderitem.number %>
+  						<% end %>
+  						<%= @count-@number %>
+  					</td>
+  				</tr>
   				<tr>
   					<td><%= @product.price %></td>
   				</tr>

@@ -1,18 +1,39 @@
-<br>
 <h1>カート一覧</h1>
-<br>
-<table>
-	<thead>
-	<tr>
-		<th></th>
-		<th>商品名</th>
-		<th>販売価格</th>
-		<th>数量</th>
-		<th>変更</th>
-		<th>小計</th>
-	</tr>
-	</thead>
 
+<table>
+<!-- 	<thead>
+		<tr>
+			<th>商品名</th>
+			<th>販売価格</th>
+			<th>数量</th>
+			<th>変更</th>
+			<th>小計</th>
+		</tr>
+	</thead> -->
+	<thead>
+		<% @cartitems.each do |cartitem| %>
+			<tr>
+				<td>
+					<%= attachment_image_tag cartitem.product, :jacket_image, :fill, 200,200, fallback: "",size: "100*100" %>
+				</td>
+
+				<td>
+					<%= cartitem.product.name %>
+					<br>
+					￥<%= cartitem.product.price %>
+					<br>
+					<%= cartitem.count %>個
+					<br>
+					<%= link_to "削除",user_path(user_id: @user.id, id: cartitem.id) %>
+					<br>
+					￥<%= cartitem.product.price*cartitem.count %>
+				</td>
+
+				<% @totalprice+=cartitem.product.price*cartitem.count %>
+			</tr>
+		<% end %>
+	</thead>
 </table>
+<h2>商品合計   ￥<%= @totalprice %>
 
 <%=link_to "買い物を続ける" ,root_path,class: "btn btn-default"  %>
