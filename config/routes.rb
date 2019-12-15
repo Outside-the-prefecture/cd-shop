@@ -11,10 +11,11 @@ Rails.application.routes.draw do
   	resources :orders,only: [:new,:create]
   end
 
-  delete "users/:user_id/cart_items/:id" => "cart_items#destroy"
-  post "users/:user_id/:product_id/cart_items" => "cart_items#create"
-  delete 'users/:id', to: 'users#destroy'
 
+
+  delete "users/:user_id/cart_items/:id" => "cart_items#destroy"
+  post "users/:user_id/cart_items" => "cart_items#create"
+  delete 'users/:id', to: 'users#destroy'
 
   namespace :admin do
   	resources :managers,only: [:index,:show,:edit,:update,:destroy]

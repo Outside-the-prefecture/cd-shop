@@ -44,7 +44,8 @@
   				</tr>
   				<tr>
   					<td><%= @product.release_date %></td>
-  				</tr>
+          </tr>
+
   				<tr>
   					<td>
   						<% @arrivals.each do |arrival| %>
@@ -64,10 +65,19 @@
   				</tr>
   			</table>
 
-  			<%=form_for(@cartitem) do |f| %>
-  			<%= f.submit "商品をカートに入れる" %>
-  			<% end %>
+        <%= form_tag("/users/#{current_user.id}/cart_items", method: :post) do %>
+        <%= hidden_field_tag :product, @product.id %>
+        <input type="submit" value="送信する">
+        <% end %>
 
-  		</div>
-  	</div>
-  </div>
+        </form>
+
+     </td>
+   </tr>
+
+ </div>
+</div>
+</div>
+
+
+
