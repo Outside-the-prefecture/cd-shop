@@ -48,14 +48,12 @@
   				<tr>
   					<td>
   						<% @arrivals.each do |arrival| %>
-  						<% count=0 %>
-  						<% count+=arrival.count %>
+  						<% @count+=arrival.count %>
   						<% end %>
   						<% @orderitems.each do |orderitem| %>
-  						<% number=0 %>
-  						<% number+=orderitem.number %>
+  						<% @number+=orderitem.number %>
   						<% end %>
-  						<%= count-number %>
+  						<%= @count-@number %>
   					</td>
   				</tr>
   				<tr>
