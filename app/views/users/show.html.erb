@@ -1,12 +1,11 @@
 <div class="body">
-	<h2>アカウントサービス</h2>
+	<h2>マイページ</h2>
 
 	<div class="user-info-heading">
-		<h3>ユーザー情報</h3>
+		<h4>ユーザー情報</h4>
 	</div>
 
 	<div class="user-info">
-		<div class="info">
 			<p>
 				<label>名前：</label>
 				<%= @user.last_name %><%= @user.first_name %>
@@ -32,7 +31,6 @@
 	        	<label>メールアドレス：</label>
 	        	<%= @user.email %>
 	        </p>
-	    </div>
 	    <%= link_to edit_user_path(@user),class: "btn btn-warning btn-xs" do %>
 			<span>プロフィール編集</span>
 		<% end %>

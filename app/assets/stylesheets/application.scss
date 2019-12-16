@@ -40,10 +40,6 @@ header {
 	float: left;
 }
 
-.info{
-	text-align: center;
-}
-
 .my{
 	font-size: 40px;
 	color: #75A9FF;
@@ -80,8 +76,8 @@ li{
 .user-info{
 	border: solid 1px black;
 	width: 400px;
-	float: left;
 	padding: 20px;
+	margin: 0 auto;
 }
 
 .btn-warning{
@@ -89,13 +85,13 @@ li{
 }
 
 .destroy{
-	float: left;
-	margin: 70px;
-	margin-top: 135px;
+	margin-top: 30px;
+	margin-left: 500px;
 }
 
 .body{
-	margin-left: 40px;
+	text-align:center;
+	margin:0 auto;
 }
 
 .user-index-table{
