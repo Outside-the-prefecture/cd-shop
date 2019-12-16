@@ -7,64 +7,69 @@
   		</div>
   		<div class="col-xs-6">
 
-  			<table>
-  				<tr>
-  					<th>商品情報</th>
-  				</tr>
-  				<tr>
-  					<td><%= @product.artist.name %></td>
-  				</tr>
-  				<tr>
-  					<td><%= @product.label.name %></td>
-  				</tr>
-  				<tr>
-  					<td><%= @product.genre.name %></td>
-  				</tr>
-  			</table>
-
-  			<table>
-  				<tr>
-  					<th>曲順リスト</th>
-  				</tr>
-  				<% @discs.each do |disc| %>
-  				<tr>
-  					<td><%= disc.name %></td>
-  				</tr>
-  				<% disc.songs.each do |song| %>
-  				<tr>
-  					<td><%= song.name %></td>
-  				</tr>
-  				<% end %>
-  				<% end %>
-  			</table>
-
-  			<table>
-  				<tr>
-  					<td><%= @product.name %></td>
-  				</tr>
-  				<tr>
-  					<td><%= @product.release_date %></td>
+      <div class="col-xs-6">
+        <table>
+          <tr>
+            <h4>商品情報</h4>
           </tr>
+          <tr>
+            <td>商品名</td>
+            <td><%= @product.name %></td>
+          </tr>
+          <tr>
+            <td>発売日</td>
+            <td><%= @product.release_date %></td>
+          </tr>
+          <tr>
+            <td>在庫数</td>
+            <td>
+              <% @arrivals.each do |arrival| %>
+              <% @count+=arrival.count %>
+              <% end %>
+              <% @orderitems.each do |orderitem| %>
+              <% @number+=orderitem.number %>
+              <% end %>
+              <%= @count-@number %>
+            </td>
+          </tr>
+          <tr>
+            <td>価格</td>
+           <td><%= @product.price %></td>
+         </tr>
+         <tr>
+           <td>送料</td>
+           <td>500円</td>
+         </tr>
+          <tr>
+            <td>アーティスト</td>
+            <td><%= @product.artist.name %></td>
+          </tr>
+          <tr>
+            <td>レーベル</td>
+            <td><%= @product.label.name %></td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td><%= @product.genre.name %></td>
+          </tr>
+        </table>
 
-
-  				<tr>
-  					<td>
-  						<% @arrivals.each do |arrival| %>
-  						<% @count+=arrival.count %>
-  						<% end %>
-  						<% @orderitems.each do |orderitem| %>
-  						<% @number+=orderitem.number %>
-  						<% end %>
-  						<%= @count-@number %>
-  					</td>
-  				</tr>
-  				<tr>
-  					<td><%= @product.price %></td>
-  				</tr>
-  				<tr>
-  					<td>送料全国一律500円</td>
-  				</tr>
-  			</table>
+        <table>
+          <% @discs.each do |disc| %>
+          <tr>
+            <th>ディスク名</th>
+          </tr>
+          <tr>
+            <td><%= disc.name %></td>
+          </tr>
+          <th>曲名</th>
+          <% disc.songs.each do |song| %>
+          <tr>
+            <td><%= song.name %></td>
+          </tr>
+          <% end %>
+          <% end %>
+        </table>
 
      <%= form_for(@cartitem , url: user_cart_items_path(current_user) )  do |f| %>
      <%= f.number_field :count %>
