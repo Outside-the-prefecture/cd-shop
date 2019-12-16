@@ -1,28 +1,30 @@
+<link rel="stylesheet" href="stylesheets.scss">
   <div class="container">
   	<div class="row">
   		<div class="col-xs-6">
   			<div>
-  				<%= attachment_image_tag @product, :jacket_image, :fill, 100, 100, format: 'jpeg', size: '200x200', fallback: "no_image.jpg" %>
+  				<%= attachment_image_tag @product, :jacket_image, :fill, 100, 100, format: 'jpeg', size: '300x300', fallback: "no_image.jpg" %>
   			</div>
-  		</div>
-  		<div class="col-xs-6">
-
-  			<table>
+  			<table class="table">
   				<tr>
-  					<th>商品情報</th>
+  					<h2>商品情報</h2>
   				</tr>
   				<tr>
-  					<td><%= @product.artist.name %></td>
+            <td>アーティスト</td>
+            <td><%= @product.artist.name %></td>
   				</tr>
   				<tr>
+            <td>レーベル</td>
   					<td><%= @product.label.name %></td>
   				</tr>
   				<tr>
+            <td>ジャンル</td>
   					<td><%= @product.genre.name %></td>
   				</tr>
   			</table>
 
-  			<table>
+
+  			<table class="table">
   				<tr>
   					<th>曲順リスト</th>
   				</tr>
@@ -37,17 +39,20 @@
   				<% end %>
   				<% end %>
   			</table>
+      </div>
 
+        <div class="col-xs-6">
   			<table>
   				<tr>
-  					<td><%= @product.name %></td>
+            <td>タイトル</td>
+  					<td><h2><%= @product.name %></h2></td>
   				</tr>
   				<tr>
+            <td>発売日</td>
   					<td><%= @product.release_date %></td>
           </tr>
-
-
   				<tr>
+            <td>在庫数</td>
   					<td>
   						<% @arrivals.each do |arrival| %>
   						<% @count+=arrival.count %>
@@ -59,10 +64,11 @@
   					</td>
   				</tr>
   				<tr>
+            <td>価格</td>
   					<td><%= @product.price %></td>
   				</tr>
   				<tr>
-  					<td>送料全国一律500円</td>
+            <td>送料全国一律500円</td>
   				</tr>
   			</table>
 

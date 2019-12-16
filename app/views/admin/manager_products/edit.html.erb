@@ -1,6 +1,6 @@
 <h2>新規投稿</h2>
 <!-- form_for部分 -->
-<%= form_with(model: @product, url:admin_manager_products_path, local: true) do |f| %>
+<%= form_with(model: @product, url:admin_manager_product_path, local: true) do |f| %>
 
 <h4>アーティスト</h4>
 <%= f.collection_select :artist_id, Artist.all, :id, :name, {include_blank: "アーティスト"},
