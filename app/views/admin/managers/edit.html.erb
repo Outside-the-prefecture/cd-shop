@@ -1,0 +1,43 @@
+<div class="text-center">
+	<h2>編集</h2>
+
+	<%= form_for @user, url: admin_manager_path(@user.id) do |f| %>
+	  <lavel>姓</lavel><br/>
+	    <%= f.text_field :last_name, autofocas: true %><br/>
+
+	  <lavel>名</lavel><br/>
+	    <%= f.text_field :first_name %><br/>
+
+	  <lavel>カナ性</lavel><br/>
+	    <%= f.text_field :kana_last_name %><br/>
+
+	  <lavel>カナ名</lavel><br/>
+	    <%= f.text_field :kana_first_name %><br/>
+
+	  <lavel>メールアドレス</lavel><br/>
+	    <%= f.text_field :email %><br/>
+
+	  <lavel>電話番号</lavel><br/>
+	    <%= f.text_field :phone_number %><br/>
+
+	  <lavel>郵便番号</lavel><br/>
+	    <%= f.text_field :postal_code %><br/>
+
+	  <label>住所</label><br/>
+	    <%= f.text_field :address %><br/>
+
+	<div class="addresses">
+	    <%= f.fields_for :addresses do |address| %><br/>
+	    <%= render "address_fields", f: address %>
+	  	<% end %>
+	    <div class="links">
+	  		<%= link_to_add_association "住所追加", f, :addresses %>
+	  	</div>
+	</div>
+
+	    <%= f.submit "更新",class: "btn btn-warning" %><br/>
+	<% end %>
+	　　<%= link_to admin_manager_path(@user.id),method: :delete, data:{confirm: "本当に退会させますか？"},class: "btn btn-danger actions" do %>
+	   <span>退会</span>
+	   <% end %>
+</div>
