@@ -27,4 +27,8 @@ class Admin::ManagersController < ApplicationController
 		redirect_to admin_managers_path
 	end
 
+private
+  def user_params
+  	  params.require(:user).permit(:last_name, :first_name, :kana_last_name, :kana_first_name, :email, :phone_number, :postal_code, :address, addresses_attributes: [:address,:user_id,:id,:_destroy])
+  end
 end
