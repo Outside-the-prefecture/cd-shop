@@ -71,4 +71,30 @@
   			</table>
      </div>
      <%= link_to '削除',  admin_manager_product_path, class: "btn btn-danger" ,method: :delete ,"data-confirm" => "本当に削除しますか?"%></span></td>
+     <h2>入荷履歴</h2>
+     <table>
+      <thead>
+        <tr>
+          <th>入荷日時</th>
+          <th>個数</th>
+        </tr>
+      </thead>
+      <thead>
+        <% @arrivals.each do |arrival| %>
+        <tr>
+          <td><%= arrival.datetime %></td>
+          <td><%= arrival.count %></td>
+        </tr>
+        <% end %>
+      </thead>
+     </table>
+     <%= form_for @arrival,url: admin_manager_product_arrivals_path(manager_product_id: @product.id) do |f| %>
+  <lavel>入荷日時</lavel><br/>
+    <%= f.text_field :datetime %><br/>
+
+  <lavel>個数</lavel><br/>
+    <%= f.number_field :count %><br/>
+
+    <%= f.submit "登録",class: "btn btn-success" %><br/>
+<% end %>
 

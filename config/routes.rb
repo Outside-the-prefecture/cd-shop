@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'arrivals/create'
   root "products#index"
   devise_for :users
 
@@ -16,7 +17,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
   	resources :managers,only: [:index,:show,:edit,:update,:destroy]
-  	resources :manager_products
+  	resources :manager_products do
+      resources :arrivals,only: [:create]
+    end
   	resources :manager_orders,only: [:index,:show]
   	resources :artists,only: [:create]
   	resources :genres,only: [:create]
