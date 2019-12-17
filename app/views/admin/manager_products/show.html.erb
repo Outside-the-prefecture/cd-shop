@@ -74,27 +74,6 @@
 <%= link_to '削除',  admin_manager_product_path, class: "btn btn-danger" ,method: :delete ,"data-confirm" => "本当に削除しますか?"%></span></td>
 <%= link_to "編集", edit_admin_manager_product_path(@product), class: "btn btn-default"  %>
 
-
-
-
-  			<table>
-  				<% @discs.each do |disc| %>
-          <tr>
-            <th>ディスク名</th>
-          </tr>
-  				<tr>
-  					<td><%= disc.name %></td>
-  				</tr>
-  				<th>曲名</th>
-  				<% disc.songs.each do |song| %>
-  				<tr>
-  					<td><%= song.name %></td>
-  				</tr>
-  				<% end %>
-  				<% end %>
-  			</table>
-     </div>
-     <%= link_to '削除',  admin_manager_product_path, class: "btn btn-danger" ,method: :delete ,"data-confirm" => "本当に削除しますか?"%></span></td>
      <h2>入荷履歴</h2>
      <table>
       <thead>
