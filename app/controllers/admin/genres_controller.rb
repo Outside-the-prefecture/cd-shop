@@ -2,7 +2,7 @@ class Admin::GenresController < ApplicationController
 	def create
 		genre=Genre.new(genre_params)
 		if genre.save
-			redirect_to admin_manager_products_path
+			redirect_to new_admin_manager_product_path
 		else
 			@label=Label.new
 			@artist=Artist.new

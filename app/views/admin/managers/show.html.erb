@@ -1,33 +1,34 @@
-<h3>
-	<%= @user.last_name %>
-	<%= @user.first_name %>
-</h3>
+<div class="body">
+	<h3>
+		<%= @user.last_name %>
+		<%= @user.first_name %>
+	</h3>
 
-<%= link_to admin_manager_path(@user.id),method: :delete, data:{confirm: "本当に退会させますか？"},class: "btn btn-danger actions" do %>
-<span>退会</span>
-<% end %>
-<%= link_to edit_admin_manager_path(@user.id),class: "btn btn-success actions" do %>
-<span>編集</span>
-<% end %>
+	<%= link_to admin_manager_path(@user.id),method: :delete, data:{confirm: "本当に退会させますか？"},class: "btn btn-danger actions" do %>
+	<span>退会</span>
+	<% end %>
+	<%= link_to edit_admin_manager_path(@user.id),class: "btn btn-success actions" do %>
+	<span>編集</span>
+	<% end %>
 
-<% @orders.each do |order| %>
-<%= order.created_at %>
-<%= order.payment_method %>
-<%= order.delivery_target_address %>
+	<% @orders.each do |order| %>
+	<%= order.created_at %>
+	<%= order.payment_method %>
+	<%= order.delivery_target_address %>
 
-<table>
-	<thead>
-		<tr>
-			<th>商品名</th>
-			<th>数量</th>
-			<th>状況</th>
-			<th>小計(税込)</th>
-			<th>送料</th>
-			<th>合計金額(税込)</th>
-		</tr>
-	</thead>
-	<thead>
-		<% order.order_items do |order_item| %>
+	<table>
+		<thead>
+			<tr>
+				<th>商品名</th>
+				<th>数量</th>
+				<th>状況</th>
+				<th>小計(税込)</th>
+				<th>送料</th>
+				<th>合計金額(税込)</th>
+			</tr>
+		</thead>
+		<thead>
+			<% order.order_items do |order_item| %>
 			<tr>
 				<td>
 					<%= order_item.product.name %>
@@ -44,7 +45,7 @@
 				<td></td>
 				<td></td>
 			</tr>
-		<% end %>
+			<% end %>
 			<tr>
 				<td></td>
 				<td></td>
@@ -57,8 +58,9 @@
 					<%= order.total_amount %>
 				</td>
 			</tr>
-	</thead>
-</table>
-<% end %>
+		</thead>
+	</table>
+	<% end %>
+</div>
 
 
