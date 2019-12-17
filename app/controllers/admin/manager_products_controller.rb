@@ -1,6 +1,6 @@
 class Admin::ManagerProductsController < ApplicationController
 	def index
-		@products=Product.all
+		@products=Product.page(params[:page]).per(12)
 	end
 
 	def show
@@ -26,7 +26,7 @@ class Admin::ManagerProductsController < ApplicationController
 	def create
 		product=Product.new(product_params)
 		if product.save
-			redirect_to admin_manager_products_path
+			redirect_to new_admin_manager_product_path
 		else
 			@label=Label.new
 			@artist=Artist.new

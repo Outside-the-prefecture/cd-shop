@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   # get "admin/managers/sign_in"=>"admins/sessions#new"
   # post "admin/managers/sign_in"=>"admins/sessions#create"
   # delete "admin/managers/sign_out"=> "admins/sessions#destroy"
-  devise_for :users
+  devise_for :users, :controllers => {
+    :sessions => "users/sessions",
+    :passwords => "users/passwords",
+    :registrations => "users/registrations"
+  }
+
   devise_for :admins, :controllers => {
     :sessions => "admins/sessions"
   }
