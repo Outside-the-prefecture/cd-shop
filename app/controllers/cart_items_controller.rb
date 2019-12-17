@@ -12,7 +12,7 @@ class CartItemsController < ApplicationController
 		@cartitem.product_id=@product.id
 		@cartitem.user_id=current_user.id
 
-		if @cartitem.save
+		if @cartGitem.save
 			redirect_to product_path(@product.id)
 		else
 			@discs=@product.discs
