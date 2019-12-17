@@ -1,45 +1,42 @@
 <div class="body">
-	<h2>新規投稿</h2>
-	<!-- form_for部分 -->
-	<%= form_with(model: @product, url:admin_manager_product_path, local: true) do |f| %>
+<h2>商品情報編集</h2>
+<!-- form_for部分 -->
+<%= form_with(model: @product, url:admin_manager_product_path, local: true) do |f| %>
 
-	<h4>アーティスト</h4>
-	<%= f.collection_select :artist_id, Artist.all, :id, :name, {include_blank: "アーティスト"},
-	class: 'sample' %>
+<h4>アーティスト</h4>
+<%= f.collection_select :artist_id, Artist.all, :id, :name, {include_blank: "アーティスト"},
+class: 'sample' %>
 
-	<h4>アルバム/シングル名</h4>
-	<%= f.text_field :name %>
+<h4>アルバム/シングル名</h4>
+<%= f.text_field :name %>
 
-	<h4>ジャケット画像</h4>
-	<%= f.attachment_field :jacket_image %>
+<h4>ジャケット画像</h4>
+<%= f.attachment_field :jacket_image %>
 
-	<h4>価格(税別)</h4>
-	<%= f.text_field :price %>
+<h4>価格(税別)</h4>
+<%= f.text_field :price %>
 
-	<h4>発売日</h4>
-	<%= f.text_field :release_date %>
+<h4>発売日</h4>
+<%= f.text_field :release_date %>
 
-	<h4>レーベル名</h4>
-	<%= f.collection_select :label_id, Label.all, :id, :name, {include_blank: "レーベル"},
-	class: 'sample' %>
+<h4>レーベル名</h4>
+<%= f.collection_select :label_id, Label.all, :id, :name, {include_blank: "レーベル"},
+class: 'sample' %>
 
-	<h4>ジャンル</h4>
-	<%= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: "ジャンル"},
-	class: 'sample' %>
+<h4>ジャンル</h4>
+<%= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: "ジャンル"},
+class: 'sample' %>
 
-	<div class="discs">
-		<h4>DISC</h4>
-		<%= f.fields_for :discs do |disc| %>
-		<%= render "disc_fields", f: disc %>
-		<% end %>
-		<div class="links">
-			<%= link_to_add_association "ディスクを追加", f, :discs %>
-		</div>
-	</div>
-
-	<br/>
-	<%= f.submit '更新' %>
-
+<div class="discs">
+	<h4>DISC</h4>
+	<%= f.fields_for :discs do |disc| %>
+	<%= render "disc_fields", f: disc %>
 	<% end %>
+	<div class="links">
+		<%= link_to_add_association "ディスクを追加", f, :discs %>
+	</div>
 </div>
-
+<br/>
+<%= f.submit '更新' %>
+<% end %>
+</div>
