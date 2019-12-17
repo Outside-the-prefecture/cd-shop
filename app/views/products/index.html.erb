@@ -6,7 +6,7 @@
 	        <div class="col-md-2">
 	        <%= link_to product_path(product.id) do %>
 	           <%= attachment_image_tag product, :jacket_image, :fill, 200,200, fallback: "",size: "100*100" %><br/>
-	            <%=  product.name %><br/>
+	            <%= product.name %><br/>
 	            <%= product.price %>円
 	          <% end %>
 	        </div>

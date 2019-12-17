@@ -34,10 +34,33 @@
             <%=link_to "カート一覧" ,user_cart_items_path(current_user.id),class: "fa fa-shopping-cart" %>
           </li>
         </ul>
+            <% elsif admin_signed_in? %>
+              <%= form_tag(search_path, :method=>'get')do %>
+              <%=select_tag(:option,options_for_select([["artist","1"],["genre","2"],["song","3"],["product","4"]]))%>
+              <%= text_field_tag :search %>
+              <%= submit_tag 'Search'%>
+              <% end %></div>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="border">
+            <%=link_to "ログアウト" ,destroy_admin_session_path,method: :delete ,class: "fas fa-sign-out-alt" %>
+          </li>
+          <li class="border">
+            <%=link_to "ユーザ一覧" ,admin_managers_path,class: "fa fa-user" %>
+          </li>
+          <li class="border">
+            <%=link_to "商品一覧" ,admin_manager_products_path,class: "fas fa-compact-disc" %>
+          </li>
+          <li class="border">
+            <%=link_to "受注の一覧" ,admin_manager_orders_path,class: "fa fa-shopping-cart" %>
+          </li>
+          <li>
+            <%= link_to "新規登録" ,new_admin_manager_product_path %>
+          </li>
+        </ul>
         <% else %>
         <ul class="nav navbar-nav navbar-right">
           <li class="border out">
-            <%=link_to "ログイン" ,user_session_path,class: "fa fa-sign-in" %>
+            <%=link_to "ログイン" ,new_user_session_path,class: "fa fa-sign-in" %>
           </li>
           <li class="border out">
             <%=link_to "会員登録" ,new_user_registration_path,class: "fas fa-user-plus" %>
