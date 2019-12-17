@@ -8,9 +8,9 @@ class CartItemsController < ApplicationController
 	def create
 	  @product=Product.find(params[:cart_item][:product])
 		@cartitem=CartItem.new
-		@cartitem.count= params[:cart_item][:count]
-		@cartitem.product_id=@product.id
-		@cartitem.user_id=current_user.id
+		@cartitem.count = params[:cart_item][:count]
+		@cartitem.product_id =@product.id
+		@cartitem.user_idb =current_user.id
 
 		if @cartitem.save
 			redirect_to product_path(@product.id)
