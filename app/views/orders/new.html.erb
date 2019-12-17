@@ -1,17 +1,30 @@
-<p>お支払方法を選択してください</p>
+<div class="body">
+	<p>お支払方法を選択してください</p>
 	<ul>
 		<li>
-		<label><input type="checkbox"><span class="checkboxView"></span><span class="title">銀行振込</span></label>
-	</li>
-	<li>
-		<label><input type="checkbox"><span class="checkboxView"></span><span class="title">クレジットカード</span></label>
-	</li>
-	<li>
-		<label><input type="checkbox"><span class="checkboxView"></span><span class="title">代引き</span></label>
-	</li>
+			<label>
+				<input type="checkbox">
+				<span class="checkboxView"></span>
+				<span class="title">銀行振込</span>
+			</label>
+		</li>
+		<li>
+			<label>
+				<input type="checkbox">
+				<span class="checkboxView"></span>
+				<span class="title">クレジットカード</span>
+			</label>
+		</li>
+		<li>
+			<label>
+				<input type="checkbox">
+				<span class="checkboxView"></span>
+				<span class="title">代引き</span>
+			</label>
+		</li>
 	</ul>
 
-<p>お届け先のご住所を選択してください</p>
+	<p>お届け先のご住所を選択してください</p>
 
 
 
@@ -19,14 +32,16 @@
 	<p>名前 ：　<%= @user.last_name %><%= @user.first_name %></p>
 	<p>電話番号　：　<%= @user.phone_number %></p>
 	<div style="display:inline-flex">
-	<p>住所選択　：<%=form_with(model: @user, url:user_registration_path, local: true) do |f| %>
+		<p>住所選択　：
+			<%=form_with(model: @user, url:user_registration_path, local: true) do |f| %>
 
-				<%= f.collection_select :use_id, @address, :id, :address,class: 'simple' %>
-				<% end %></p>
-	<%=link_to "住所を変更される方はこちら",user_path(current_user) %></div>
+			<%= f.collection_select :use_id, @address, :id, :address,class: 'simple' %>
+			<% end %>
+		</p>
+			<%=link_to "住所を変更される方はこちら",user_path(current_user) %>
+	</div>
 	<p><注文内容></p>
 	<p>商品の小計　：</p>
 	<p>送料　：　５００円</p>
 	<p>合計　：　円</p>
-
-	
+</div>
