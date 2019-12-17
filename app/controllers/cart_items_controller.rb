@@ -25,6 +25,19 @@ class CartItemsController < ApplicationController
 	    end
 	end
 
+	def update
+		@cartitem=CartItem.find(params[:id])
+		@cartitem.count=params[:cart_item][:count]
+		if @cartitem.save
+			redirect_to user_cart_items_path(current_user.id)
+		else
+			@user=User.find(params[:user_id])
+			@cartitems=@user.cart_items
+			@totalprice=0
+			render :index
+		end
+	end
+
 	def destroy
 		@user=User.find(params[:user_id])
 		@cartitem=CartItem.find(params[:id])
