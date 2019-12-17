@@ -1,4 +1,4 @@
-sclass Admin::ManagerOrdersController < ApplicationController
+class Admin::ManagerOrdersController < ApplicationController
 	def index
 		@orders=Order.all
 	end
