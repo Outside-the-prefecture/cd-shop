@@ -2,7 +2,7 @@ class Admin::LabelsController < ApplicationController
 	def create
 		label=Label.new(label_params)
 		if label.save
-			redirect_to admin_manager_products_path
+			redirect_to new_admin_manager_product_path
 		else
 			@label=Label.new
 			@artist=Artist.new
