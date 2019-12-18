@@ -1,21 +1,26 @@
-	<div class="container">
-	  <div class="row">
-	    <div class="col-md-12">
-	      <div class="row">
-	        <% @products.each do |product| %>
-	        <div class="col-md-2 product-image">
-	        <%= link_to product_path(product.id),class: "product-link" do %>
-	           <%= attachment_image_tag product, :jacket_image, :fill, 220,220, fallback: "",size: "100*100" %><br/>
-	            <%=  product.name %><br/>
-	            <% end %>
 
-	            <%= product.price %>円
-	        </div>
-	          <div class="col-md-1">
-	          </div>
-	        <% end %>
-	      </div>
-	    </div>
-	  </div>
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<p class= "itiran" >商品一覧</>
+			<div class="col-md-12">
+				<div class="row">
+					<% @products.each do |product| %>
+					<div class="col-md-2">
+						<%= link_to product_path(product.id), {class: "linkborder"} do %>
+						<%= attachment_image_tag product, :jacket_image, :fill, 200,200, fallback: "",size: "100*100" %><br/>
+						<%= product.name %><br/>
+						<p class="kakaku">価格</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><%= converting_to_jpy(product.price) %></strong>
+						<% end %>
+					</div>
+					<div class="col-md-1">
+					</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
 	</div>
-<%= paginate @products %>
+	<%= paginate @products %>
+</div>
+
+
