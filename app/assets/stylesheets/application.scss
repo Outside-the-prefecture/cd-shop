@@ -74,19 +74,18 @@ li{
 }
 
 .user-info{
-	border: solid 1px black;
-	width: 400px;
+    background: #d6ebff;
+    box-shadow: 0px 0px 0px 10px #d6ebff;
+    border: dashed 2px white;	width: 700px;
 	padding: 20px;
 	margin: 0 auto;
+	text-align: left;
+	margin-bottom:100px;
 }
 
-.btn-warning{
-	margin-left: 250px;
-}
-
-.destroy{
-	margin-top: 30px;
-	margin-left: 500px;
+.user-info-heading{
+	margin-top:100px;
+	margin-bottom:30px;
 }
 
 .body{
@@ -125,6 +124,142 @@ li{
 	height:280px;
 	font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
 }
+.sign-up{
+    width:40%;
+    margin:0 auto;
+	text-align: center;
+	background-color: honeydew;
+	padding-top:3px;
+	border-radius: 5px;
+	margin-top:40px;
+	margin-bottom:40px;
+	height:600px;
+	font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+}
 .log-in-actions{
 	margin: 0 auto;
 }
+.user-address{
+	padding-left:60px;
+}
+.user-name{
+	padding-left:60px;
+	padding-bottom:15px;
+	padding-top:15px;
+}
+.user-address-other{
+	padding-left:156px;
+}
+.user-post,.user-phone{
+	padding-left:60px;
+	padding-top:15px;
+}
+.user-mail{
+	padding-left:60px;
+	padding-top:15px;
+	padding-bottom:15px;
+}
+.user-edit{
+	margin-left:300px;
+	display:inline;
+}
+.user-destroy{
+	display:inline;
+	margin-left: 40px;
+	padding-left: 60px;
+	padding-right:60px;
+}
+.image{
+	margin-top:90px;
+}
+
+.product-table,.disc-table{
+	border-collapse: collapse;
+	margin-top:30px;
+}
+.product-cart{
+	margin-top:30px;
+}
+.product-table tr,.disc-table tr{
+	border-bottom: solid 2px white;
+}
+.product-table tr:last-child,.disc-table tr:last-child{
+	border-bottom:none;
+}
+.product-table th{
+	position:relative;
+	text-align: left;
+	width: 30%;
+	background-color: #52c2d0;
+	color: white;
+	text-align: center;
+	padding: 10px 0;
+}
+.disc-table th{
+    position:relative;
+	text-align: left;
+	width: 100%;
+	background-color: #52c2d0;
+	color: white;
+	text-align: center;
+	padding:10px 0;
+}
+
+.product-table th:after{
+  display: block;
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  top:calc(50% - 10px);
+  right:-10px;
+  border-left: 10px solid #52c2d0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+.disc-table th:after{
+	display: block;
+	content: "";
+	width: 0px;
+	height: 0px;
+  position: absolute;
+  left:calc(50% - 10px);
+  bottom: -10px;
+  border-top: 10px solid #52c2d0;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+}
+
+.product-table td{
+  text-align: left;
+  width: 70%;
+  text-align: center;
+  background-color: #eee;
+  padding: 10px 0;
+}
+
+.disc-table td {
+  text-align: left;
+  width: 70%;
+  text-align: center;
+  background-color: #eee;
+  padding: 10px 0;
+}
+
+.product-image{
+	margin-top:100px;
+}
+
+.product-link{
+	color:black;
+}
+
+.product-link:visited{
+	color: blue;
+}
+
+.product-link:hover{
+	color: #ff4081;
+}
+
