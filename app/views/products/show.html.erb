@@ -1,16 +1,15 @@
 <div class="body">
-<!--   <link rel="stylesheet" href="stylesheets.scss"> -->
   <div class="container">
-    <div class="row">
-      <div class="col-xs-6">
-        <div>
-          <%= attachment_image_tag @product, :jacket_image, :fill, 100, 100, format: 'jpeg', size: '300x300', fallback: "no_image.jpg" %>
-        </div>
-          <div id="likes_buttons_<%= @product.id %>">
+  	<div class="row">
+  		<div class="col-md-6">
+  			<div class="product-image">
+  			<%= attachment_image_tag @product, :jacket_image, :fill, 400,400, fallback: "",size: "100*100" %>
+  			</div>
+       <div id="likes_buttons_<%= @product.id %>">
           <%= render partial: 'favorites/favorite', locals: { product: @product} %>
         </div>
-      </div>
-      <div class="col-xs-6">
+        <%= @product.favorites.count %>
+  		</div>
         <div class="col-md-6">
           <div class="row">
           <table class="product-table col-md-10 col-md-offset-1">
@@ -73,9 +72,7 @@
         <%= form_for(@cartitem , url: user_cart_items_path(current_user) )  do |f| %>
         <div class="row product-cart">
         <%= f.number_field :count ,class: "col-md-10 col-md-offset-1" %>
-      </div>
         <%= f.hidden_field :product, :value => @product.id %>
-        <div class="row">
         <%= f.submit "カートに入れる", class: "btn btn-sm btn-primary col-md-10 col-md-offset-1" %>
       </div>
         <% end %>
