@@ -2,8 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.wakusen {
+  padding: 1em 10px 1em 1em;
+  border-right: 1px solid #bbb;
+   border: 1px solid #000;
+}
+
+
 .cart{
-	phont-size: 30px;
     padding: 0.2em 0.5em;
     margin: 2em 0;
     background: #d6ebff;
