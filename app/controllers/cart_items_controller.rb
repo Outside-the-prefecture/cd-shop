@@ -18,7 +18,8 @@ class CartItemsController < ApplicationController
 
 		else
 			@discs=@product.discs
-			@songs=disc.songs
+            @count=0
+            @number=0
 			@orderitems=@product.order_items
 			@arrivals=@product.arrivals
 			@cartitem=CartItem.new
@@ -30,7 +31,7 @@ class CartItemsController < ApplicationController
 		@cartitem=CartItem.find(params[:id])
 		@cartitem.count=params[:cart_item][:count]
 		if @cartitem.save
-			redirect_to user_cart_items_path(current_user.id)
+			redirect_to user_cart_items_path(user_id: current_user.id)
 		else
 			@user=User.find(params[:user_id])
 			@cartitems=@user.cart_items
