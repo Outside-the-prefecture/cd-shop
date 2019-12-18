@@ -3,82 +3,82 @@
   	<div class="row">
   		<div class="col-md-6">
   			<div class="product-image">
-  			<%= attachment_image_tag @product, :jacket_image, :fill, 400,400, fallback: "",size: "100*100" %>
-  			</div>
+         <%= attachment_image_tag @product, :jacket_image, :fill, 400,400, fallback: "",size: "100*100" %>
        <div id="likes_buttons_<%= @product.id %>">
-          <%= render partial: 'favorites/favorite', locals: { product: @product} %>
+        <%= render partial: 'favorites/favorite', locals: { product: @product} %>
         <%= @product.favorites.count %>
-          </div>
-  		</div>
-        <div class="col-md-6">
-          <div class="row">
-          <table class="product-table col-md-10 col-md-offset-1">
-            <tr>
-              <th>商品名</th>
-              <td><%= @product.name %></td>
-            </tr>
-            <tr>
-              <th>アーティスト</th>
-              <td><%= @product.artist.name %></td>
-            </tr>
-            <tr>
-              <th>発売日</th>
-              <td><%= @product.release_date %></td>
-            </tr>
-            <tr>
-              <th>在庫数</th>
-              <td>
-                <% @arrivals.each do |arrival| %>
-                <% @count+=arrival.count %>
-                <% end %>
-                <% @orderitems.each do |orderitem| %>
-                <% @number+=orderitem.number %>
-                <% end %>
-                <%= @count-@number %>
-              </td>
-            </tr>
-            <tr>
-              <th>価格</th>
-              <td><%= @product.price %></td>
-            </tr>
-            <tr>
-             <th>送料</th>
-             <td>500円</td>
-           </tr>
-          <tr>
-            <th>レコード会社</th>
-            <td><%= @product.label.name %></td>
-          </tr>
-          <tr>
-            <th>ジャンル</th>
-            <td><%= @product.genre.name %></td>
-          </tr>
-        </table>
       </div>
-      <div class="row">
-        <table class="disc-table col-md-10 col-md-offset-1">
-          <% @discs.each do |disc| %>
-          <tr>
-            <th><%= disc.name %></th>
-          </tr>
-          <% disc.songs.each do |song| %>
-          <tr>
-            <td><%= song.name %></td>
-          </tr>
-          <% end %>
-          <% end %>
-        </table>
       </div>
-        <%= form_for(@cartitem , url: user_cart_items_path(current_user) )  do |f| %>
-        <div class="row product-cart">
-        <%= f.number_field :count ,class: "col-md-10 col-md-offset-1" %>
-        <%= f.hidden_field :product, :value => @product.id %>
-        <%= f.submit "カートに入れる", class: "btn btn-sm btn-primary col-md-10 col-md-offset-1" %>
-      </div>
-        <% end %>
+      <div class="row product-cart">
+            <%= form_for(@cartitem , url: user_cart_items_path(current_user) )  do |f| %>
+      <%= f.number_field :count ,class: "col-md-2 col-md-offset-1 cart-count" %>
+      <%= f.hidden_field :product, :value => @product.id %>
+      <%= f.submit "カートに入れる", class: "btn btn-primary col-md-4" %>
+    　<% end %>
       </div>
     </div>
+    <div class="col-md-6">
+      <div class="row">
+        <table class="product-table col-md-10 col-md-offset-1">
+          <tr>
+            <th>商品名</th>
+            <td><%= @product.name %></td>
+          </tr>
+          <tr>
+            <th>アーティスト</th>
+            <td><%= @product.artist.name %></td>
+          </tr>
+          <tr>
+            <th>発売日</th>
+            <td><%= @product.release_date %></td>
+          </tr>
+          <tr>
+            <th>在庫数</th>
+            <td>
+              <% @arrivals.each do |arrival| %>
+              <% @count+=arrival.count %>
+              <% end %>
+              <% @orderitems.each do |orderitem| %>
+              <% @number+=orderitem.number %>
+              <% end %>
+              <%= @count-@number %>
+            </td>
+          </tr>
+          <tr>
+            <th>価格</th>
+            <td><%= @product.price %></td>
+          </tr>
+          <tr>
+           <th>送料</th>
+           <td>500円</td>
+         </tr>
+         <tr>
+          <th>レコード会社</th>
+          <td><%= @product.label.name %></td>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td><%= @product.genre.name %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="row">
+      <table class="disc-table col-md-10 col-md-offset-1 user-product-table">
+        <% @discs.each do |disc| %>
+        <tr>
+          <th><%= disc.name %></th>
+        </tr>
+        <% disc.songs.each do |song| %>
+        <tr>
+          <td><%= song.name %></td>
+        </tr>
+        <% end %>
+        <% end %>
+      </table>
+    </div>
   </div>
+</div>
+</div>
 </div>
 
 

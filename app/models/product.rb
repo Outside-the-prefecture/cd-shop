@@ -21,7 +21,6 @@ class Product < ApplicationRecord
 	belongs_to :artist
 	belongs_to :label
 	belongs_to :genre
-	belongs_to :user
 
 
 	attachment :jacket_image

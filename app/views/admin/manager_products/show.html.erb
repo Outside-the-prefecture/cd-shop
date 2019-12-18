@@ -1,126 +1,120 @@
 <div class="body">
-  <link rel="stylesheet" href="products.scss">
   <div class="container">
   	<div class="row">
-  		<div class="col-xs-6">
-  			<div>
-  				<%= attachment_image_tag @product, :jacket_image, :fill, 100, 100, format: 'jpeg', size: '200x200', fallback: "no_image.jpg" %>
-  			</div>
-  		</div>
-
-  		<div class="col-xs-6">
-       <table class='table table-hover table-inverse'>
-        <tr>
-         <h2>商品情報</h2>
-       </tr>
-       <tr>
-        <td>商品名</td>
-        <td><%= @product.name %></td>
-      </tr>
-      <tr>
-        <td>発売日</td>
-        <td><%= @product.release_date %></td>
-      </tr>
-      <tr>
-        <td>在庫数</td>
-        <td>
-          <% @arrivals.each do |arrival| %>
-          <% @count+=arrival.count %>
-          <% end %>
-          <% @orderitems.each do |orderitem| %>
-          <% @number+=orderitem.number %>
-          <% end %>
-          <%= @count-@number %>
-        </td>
-      </tr>
-      <tr class="test">
-        <td>価格</td>
-        <td><%= @product.price %>円</td>
-      </tr>
-      <tr>
-       <td>送料</td>
-       <td>500円</td>
-     </tr>
-     <tr>
-       <td>アーティスト</td>
-       <td><%= @product.artist.name %></td>
-     </tr>
-     <tr>
-       <td>レーベル</td>
-       <td><%= @product.label.name %></td>
-     </tr>
-     <tr>
-       <td>ジャンル</td>
-       <td><%= @product.genre.name %></td>
-     </tr>
-   </table>
-
-   <table>
-    <% @discs.each do |disc| %>
-    <tr>
-      <th>ディスク名</th>
-    </tr>
-    <tr>
-     <td><%= disc.name %></td>
-   </tr>
-   <th>曲名</th>
-   <% disc.songs.each do |song| %>
-   <tr>
-     <td><%= song.name %></td>
-   </tr>
-   <% end %>
-   <% end %>
- </table>
-</div>
-<%= link_to '削除',  admin_manager_product_path, class: "btn btn-danger" ,method: :delete ,"data-confirm" => "本当に削除しますか?"%></span></td>
-<%= link_to "編集", edit_admin_manager_product_path(@product), class: "btn btn-default"  %>
-
-
-
-
-<table>
-  <% @discs.each do |disc| %>
-  <tr>
-    <th>ディスク名</th>
-  </tr>
-  <tr>
-   <td><%= disc.name %></td>
- </tr>
- <th>曲名</th>
- <% disc.songs.each do |song| %>
- <tr>
-   <td><%= song.name %></td>
- </tr>
- <% end %>
- <% end %>
-</table>
-</div>
-<%= link_to '削除',  admin_manager_product_path, class: "btn btn-danger" ,method: :delete ,"data-confirm" => "本当に削除しますか?"%></span></td>
-<h2>入荷履歴</h2>
-<table>
-  <thead>
-    <tr>
-      <th>入荷日時</th>
-      <th>個数</th>
-    </tr>
-  </thead>
-  <thead>
-    <% @arrivals.each do |arrival| %>
-    <tr>
-      <td><%= arrival.datetime %></td>
-      <td><%= arrival.count %></td>
-    </tr>
-    <% end %>
-  </thead>
-</table>
-<%= form_for @arrival,url: admin_manager_product_arrivals_path(manager_product_id: @product.id) do |f| %>
-<lavel>入荷日時</lavel><br/>
-<%= f.text_field :datetime %><br/>
-
-<lavel>個数</lavel><br/>
-<%= f.number_field :count %><br/>
-
-<%= f.submit "登録",class: "btn btn-success" %><br/>
-<% end %>
+      <div class="col-md-6">
+        <div class="product-image">
+          <%= attachment_image_tag @product, :jacket_image, :fill, 400,400, fallback: "",size: "100*100" %>
+        <div><span><%= fa_icon "star-o",class: "star-o" %></span>
+        <%= @product.favorites.count %>
+      </div>
+      </div>
+        </div>
+      <div class="col-md-6">
+        <div class="row">
+          <table class="product-table col-md-10 col-md-offset-1">
+            <tr>
+              <th>商品名</th>
+              <td><%= @product.name %></td>
+            </tr>
+            <tr>
+              <th>アーティスト</th>
+              <td><%= @product.artist.name %></td>
+            </tr>
+            <tr>
+              <th>発売日</th>
+              <td><%= @product.release_date %></td>
+            </tr>
+            <tr>
+              <th>在庫数</th>
+              <td>
+                <% @arrivals.each do |arrival| %>
+                <% @count+=arrival.count %>
+                <% end %>
+                <% @orderitems.each do |orderitem| %>
+                <% @number+=orderitem.number %>
+                <% end %>
+                <%= @count-@number %>
+              </td>
+            </tr>
+            <tr>
+              <th>価格</th>
+              <td><%= @product.price %></td>
+            </tr>
+            <tr>
+              <th>送料</th>
+              <td>500円</td>
+            </tr>
+            <tr>
+              <th>レコード会社</th>
+              <td><%= @product.label.name %></td>
+            </tr>
+            <tr>
+              <th>ジャンル</th>
+              <td><%= @product.genre.name %></td>
+            </tr>
+          </table>
+        </div>
+        <div class="row">
+          <table class="disc-table col-md-10 col-md-offset-1">
+            <% @discs.each do |disc| %>
+            <tr>
+              <th><%= disc.name %></th>
+            </tr>
+            <% disc.songs.each do |song| %>
+            <tr>
+              <td><%= song.name %></td>
+            </tr>
+            <% end %>
+            <% end %>
+          </table>
+        </div>
+        <div class="row item-edit-destroy">
+          <%= link_to "編集", edit_admin_manager_product_path(@product), class: "btn btn-warning col-md-4 col-md-offset-1 admin-item-edit"  %>
+          <%= link_to '削除',  admin_manager_product_path, class: "btn btn-danger col-md-4 col-md-offset-2 admin-item-destroy" ,method: :delete ,"data-confirm" => "本当に削除しますか?"%>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="arrival-date">入荷履歴登録</h2>
+        <%= form_for @arrival,url: admin_manager_product_arrivals_path(manager_product_id: @product.id) do |f| %>
+        <label>入荷日時</label>
+        <div class="row">
+          <%= f.text_field :datetime,class: "col-md-8 col-md-offset-1 arrival-text" %><br/>
+        </div>
+        <label>個数</label>
+        <div class="row">
+          <%= f.number_field :count,class: "col-md-8 col-md-offset-1 arrival-count" %><br/>
+        </div>
+        <div class="row">
+          <%= f.submit "登録",class: "btn btn-success col-md-8 col-md-offset-1 arrival" %><br/>
+        </div>
+        <% end %>
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <h2 class="col-md-10 col-md-offset-1">入荷履歴</h2>
+        </div>
+        <div class="row">
+          <table class="table table-striped col-md-7 col-md-offset-1 arrival">
+            <thead>
+              <tr>
+                <th>入荷日時</th>
+                <th>個数</th>
+              </tr>
+            </thead>
+            <thead>
+              <% @arrivals.each do |arrival| %>
+              <tr>
+                <td><%= arrival.datetime %></td>
+                <td><%= arrival.count %></td>
+              </tr>
+              <% end %>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
