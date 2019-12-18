@@ -24,14 +24,13 @@ class Admin::ManagerProductsController < ApplicationController
 	end
 
 	def create
-		product=Product.new(product_params)
-		if product.save
-			redirect_to admin_manager_products_path
+		@product=Product.new(product_params)
+		if @product.save
+			redirect_to new_admin_manager_product_path
 		else
 			@label=Label.new
 			@artist=Artist.new
 			@genre=Genre.new
-			@product=Product.new
 			@disc=@product.discs.build
 			@song=@disc.songs.build
 			@labels=Label.all
@@ -68,5 +67,4 @@ class Admin::ManagerProductsController < ApplicationController
 	def update_product_params
 		params.require(:product).permit(:name,:jacket_image,:price,:release_date,:artist_id,:label_id,:genre_id, discs_attributes: [:name,:product_id,:id,:_destroy, songs_attributes: [:name,:disc_id,:song_order,:id,:_destroy]])
 	end
-
 end
