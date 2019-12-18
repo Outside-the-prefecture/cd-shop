@@ -18,9 +18,9 @@ class Product < ApplicationRecord
 	accepts_nested_attributes_for :discs, allow_destroy: true
 
 
-	belongs_to :artist, optional: true
-	belongs_to :label, optional: true
-	belongs_to :genre, optional: true
+	belongs_to :artist
+	belongs_to :label
+	belongs_to :genre
 
 
 	attachment :jacket_image

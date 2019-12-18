@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end
   resources :users,only: [:show,:edit,:update] do
     resources :favorites,only: [:index]
-  	resources :cart_items,only: [:index ,:create , :destroy]
+  	resources :cart_items,only: [:index ,:create ,:update, :destroy]
   	resources :histories,only: [:show]
   	resources :orders,only: [:new,:create]
   end
