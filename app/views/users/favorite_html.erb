@@ -1,0 +1,7 @@
+<h1>お気に入りページ</h1>
+<h3>いいねしている投稿</h3>
+<% @user.favorited_products.each do |product| %>
+  <%= product.content %>
+<% end %>
+<%= link_to "マイページ", users_path %>
+<%= link_to "ホームへ戻る", products_path %>
