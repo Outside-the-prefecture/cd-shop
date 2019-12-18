@@ -1,5 +1,12 @@
 class Product < ApplicationRecord
 
+	validates :name, presence: true
+	validates :jacket_image , presence: true
+	validates :price , presence: true
+	validates :release_date, presence: true
+	validates :discs, presence: true
+
+
 	has_many :arrivals
 	has_many :cart_items
 	has_many :users, through: :cart_items

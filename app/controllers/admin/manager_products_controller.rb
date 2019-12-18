@@ -24,14 +24,13 @@ class Admin::ManagerProductsController < ApplicationController
 	end
 
 	def create
-		product=Product.new(product_params)
-		if product.save
-			redirect_to new_admin_manager_product_path
+		@product=Product.new(product_params)
+		if @product.save
+			redirect_to admin_manager_products_path
 		else
 			@label=Label.new
 			@artist=Artist.new
 			@genre=Genre.new
-			@product=Product.new
 			@disc=@product.discs.build
 			@song=@disc.songs.build
 			@labels=Label.all
