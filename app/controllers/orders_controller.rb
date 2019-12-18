@@ -9,12 +9,7 @@ class OrdersController < ApplicationController
 		@cartitems.each do |f|
 			@product = Product.find_by(id: f.product_id)
 			@totalprice = @product.price * f.count + @totalprice
-
 		end
-
-
-		
-
 
 	end
 	def create
@@ -23,6 +18,7 @@ class OrdersController < ApplicationController
 			redirect_to user_registration_path(current_user.id)
 		end
 	end
+
 	def finish
 	end
 end

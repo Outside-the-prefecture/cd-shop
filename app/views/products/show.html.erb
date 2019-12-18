@@ -1,5 +1,5 @@
 <div class="body">
-  <link rel="stylesheet" href="stylesheets.scss">
+<!--   <link rel="stylesheet" href="stylesheets.scss"> -->
   <div class="container">
   	<div class="row">
   		<div class="col-xs-6">
@@ -19,21 +19,24 @@
   		</div>
   		<div class="col-xs-6">
 
-        <div class="col-xs-6">
-          <table>
+
+        <div class="col-md-6">
+          <div class="row">
+          <table class="product-table col-md-10 col-md-offset-1">
             <tr>
-              <h4>商品情報</h4>
-            </tr>
-            <tr>
-              <td>商品名</td>
+              <th>商品名</th>
               <td><%= @product.name %></td>
             </tr>
             <tr>
-              <td>発売日</td>
+              <th>アーティスト</th>
+              <td><%= @product.artist.name %></td>
+            </tr>
+            <tr>
+              <th>発売日</th>
               <td><%= @product.release_date %></td>
             </tr>
             <tr>
-              <td>在庫数</td>
+              <th>在庫数</th>
               <td>
                 <% @arrivals.each do |arrival| %>
                 <% @count+=arrival.count %>
@@ -45,36 +48,29 @@
               </td>
             </tr>
             <tr>
-              <td>価格</td>
+              <th>価格</th>
               <td><%= @product.price %></td>
             </tr>
             <tr>
-             <td>送料</td>
+             <th>送料</th>
              <td>500円</td>
            </tr>
-           <tr>
-            <td>アーティスト</td>
-            <td><%= @product.artist.name %></td>
-          </tr>
           <tr>
-            <td>レーベル</td>
+            <th>レコード会社</th>
             <td><%= @product.label.name %></td>
           </tr>
           <tr>
-            <td>ジャンル</td>
+            <th>ジャンル</th>
             <td><%= @product.genre.name %></td>
           </tr>
         </table>
-
-        <table>
+      </div>
+      <div class="row">
+        <table class="disc-table col-md-10 col-md-offset-1">
           <% @discs.each do |disc| %>
           <tr>
-            <th>ディスク名</th>
+            <th><%= disc.name %></th>
           </tr>
-          <tr>
-            <td><%= disc.name %></td>
-          </tr>
-          <th>曲名</th>
           <% disc.songs.each do |song| %>
           <tr>
             <td><%= song.name %></td>
@@ -82,11 +78,15 @@
           <% end %>
           <% end %>
         </table>
-
+      </div>
         <%= form_for(@cartitem , url: user_cart_items_path(current_user) )  do |f| %>
-        <%= f.number_field :count %>
+        <div class="row product-cart">
+        <%= f.number_field :count ,class: "col-md-10 col-md-offset-1" %>
+      </div>
         <%= f.hidden_field :product, :value => @product.id %>
-        <%= f.submit "カートに入れる", class: "btn btn-sm btn-primary" %>
+        <div class="row">
+        <%= f.submit "カートに入れる", class: "btn btn-sm btn-primary col-md-10 col-md-offset-1" %>
+      </div>
         <% end %>
       </div>
     </div>
