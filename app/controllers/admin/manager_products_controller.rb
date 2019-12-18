@@ -26,7 +26,7 @@ class Admin::ManagerProductsController < ApplicationController
 	def create
 		@product=Product.new(product_params)
 		if @product.save
-			redirect_to new_admin_manager_product_path
+			redirect_to  admin_manager_products_path
 		else
 			@label=Label.new
 			@artist=Artist.new
