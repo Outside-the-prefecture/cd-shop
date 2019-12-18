@@ -5,17 +5,10 @@
   			<div class="product-image">
   			<%= attachment_image_tag @product, :jacket_image, :fill, 400,400, fallback: "",size: "100*100" %>
   			</div>
-        <% if current_user.already_favorited?(@product) %>
-          <%= link_to product_favorites_path(product_id: @product.id), method: :delete do %>
-          <%= fa_icon "star",class: "star" %>
-          <% end %>
-          <% else %>
-          <%= link_to product_favorites_path(product_id: @product.id),method: :post do %>
-          <%= fa_icon "star-o",class: "star-o" %>
-          <% end %>
-        <% end %>
+       <div id="likes_buttons_<%= @product.id %>">
+          <%= render partial: 'favorites/favorite', locals: { product: @product} %>
+        </div>
         <%= @product.favorites.count %>
-
   		</div>
         <div class="col-md-6">
           <div class="row">
@@ -87,5 +80,6 @@
     </div>
   </div>
 </div>
+
 
 
