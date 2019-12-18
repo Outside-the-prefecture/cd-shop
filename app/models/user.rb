@@ -10,7 +10,6 @@ class User < ApplicationRecord
  		accepts_nested_attributes_for :addresses, allow_destroy: true
  		has_many :cart_items
  		has_many :products, through: :cart_items
- 		has_many :products, dependent: :destroy
  		has_many :favorites, dependent: :destroy
  		has_many :favorited_products, through: :favorites,source: :product
 
