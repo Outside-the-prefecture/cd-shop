@@ -1,9 +1,21 @@
+<div class="body">
   <div class="container">
   	<div class="row">
   		<div class="col-xs-6">
   			<h2>新規投稿</h2>
   			<!-- form_for部分 -->
   			<%= form_with(model: @product, url:admin_manager_products_path, local: true) do |f| %>
+
+        <% if @product.errors.any? %>
+        <div class="alert alert-warning">
+          <ul>
+            <% @product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+      
 
   			<h4>アーティスト</h4>
   			<%= f.collection_select :artist_id, Artist.all, :id, :name, {include_blank: "アーティスト"},
@@ -30,39 +42,69 @@
   			class: 'sample' %>
 
   			<div class="discs">
-  				<h4>DISC</h4>
-  				<%= f.fields_for :discs do |disc| %>
-  				<%= render "disc_fields", f: disc %>
-  				<% end %>
-  				<div class="links">
-  					<%= link_to_add_association "ディスクを追加", f, :discs %>
-  				</div>
-  			</div>
+          <h4>DISC</h4>
+          <%= f.fields_for :discs do |disc| %>
+          <%= render "disc_fields", f: disc %>
+          <% end %>
+          <div class="links">
+            <%= link_to_add_association "ディスクを追加", f, :discs %>
+          </div>
+        </div>
 
-  			<br/>
-  			<%= f.submit '新規追加' %>
+        <br/>
+        <%= f.submit '新規追加' %>
 
-  			<% end %>
-  		</div>
+        <% end %>
+      </div>
 
-  		<h4>アーティスト登録</h4>
+      <h4>アーティスト登録</h4>
       <div class="col-xs-6">
         <%= form_for @artist, url:admin_artists_path do |f| %>
+        <% if @artist.errors.any? %>
+        <div class="alert alert-warning">
+          <ul>
+            <% @artist.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
         <%= f.text_field :name %>
         <%= f.submit 'アーティスト追加'  %>
         <% end %>
 
         <h4>レーベル追加</h4>
         <%= form_for @label, url:admin_labels_path do |f| %>
+        <% if @label.errors.any? %>
+        <div class="alert alert-warning">
+          <ul>
+            <% @label.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
         <%= f.text_field :name %>
         <%= f.submit 'レーベル追加'  %>
         <% end %>
 
         <h4>ジャンル追加</h4>
         <%= form_for @genre, url:admin_genres_path do |f| %>
+        <% if @genre.errors.any? %>
+        <div class="alert alert-warning">
+          <ul>
+            <% @genre.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
         <%= f.text_field :name %>
         <%= f.submit 'ジャンル追加'  %>
         <% end %>
 
       </div>
+    </div>
+  </div>
+</div>
 

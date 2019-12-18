@@ -1,4 +1,6 @@
+
 <p>お支払方法を選択してください</p>
+
 
 <%= form_with(model: @user, local: true, url: user_orders_path,method: :post) do |f| %>
 	<div>
@@ -47,5 +49,4 @@
 		<%= f.submit "注文確定" ,data:{ confirm: '注文を確定しますか?'}%>
 	</button>
 
-<% end %>			
-	
+

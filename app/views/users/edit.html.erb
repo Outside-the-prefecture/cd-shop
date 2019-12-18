@@ -1,40 +1,50 @@
-<div class="text-center">
-	<h2>編集</h2>
+<div class="body">
+	<div class="text-center">
+		<h2>編集</h2>
 
-	<%= form_for(@user) do |f| %>
-	  <lavel>姓</lavel><br/>
-	    <%= f.text_field :last_name, autofocas: true %><br/>
+		<%= form_for(@user) do |f| %>
+		  <% if @user.errors.any? %>
+			<h2><%= @user.errors.count %> errors prohibited this obj
+			from being saved:</h2>
+				<% @user.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+	      <% end %>
+		<lavel>姓</lavel><br/>
+		<%= f.text_field :last_name, autofocas: true %><br/>
 
-	  <lavel>名</lavel><br/>
-	    <%= f.text_field :first_name %><br/>
+		<lavel>名</lavel><br/>
+		<%= f.text_field :first_name %><br/>
 
-	  <lavel>カナ性</lavel><br/>
-	    <%= f.text_field :kana_last_name %><br/>
+		<lavel>カナ性</lavel><br/>
+		<%= f.text_field :kana_last_name %><br/>
 
-	  <lavel>カナ名</lavel><br/>
-	    <%= f.text_field :kana_first_name %><br/>
+		<lavel>カナ名</lavel><br/>
+		<%= f.text_field :kana_first_name %><br/>
 
-	  <lavel>メールアドレス</lavel><br/>
-	    <%= f.text_field :email %><br/>
+		<lavel>メールアドレス</lavel><br/>
+		<%= f.text_field :email %><br/>
 
-	  <lavel>電話番号</lavel><br/>
-	    <%= f.text_field :phone_number %><br/>
+		<lavel>電話番号</lavel><br/>
+		<%= f.text_field :phone_number %><br/>
 
-	  <lavel>郵便番号</lavel><br/>
-	    <%= f.text_field :postal_code %><br/>
+		<lavel>郵便番号</lavel><br/>
+		<%= f.text_field :postal_code %><br/>
 
-	  <label>住所</label><br/>
-	    <%= f.text_field :address %><br/>
+		<label>住所</label><br/>
+		<%= f.text_field :address %><br/>
 
-	<div class="addresses">
-	    <%= f.fields_for :addresses do |address| %><br/>
-	    <%= render "address_fields", f: address %>
-	  	<% end %>
-	    <div class="links">
-	  		<%= link_to_add_association "住所追加", f, :addresses %>
-	  	</div>
-	</div>
+		<div class="addresses">
+			<%= f.fields_for :addresses do |address| %><br/>
+			<%= render "address_fields", f: address %>
+			<% end %>
+			<div class="links">
+				<%= link_to_add_association "住所追加", f, :addresses %>
+			</div>
+		</div>
+
 
 	    <%= f.submit "更新",class: "btn-warning" %><br/>
 	<% end %>
+  </div>
 </div>

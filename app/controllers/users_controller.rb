@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@orders = @user.orders
+		@orders = Order.page(params[:page]).per(2)
 		@addresses = @user.addresses
 	end
 
@@ -11,8 +12,11 @@ class UsersController < ApplicationController
 
 	def update
 		@user = User.find(params[:id])
-		@user.update(user_params)
-		redirect_to user_path(@user.id)
+		if @user.update(user_params)
+		   redirect_to user_path(@user.id)
+		else
+			render :edit
+		end
 
 	end
 

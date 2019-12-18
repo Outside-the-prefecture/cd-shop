@@ -4,17 +4,24 @@ Rails.application.routes.draw do
   # get "admin/managers/sign_in"=>"admins/sessions#new"
   # post "admin/managers/sign_in"=>"admins/sessions#create"
   # delete "admin/managers/sign_out"=> "admins/sessions#destroy"
-  devise_for :users
+  devise_for :users, :controllers => {
+    :sessions => "users/sessions",
+    :passwords => "users/passwords",
+    :registrations => "users/registrations"
+  }
+
   devise_for :admins, :controllers => {
     :sessions => "admins/sessions"
   }
 
   get "users/:user_id/orders/finish" => "orders#finish", as: "orders_finish"
   get "search" => "users#search"
-  resources :products,only: [:show]
+  resources :products,only: [:show] do
+    resource :favorites,only: [:create,:destroy]
+  end
   resources :users,only: [:show,:edit,:update] do
+    resources :favorites,only: [:index]
   	resources :cart_items,only: [:index ,:create , :destroy]
-
   	resources :histories,only: [:show]
   	resources :orders,only: [:new,:create]
   end

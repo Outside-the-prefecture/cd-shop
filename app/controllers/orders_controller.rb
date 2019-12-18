@@ -9,7 +9,6 @@ class OrdersController < ApplicationController
 		@cartitems.each do |f|
 			@product = Product.find_by(id: f.product_id)
 			@totalprice = @product.price * f.count + @totalprice
-
 		end
 	end
 	def create
@@ -19,6 +18,7 @@ class OrdersController < ApplicationController
 		@order = Order.new(user_params)
 		@order.user_id = current_user.id
 		@order.save
+
 
 
 
@@ -36,6 +36,12 @@ class OrdersController < ApplicationController
 			orderitems.order_id = @order.id
 			orderitems.save
 			puts orderitems.errors.full_messages
+=======
+	end
+	def create
+		@user = current_user
+		if @user.save
+			redirect_to user_registration_path(current_user.id)
 		end
 
 
