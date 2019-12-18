@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     :sessions => "admins/sessions"
   }
 
-  get "users/:user_id/orders/finish" => "orders#finish"
+  get "users/:user_id/orders/finish" => "orders#finish", as: "orders_finish"
   get "search" => "users#search"
   resources :products,only: [:show]
   resources :users,only: [:show,:edit,:update] do

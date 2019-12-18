@@ -1,65 +1,51 @@
 <p>お支払方法を選択してください</p>
-<head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <style type="text/css">
-        .setsumei {
-            padding:5px;
-            font-size:1.2em;
-            font-weight:bold;
-        }
-        .contentBlock {
-            margin-bottom:15px;
-        }
-        </style>
-        <script type="text/javascript">
-        jQuery(function($){
-            $(function(){
-              $('.colorGroup').on('click', function() {
-                if ($(this).prop('checked')){
-                    // 一旦全てをクリアして再チェックする
-                    $('.colorGroup').prop('checked', false);
-                    $(this).prop('checked', true);
-                }
-              });
-            });
-        });
-        </script>
-    </head>
-    <body>
-            <div class="contentBlock">
-                <p><input type="checkbox" name="color" class="colorGroup" value="赤">銀行振込</p>
-                <p><input type="checkbox" name="color" class="colorGroup" value="白">クレジットカード</p>
-                <p><input type="checkbox" name="color" class="colorGroup" value="黄色">代引き</p>
-                </div>
-            </div>
+
+<%= form_with(model: @user, local: true, url: user_orders_path,method: :post) do |f| %>
+	<div>
+		<%= f.radio_button :payment_method, :銀行振込 %>
+		<%= f.label :支払い, "銀行振込", {value: :male, style: "display: inline-block;"} %></P>
+		<p>
+			<%= f.radio_button :payment_method, :クレジットカード %>
+			<%= f.label :支払い, "クレジットカード", {value: :female, style: "display: inline-block;"} %>	
+		</p>
+		<p>
+			<%= f.radio_button :payment_method, :代引き %>
+			<%= f.label :支払い, "代引き", {value: :female, style: "display: inline-block;"} %>
+		</p>
+	</div>
+
+	<p>お届け先のご住所を選択してください</p>
 
 
-<p>お届け先のご住所を選択してください</p>
+	<p>
+		名前 ：　<%= @user.last_name %><%= @user.first_name %>
+	</p>
+	<p>
+		電話番号　：　<%= @user.phone_number %>
+	</p>
 
+	<%= f.collection_select :delivery_target_address, @address, :id, :address,class: 'simple' %>
+	<%=link_to "住所を変更される方はこちら",user_path(current_user) %>
+	<p>
+		<注文内容>
+	</p>
+	<p>
+		商品の小計  ：<%= @totalprice %>
+	<p>
+	<p>
+		送料　：　500円
+	</p>
+	<p>
+		合計　：　<%= "#{@totalprice}".to_i + 500 %>円
+	</p>
 
+	<button type="button" class="btn btn-default" >
+		<%=link_to "Back",user_cart_items_path %>         
+	</button>
 
-<%= form_for(@user,url: 'user_orders') do |f| %>
-	<p>名前 ：　<%= @user.last_name %><%= @user.first_name %></p>
-	<p>電話番号　：　<%= @user.phone_number %></p>
-	<div style="display:inline-flex">
-	<p>住所選択　：<%=form_with(model: @user, url:user_registration_path, local: true) do |f| %>
+	<button class="btn btn-warning">
+		<%= f.submit "注文確定" ,data:{ confirm: '注文を確定しますか?'}%>
+	</button>
 
-				<%= f.collection_select :use_id, @address, :id, :address,class: 'simple' %>
-				<% end %></p>
-	<%=link_to "住所を変更される方はこちら",user_path(current_user) %></div>
-	<p><注文内容></p>
-	<p>商品の小計　：<%=@totalprice %><p>
-	<p>送料　：　500円</p>
-	<p>合計　：　<%= "#{@totalprice}".to_i + 500 %>円
-
-		<button type="button" class="btn btn-default" >
-			<%=link_to "Back",user_cart_items_path %></button>
-
-		<button class="btn btn-warning">
-			<%= f.submit "注文確定" ,data:{ confirm: '注文を確定しますか?'}%>
-		</button>
-    </body>
-</html>
 <% end %>			
 	
