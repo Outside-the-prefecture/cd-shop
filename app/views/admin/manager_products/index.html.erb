@@ -5,9 +5,11 @@
         <div class="row">
           <% @products.each do |product| %>
           <div class="col-md-2">
-           <%= attachment_image_tag product, :jacket_image, :fill, 200,200, fallback: "",size: '100×100' %><br/>
-           <%= link_to product.name,admin_manager_product_path(product.id) %><br/>
-           <%= product.price %>円
+           <%= link_to product_path(product.id) do %>
+             <%= attachment_image_tag product, :jacket_image, :fill, 200,200, fallback: "",size: "100*100" %><br/>
+              <%= product.name %><br/>
+              <%= product.price %>円
+            <% end %>
          </div>
          <div class="col-md-1">
          </div>
@@ -21,4 +23,5 @@
  </div>
  <%= paginate @products %>
 </div>
+
 

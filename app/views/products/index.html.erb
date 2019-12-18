@@ -1,4 +1,3 @@
-<div class="body">
 	<div class="container">
 	  <div class="row">
 	    <div class="col-md-12">
@@ -9,6 +8,7 @@
 	           <%= attachment_image_tag product, :jacket_image, :fill, 220,220, fallback: "",size: "100*100" %><br/>
 	            <%=  product.name %><br/>
 	            <% end %>
+
 	            <%= product.price %>円
 	        </div>
 	          <div class="col-md-1">
@@ -19,4 +19,3 @@
 	  </div>
 	</div>
 <%= paginate @products %>
-</div>

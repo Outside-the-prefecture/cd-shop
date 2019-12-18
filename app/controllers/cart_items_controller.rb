@@ -10,7 +10,8 @@ class CartItemsController < ApplicationController
 		@cartitem=CartItem.new
 		@cartitem.count = params[:cart_item][:count]
 		@cartitem.product_id =@product.id
-		@cartitem.user_id =current_user.id
+		@cartitem.user_id=current_user.id
+
 
 		if @cartitem.save
 			redirect_to product_path(@product.id)
