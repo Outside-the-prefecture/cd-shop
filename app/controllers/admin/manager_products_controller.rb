@@ -1,6 +1,6 @@
 class Admin::ManagerProductsController < ApplicationController
 	def index
-		@products=Product.page(params[:page]).per(12)
+		@products =Product.page(params[:page]).per(12)
 	end
 
 	def show
@@ -26,7 +26,7 @@ class Admin::ManagerProductsController < ApplicationController
 	def create
 		@product=Product.new(product_params)
 		if @product.save
-			redirect_to admin_manager_products_path
+			redirect_to new_admin_manager_product_path
 		else
 			@label=Label.new
 			@artist=Artist.new
@@ -67,5 +67,4 @@ class Admin::ManagerProductsController < ApplicationController
 	def update_product_params
 		params.require(:product).permit(:name,:jacket_image,:price,:release_date,:artist_id,:label_id,:genre_id, discs_attributes: [:name,:product_id,:id,:_destroy, songs_attributes: [:name,:disc_id,:song_order,:id,:_destroy]])
 	end
-
 end
