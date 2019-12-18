@@ -12,19 +12,9 @@ class OrdersController < ApplicationController
 		end
 	end
 	def create
-		#@user = current_user.last_name
-		#@user = current_user.first_name
-		#@user = current_user.phone_number
 		@order = Order.new(user_params)
 		@order.user_id = current_user.id
 		@order.save
-
-
-
-
-
-		#@orderitems = Orderitems.new(user_params)
-		
 		current_user.cart_items.each do |i|
 			puts i.user.email
 			orderitems = OrderItem.new
@@ -36,28 +26,14 @@ class OrdersController < ApplicationController
 			orderitems.order_id = @order.id
 			orderitems.save
 			puts orderitems.errors.full_messages
-=======
-	end
-	def create
-		@user = current_user
-		if @user.save
-			redirect_to user_registration_path(current_user.id)
 		end
-
-
-		#@orderitems = @order.order_items
-		#@orderitems.each do |o|
-			#o.number
-			#o.tax
-			#o.price
-		#@orderitems.save
-		 #@cartitems.destroy
 		redirect_to orders_finish_path
 
 	end
 
 	def finish
 	end
+	
 	private
 	def user_params
 		params.require(:user).permit(:payment_method,:delivery_target_address)
