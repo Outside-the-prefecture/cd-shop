@@ -12,7 +12,6 @@ class User < ApplicationRecord
  		has_many :products, through: :cart_items
  		has_many :favorites, dependent: :destroy
  		has_many :favorited_products, through: :favorites,source: :product
-
  		validates :last_name, presence: true
  		validates :first_name, presence: true
  		validates :kana_last_name, presence: true
