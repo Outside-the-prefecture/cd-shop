@@ -14,13 +14,14 @@ class Product < ApplicationRecord
 	has_many :orders, through: :order_items
 	has_many :favorites
 	has_many :favorited_users, through: :favorites, source: :user
-
 	has_many :discs, dependent: :destroy
 	accepts_nested_attributes_for :discs, allow_destroy: true
 
-	belongs_to :artist
-	belongs_to :label
-	belongs_to :genre
+
+	belongs_to :artist, optional: true
+	belongs_to :label, optional: true
+	belongs_to :genre, optional: true
+
 
 
 	attachment :jacket_image
