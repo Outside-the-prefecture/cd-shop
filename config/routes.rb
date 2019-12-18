@@ -16,10 +16,12 @@ Rails.application.routes.draw do
 
   get "users/:user_id/orders/finish" => "orders#finish"
   get "search" => "users#search"
-  resources :products,only: [:show]
+  resources :products,only: [:show] do
+    resource :favorites,only: [:create,:destroy]
+  end
   resources :users,only: [:show,:edit,:update] do
-  	resources :cart_items,only: [:index ,:create ,:update,:destroy]
-
+    resources :favorites,only: [:index]
+  	resources :cart_items,only: [:index ,:create , :destroy]
   	resources :histories,only: [:show]
   	resources :orders,only: [:new,:create]
   end

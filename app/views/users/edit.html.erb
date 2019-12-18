@@ -3,6 +3,13 @@
 		<h2>編集</h2>
 
 		<%= form_for(@user) do |f| %>
+		  <% if @user.errors.any? %>
+			<h2><%= @user.errors.count %> errors prohibited this obj
+			from being saved:</h2>
+				<% @user.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+	      <% end %>
 		<lavel>姓</lavel><br/>
 		<%= f.text_field :last_name, autofocas: true %><br/>
 

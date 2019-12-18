@@ -2,9 +2,23 @@
 <!--   <link rel="stylesheet" href="stylesheets.scss"> -->
   <div class="container">
   	<div class="row">
-  		<div class="col-md-6 image">
-  			<%= attachment_image_tag @product, :jacket_image, :fill, 400,400, fallback: "",size: "100*100" %>
-      </div>
+  		<div class="col-xs-6">
+  			<div>
+  				<%= attachment_image_tag @product, :jacket_image, :fill, 100, 100, format: 'jpeg', size: '300x300', fallback: "no_image.jpg" %>
+  			</div>
+        <% if current_user.already_favorited?(@product) %>
+          <%= link_to product_favorites_path(product_id: @product.id), method: :delete do %>
+          <%= fa_icon "star" %>
+          <% end %>
+          <% else %>
+          <%= link_to product_favorites_path(product_id: @product.id),method: :post do %>
+          <%= fa_icon "star-o" %>
+          <% end %>
+        <% end %>
+
+  		</div>
+  		<div class="col-xs-6">
+
 
         <div class="col-md-6">
           <div class="row">
