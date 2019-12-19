@@ -1,7 +1,7 @@
 
-<p>お支払方法を選択してください</p>
-
-
+<div class="box1">
+<p class="siharai">お支払方法を選択してください</p>
+<div class="nakami">
 <%= form_with(model: @order, local: true, url: user_orders_path(user_id: @user.id),method: :post) do |f| %>
         <% if @order.errors.any? %>
         <div class="alert alert-warning">
@@ -23,23 +23,24 @@
 			<%= f.radio_button :payment_method, :代引き %>
 			<%= f.label :支払い, "代引き", {value: :female, style: "display: inline-block;"} %>
 		</p>
-	</div>
+	</div></div>
 
-	<p>お届け先のご住所を選択してください</p>
+	<p class ="siharai2">お届け先のご住所を選択してください</p>
 
-
+	<div class="nakami2">
 	<p>
-		名前 ：　<%= @user.last_name %><%= @user.first_name %>
+		名前  ：　<%= @user.last_name %><%= @user.first_name %>
 	</p>
 	<p>
 		電話番号　：　<%= @user.phone_number %>
 	</p>
 
-	<%= f.collection_select :delivery_target_address, @address, :id, :address,class: 'simple' %>
+	住所　：　<%= f.collection_select :delivery_target_address, @address, :id, :address,class: 'simple' %>
 	<%=link_to "住所を変更される方はこちら",user_path(current_user) %>
-	<p>
+	<p class="naiyou">
 		<注文内容>
 	</p>
+	<div class="naiyou2">
 	<p>
 		商品の小計  ：<%= @totalprice %>円
 	</p>
@@ -53,13 +54,16 @@
 	</p>
 	<p>
 	</p>
-
+	</div></div>
+	<div class="botan">
 	<button type="button" class="btn btn-default" >
 		<%=link_to "Back",user_cart_items_path %>
 	</button>
 
-	<button class="btn btn-warning">
-		<%= f.submit "注文確定" ,data:{ confirm: '注文を確定しますか?'}%>
-	</button>
+	<a href="#" class="btn-stitch">
+		<%= f.submit "注文確定" ,data:{ confirm: '注文を確定しますか?'}%></a>
+	</button></div>
 <% end %>
+</div></div>
+
 
