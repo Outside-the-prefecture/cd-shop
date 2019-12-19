@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
 			orderitems.user_id = current_user.id
 			orderitems.product_id = i.product_id
 			orderitems.number = i.count
-			orderitems.tax = 0.1
+			orderitems.tax = 1.1
 			orderitems.price = i.product.price
 			orderitems.order_id = @order.id
 			orderitems.save
