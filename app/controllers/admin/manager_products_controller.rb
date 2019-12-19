@@ -1,8 +1,6 @@
 class Admin::ManagerProductsController < ApplicationController
 	def index
 		@products =Product.page(params[:page]).per(12)
-		@count=0
-		@number=0
 	end
 
 

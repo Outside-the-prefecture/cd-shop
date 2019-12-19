@@ -1,15 +1,18 @@
+
+
+
 <div class="body">
 	<h3>
 		<%= @user.last_name %>
 		<%= @user.first_name %>
 	</h3>
-
 	<%= link_to admin_manager_path(@user.id),method: :delete, data:{confirm: "本当に退会させますか？"},class: "btn btn-danger actions" do %>
 	<span>退会</span>
 	<% end %>
 	<%= link_to edit_admin_manager_path(@user.id),class: "btn btn-success actions" do %>
 	<span>編集</span>
 	<% end %>
+	<br>
 
 	<% @orders.each do |order| %>
 	<%= order.created_at %>
