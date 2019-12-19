@@ -36,7 +36,10 @@
 			<%= link_to_add_association "ディスクを追加", f, :discs %>
 		</div>
 	</div>
+	<h4>販売ステータス</h4>
+	<%= f.text_field :status %>
 	<br/>
+
 	<%= f.submit '更新' %>
 	<% end %>
 </div>

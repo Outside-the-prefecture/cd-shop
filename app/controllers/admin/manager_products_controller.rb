@@ -1,7 +1,10 @@
 class Admin::ManagerProductsController < ApplicationController
 	def index
 		@products =Product.page(params[:page]).per(12)
+		@count=0
+		@number=0
 	end
+
 
 	def show
 		@product=Product.find(params[:id])
@@ -61,10 +64,10 @@ class Admin::ManagerProductsController < ApplicationController
 
 	private
 	def product_params
-		params.require(:product).permit(:name,:jacket_image,:price,:release_date,:artist_id,:label_id,:genre_id, discs_attributes: [:name,:product_id, songs_attributes: [:name,:disc_id,:song_order]])
+		params.require(:product).permit(:name,:jacket_image,:price,:release_date,:artist_id,:label_id,:genre_id,:status,discs_attributes: [:name,:product_id, songs_attributes: [:name,:disc_id,:song_order]])
 	end
 
 	def update_product_params
-		params.require(:product).permit(:name,:jacket_image,:price,:release_date,:artist_id,:label_id,:genre_id, discs_attributes: [:name,:product_id,:id,:_destroy, songs_attributes: [:name,:disc_id,:song_order,:id,:_destroy]])
+		params.require(:product).permit(:name,:jacket_image,:price,:release_date,:artist_id,:label_id,:genre_id,:status,discs_attributes: [:name,:product_id,:id,:_destroy, songs_attributes: [:name,:disc_id,:song_order,:id,:_destroy]])
 	end
 end

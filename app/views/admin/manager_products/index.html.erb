@@ -9,9 +9,16 @@
               <%= link_to  admin_manager_product_path(product.id), {class: "linkborder"} do %>
               <%= attachment_image_tag product, :jacket_image, :fill, 250,250, fallback: "",size: "100*100" %><br/>
               <%= product.artist.name %>/&nbsp;&nbsp;<%= product.name %><br/>
-               <p class="zaiko"><strong>在庫数</strong></p>
-               <p class="sutetas"><strong>ステータス</strong></p>
-               <p class="kakaku">価格</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><%= converting_to_jpy(product.price) %></strong>
+               <p class="sutetas"><button type="button" class="btn btn-info">販売ステータス</button>&nbsp;&nbsp;<%= product.status %></p>
+               <p class="kakaku">価格</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><%= converting_to_jpy(product.price) %></strong><br/>
+                <strong>在庫数</strong>&nbsp;&nbsp;&nbsp;&nbsp;
+                <% product.arrivals.each do |arrival| %>
+                <% @count+=arrival.count %>
+                <% end %>
+                <% product.order_items.each do |orderitem| %>
+                <% @number+=orderitem.number %>
+                <% end %>
+                <%= @count-@number %>
               <% end %>
             </div>
             <% end %>
@@ -21,3 +28,5 @@
     </div>
     <%= paginate @products %>
   </div>
+
+

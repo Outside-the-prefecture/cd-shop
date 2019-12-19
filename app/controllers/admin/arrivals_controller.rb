@@ -1,4 +1,5 @@
 class Admin::ArrivalsController < ApplicationController
+
   def create
   	@product=Product.find(params[:manager_product_id])
   	@arrival=Arrival.new(arrival_params)
