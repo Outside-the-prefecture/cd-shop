@@ -2,13 +2,22 @@
 <p>お支払方法を選択してください</p>
 
 
-<%= form_with(model: @user, local: true, url: user_orders_path,method: :post) do |f| %>
+<%= form_with(model: @order, local: true, url: user_orders_path(user_id: @user.id),method: :post) do |f| %>
+        <% if @order.errors.any? %>
+        <div class="alert alert-warning">
+          <ul>
+            <% @order.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
 	<div>
-		<%= f.radio_button :payment_method, :銀行振込 %>
+		<%= f.radio_button :payment_method, :銀行振込, {:checked => true} %>
 		<%= f.label :支払い, "銀行振込", {value: :male, style: "display: inline-block;"} %></P>
 		<p>
 			<%= f.radio_button :payment_method, :クレジットカード %>
-			<%= f.label :支払い, "クレジットカード", {value: :female, style: "display: inline-block;"} %>	
+			<%= f.label :支払い, "クレジットカード", {value: :female, style: "display: inline-block;"} %>
 		</p>
 		<p>
 			<%= f.radio_button :payment_method, :代引き %>
@@ -42,7 +51,7 @@
 	</p>
 
 	<button type="button" class="btn btn-default" >
-		<%=link_to "Back",user_cart_items_path %>         
+		<%=link_to "Back",user_cart_items_path %>
 	</button>
 
 	<button class="btn btn-warning">

@@ -69,4 +69,5 @@ gem "font-awesome-rails"
 gem 'paranoia'
 gem 'cocoon'
 gem 'jquery-rails'
+gem 'rails-i18n'
 

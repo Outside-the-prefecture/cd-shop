@@ -11,6 +11,20 @@
       </div>
       <div class="row product-cart">
             <%= form_for(@cartitem , url: user_cart_items_path(current_user) )  do |f| %>
+            <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+        <% if @cartitem.errors.any? %>
+        <div class="alert alert-warning">
+          <ul>
+            <% @cartitem.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
       <%= f.number_field :count ,class: "col-md-2 col-md-offset-1 cart-count" %>
       <%= f.hidden_field :product, :value => @product.id %>
       <%= f.submit "カートに入れる", class: "btn btn-primary col-md-4" %>

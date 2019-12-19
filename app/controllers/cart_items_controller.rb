@@ -14,6 +14,7 @@ class CartItemsController < ApplicationController
 		@cartitem.user_id=current_user.id
 
 		if @cartitem.save
+			flash[:notice]="カートに#{@cartitem.count}個入りました"
 			redirect_to product_path(@product.id)
 
 		else
@@ -22,7 +23,6 @@ class CartItemsController < ApplicationController
             @number=0
 			@orderitems=@product.order_items
 			@arrivals=@product.arrivals
-			@cartitem=CartItem.new
 			render "products/show"
 	    end
 	end
