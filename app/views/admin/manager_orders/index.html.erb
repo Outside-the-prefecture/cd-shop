@@ -1,5 +1,5 @@
 <h2>受注一覧</h2>
-  <table>
+  <table class="table table-striped">
   	<thead>
 	  	<tr>
 	  		<th>受注ID</th>
@@ -12,9 +12,11 @@
   	<% @orders.each do |order| %>
   	<tbody>
 	  	<tr>
-	  		<td><%= order.user_id %></td>
+	  		<td>
+	  			<%= link_to "#{order.id}", admin_manager_order_path(order.id)  %>
+	  		</td>
 	  		<td><%= order.last_name %><%= order.first_name %></td>
-	  		<td><%= order.total_amount %></td>
+	  		<td><%= order.total_amount %>円</td>
 	  		<td><%= order.created_at %></td>
 	  	</tr>
     </tbody>
