@@ -1,3 +1,64 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.box1{
+	margin : 30px;
+	padding-left :150px;
+	padding-right :150px;
+}
+.siharai{
+	padding-bottom :10px;
+	text-align:center;
+	font-size :20px;
+
+}
+.nakami{
+	background: #d6ebff;
+    box-shadow: 0px 0px 0px 10px #d6ebff;
+    border: dashed 2px white;
+    padding-left :80px;
+    padding-top :20px;
+    font-size :15px;
+}
+.siharai2{
+	padding-top :25px;
+	padding-bottom :20px;
+	text-align:center;
+	font-size :20px;
+}
+.nakami2{
+	background: #d6ebff;
+    box-shadow: 0px 0px 0px 10px #d6ebff;
+    border: dashed 2px white;
+    padding-top :20px;
+    padding-left :80px;
+    padding-bottom :20px;
+    font-size :15px;
+}
+.naiyou{
+	padding-top : 15px;
+	padding-left :70px;
+	font-weight :700;
+}
+.naiyou2{
+	padding-left :150px;
+}
+.botan{
+	padding-top :30px;
+	text-align:center;
+}
+.btn-stitch {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #668ad8;
+  color: #FFF;
+  border-radius: 4px;
+  box-shadow: 0px 0px 0px 5px #668ad8;
+  border: dashed 1px #FFF;
+}
+
+.btn-stitch:hover {
+  border: dotted 1px #FFF;
+}
