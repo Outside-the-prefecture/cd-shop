@@ -1,8 +1,25 @@
+<div class="bobo">
+	<div class ="cart">
+		<h1>お気に入り商品&ensp;&nbsp; <i class="fas fa-star"></i></h1>
+	</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th></th>
+					<th>お気に入り商品</th>
+					<th>価格</th>
+				</tr>
+			</thead>
+		<tbody>
 
-<h1>お気に入り商品</h1>
+			<%= @favorites.each do |favorite| %>
+				<td class="cd"><i class="fas fa-compact-disc fa-spin"></i></td>
+				<td class="moji"><%= favorite.product.name %></td>
+				<td class="moji"><%= favorite.product.price %>円</td>
 
-<%= @favorites.each do |favorite| %>
-	<%= favorite.product.name %>
-	<%= favorite.product.price %>
-<% end %>
+				</td>
+			<% end %>
+		</tbody>
+	</table>
+</div>
 　　
