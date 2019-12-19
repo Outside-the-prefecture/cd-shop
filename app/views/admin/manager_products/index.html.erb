@@ -12,14 +12,17 @@
                <p class="sutetas"><button type="button" class="btn btn-info">販売ステータス</button>&nbsp;&nbsp;<%= product.status %></p>
                <p class="kakaku">価格</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><%= converting_to_jpy(product.price) %></strong><br/>
                 <strong>在庫数</strong>&nbsp;&nbsp;&nbsp;&nbsp;
+                <% count = 0 %>
+                <% number = 0 %>
                 <% product.arrivals.each do |arrival| %>
-                <% @count+=arrival.count %>
+                  <% count+=arrival.count %>
                 <% end %>
                 <% product.order_items.each do |orderitem| %>
-                <% @number+=orderitem.number %>
+                  <% number+=orderitem.number %>
                 <% end %>
-                <%= @count-@number %>
+                <%= count-number %>
               <% end %>
+
             </div>
             <% end %>
           </div>
