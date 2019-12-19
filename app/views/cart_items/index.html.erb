@@ -47,7 +47,7 @@
 							<% end %>
 						</thead>
 					</table>
-					<h2>商品合計   ￥<%= @totalprice %>円
+					<h2>商品合計   ￥<%= @totalprice %>
 				                   <% @totalamount=@totalprice*1.1 %>
 				    <h2>税込      ￥<%= "#{@totalamount}".to_i %>
 						<%=link_to "買い物を続ける" ,root_path,class: "btn btn-default"  %>
