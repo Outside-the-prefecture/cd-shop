@@ -16,6 +16,7 @@
 								<th colspan="4"></th>
 							</tr>
 						</thead>
+						<thead>
 						<% @cartitems.each do |cartitem| %>
 						<tr class="wakusen">
 							<td class="wakusen"><span><%= attachment_image_tag cartitem.product, :jacket_image, :fill, 80,
@@ -27,7 +28,7 @@
 								<%= f.number_field :count,value: cartitem.count %>
 								<%= f.submit "確定する" %>
 								<% end %></span>
-																				<% if cartitem.errors.any? %>
+								<% if cartitem.errors.any? %>
 								<div class="alert alert-warning">
 						          <ul>
 						            <% cartitem.errors.full_messages.each do |message| %>
@@ -46,7 +47,9 @@
 							<% end %>
 						</thead>
 					</table>
-					<h2>商品合計   ￥<%= @totalprice %>
+					<h2>商品合計   ￥<%= @totalprice %>円
+				                   <% @totalamount=@totalprice*1.1 %>
+				    <h2>税込      ￥<%= "#{@totalamount}".to_i %>
 						<%=link_to "買い物を続ける" ,root_path,class: "btn btn-default"  %>
 						<%= link_to "レジへ進む", new_user_order_path,class: "btn btn-warning"  %>
 					</div>

@@ -4,6 +4,7 @@ class CartItemsController < ApplicationController
 		@user=User.find(params[:user_id])
 		@cartitems=@user.cart_items
 		@totalprice=0
+		@totalamount=0
 	end
 
 	def create

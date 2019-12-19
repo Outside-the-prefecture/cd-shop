@@ -41,13 +41,17 @@
 		<注文内容>
 	</p>
 	<p>
-		商品の小計  ：<%= @totalprice %>
+		商品の小計  ：<%= @totalprice %>円
+	</p>
+	<p>税込   :  <%= "#{@totalamount}".to_i %>円
 	</p>
 	<p>
 		送料　：　500円
 	</p>
 	<p>
-		合計　：　<%= "#{@totalprice}".to_i + 500 %>円
+		合計　：　<%= "#{@totalamount}".to_i + 500 %>円
+	</p>
+	<p>
 	</p>
 
 	<button type="button" class="btn btn-default" >
