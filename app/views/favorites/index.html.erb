@@ -12,7 +12,7 @@
 			</thead>
 		<tbody>
 
-			<%= @favorites.each do |favorite| %>
+			<% @favorites.each do |favorite| %>
 				<td class="cd"><i class="fas fa-compact-disc fa-spin"></i></td>
 				<td class="moji"><%= favorite.product.name %></td>
 				<td class="moji"><%= favorite.product.price %>円</td>
