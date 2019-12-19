@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      order:
+    attributes:
+      order:
+        payment_method: 支払い方法
+        delivery_target_address: お届け先住所

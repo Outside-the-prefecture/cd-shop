@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      artist:
+    attributes:
+      artist:
+        name: アーティスト名

@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      label:
+    attributes:
+      label:
+        name: レーベル名

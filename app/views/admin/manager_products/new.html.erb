@@ -15,7 +15,6 @@
           </ul>
         </div>
         <% end %>
-      
 
   			<h4>アーティスト</h4>
   			<%= f.collection_select :artist_id, Artist.all, :id, :name, {include_blank: "アーティスト"},

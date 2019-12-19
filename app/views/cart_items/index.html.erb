@@ -26,7 +26,19 @@
 								<p>購入枚数</p>
 								<%= f.number_field :count,value: cartitem.count %>
 								<%= f.submit "確定する" %>
-								<% end %></span></td>
+								<% end %></span>
+																				<% if cartitem.errors.any? %>
+								<div class="alert alert-warning">
+						          <ul>
+						            <% cartitem.errors.full_messages.each do |message| %>
+						            <li><%= message %></li>
+						            <% end %>
+						          </ul>
+						        </div>
+						        <% end %>
+
+
+							</td>
 								<td class="wakusen"><span><%= link_to "削除",user_cart_item_path(user_id: @user.id, id: cartitem.id),method: :delete %></span></td>
 								<td class="wakusen"><span>￥<%= cartitem.product.price*cartitem.count %></span></td>
 								<td class="wakusen"><span><% @totalprice+=cartitem.product.price*cartitem.count %></span></td>

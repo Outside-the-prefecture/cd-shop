@@ -1,5 +1,5 @@
-<h1>お気に入りページ</h1>
-<h3>いいねしている投稿</h3>
+<h1>お気に入り商品</h1>
 <%= @favorites.each do |favorite| %>
 	<%= favorite.product.name %>
+	<%= favorite.product.price %>
 <% end %>
