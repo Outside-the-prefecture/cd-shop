@@ -1,0 +1,23 @@
+<h2>受注一覧</h2>
+  <table>
+  	<thead>
+	  	<tr>
+	  		<th>受注ID</th>
+	  		<th>顧客名</th>
+	  		<th>総計</th>
+	  		<th>受注日</th>
+	  		<th>配送ステータス</th>
+	  	</tr>
+    </thead>
+  	<% @orders.each do |order| %>
+  	<tbody>
+	  	<tr>
+	  		<td><%= order.user_id %></td>
+	  		<td><%= order.last_name %><%= order.first_name %></td>
+	  		<td><%= order.total_amount %></td>
+	  		<td><%= order.created_at %></td>
+	  	</tr>
+    </tbody>
+  	<% end %>
+  </table>
+  <%= paginate @orders %>
