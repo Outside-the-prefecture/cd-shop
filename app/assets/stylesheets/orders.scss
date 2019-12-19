@@ -48,15 +48,20 @@
 	padding-top :30px;
 	text-align:center;
 }
-.btn-stitch {
+.btn-square {
   display: inline-block;
   padding: 0.5em 1em;
   text-decoration: none;
-  background: #668ad8;
+  background: red;/*ボタン色*/
   color: #FFF;
-  border-radius: 4px;
-  box-shadow: 0px 0px 0px 5px #668ad8;
-  border: dashed 1px #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+}
+.btn-square:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
 }
 
 .btn-stitch:hover {
