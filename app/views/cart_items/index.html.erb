@@ -1,6 +1,11 @@
 <div class="body">
 	<div class="container">
 		<div class="row">
+			<% if flash[:error] %>
+				<div class="flash">
+				    <h4 class="flashd"><%= flash[:error] %></h4>
+				</div>
+			<% end %>
 			<h2 class="cart">カート一覧</h2>
 			<div class="col-md-12">
 				<div class="row">
@@ -61,10 +66,11 @@
 					<h2 class="cart-page-amount">商品合計   ￥<%= converting_to_jpy(@totalprice) %></h2>
 				                   <% @totalamount=@totalprice*1.1 %>
 				    <h2>税込      ￥<%= converting_to_jpy("#{@totalamount}".to_i) %></h2>
-				    <h2>送料      ￥500円</h2>
+				    <h2>送料      ￥500</h2>
 				    <h2 class="cart-totalamount">総計      ￥<%= converting_to_jpy("#{@totalamount}".to_i+500) %>
 						<%=link_to "買い物を続ける" ,root_path,class: "btn btn-default"  %>
-						<%= link_to "レジへ進む", new_user_order_path,class: "btn btn-warning"  %></h2>
+						<%= link_to "レジへ進む", new_user_order_path,class: "btn btn-warning"  %>
+					</h2>
 					</div>
 				</div>
 			</div>

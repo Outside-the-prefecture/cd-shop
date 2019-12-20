@@ -4,27 +4,33 @@ class OrdersController < ApplicationController
 		@address = @user.addresses
 		@cartitems = @user.cart_items
 		@totalprice = 0
-		@order = Order.new
-
-		@cartitems.each do |f|
-			@product = Product.find_by(id: f.product_id)
-			@totalprice = @product.price * f.count + @totalprice
-			     count = 0
-                 number = 0
-                 f.product.arrivals.each do |arrival|
-                 count+=arrival.count
-                 end
-                 f.product.order_items.each do |orderitem|
-                 number+=orderitem.number
-                 end
-                 if count-number-f.count >=0
-                 else
-                 	@totalprice=0
-		            @totalamount=0
-                 	render "cart_items/index" and return
-                 end
+		if @cartitems.count ==0
+			@totalamount=0
+			flash[:error]="カートには何も入っておりません。"
+			render "cart_items/index"
+		else
+		    @order = Order.new
+			@cartitems.each do |f|
+				@product = Product.find_by(id: f.product_id)
+				@totalprice = @product.price * f.count + @totalprice
+				count = 0
+	            number = 0
+	            f.product.arrivals.each do |arrival|
+	                count+=arrival.count
+	            end
+	            f.product.order_items.each do |orderitem|
+	                number+=orderitem.number
+	            end
+	            if count-number-f.count >=0
+	            else
+	                @totalprice=0
+			        @totalamount=0
+			        flash[:error]="※大変申し訳ございません。#{@product.name}の在庫が不足しております。残り在庫数をご確認の上、購入枚数の変更をよろしくお願いいたします。"
+	                render "cart_items/index" and return
+	            end
+			end
+			@totalamount=@totalprice*1.1
 		end
-		@totalamount=@totalprice*1.1
 	end
 
 	def create

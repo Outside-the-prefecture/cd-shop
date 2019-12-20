@@ -8,33 +8,33 @@ class CartItemsController < ApplicationController
 	end
 
 	def create
-		@usercarts=current_user.cart_items
-	    @product=Product.find(params[:cart_item][:product])
-        if @cartitemequal=@usercarts.find_by(product_id: @product.id)
-		@count = params[:cart_item][:count]
-        @cartitemequal.count=@cartitemequal.count.to_i + @count.to_i
-        @cartitemequal.save
-        flash[:notice]="カートに#{@count}個入りました"
-        redirect_to product_path(@product.id)
-    else
-		@cartitem=CartItem.new
-		@cartitem.count = params[:cart_item][:count]
-		@cartitem.product_id =@product.id
-		@cartitem.user_id=current_user.id
+	     @usercarts=current_user.cart_items
+		 @product=Product.find(params[:cart_item][:product])
+	     if @cartitemequal=@usercarts.find_by(product_id: @product.id)
+			@count = params[:cart_item][:count]
+	        @cartitemequal.count=@cartitemequal.count.to_i + @count.to_i
+	        @cartitemequal.save
+	        flash[:notice]="カートに#{@count}個入りました"
+	        redirect_to product_path(@product.id)
+	    else
+			@cartitem=CartItem.new
+			@cartitem.count = params[:cart_item][:count]
+			@cartitem.product_id =@product.id
+			@cartitem.user_id=current_user.id
 
-		if @cartitem.save
-			flash[:notice]="カートに#{@cartitem.count}個入りました"
-			redirect_to product_path(@product.id)
+			if @cartitem.save
+				flash[:notice]="カートに#{@cartitem.count}個入りました"
+				redirect_to product_path(@product.id)
 
-		else
-			@discs=@product.discs
-            @count=0
-            @number=0
-			@orderitems=@product.order_items
-			@arrivals=@product.arrivals
-			render "products/show"
-	    end
-	end
+			else
+				@discs=@product.discs
+	            @count=0
+	            @number=0
+				@orderitems=@product.order_items
+				@arrivals=@product.arrivals
+				render "products/show"
+		    end
+		end
 	end
 
 	def update
