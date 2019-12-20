@@ -317,11 +317,8 @@ footer{
 	line-height:60px;
 	background-color: silver;
 	background:linear-gradient(180deg,silver 0%,silver 40%,silversmoke 60%,silversmoke 100%);
-	margin-top:40px;
+	margin-top:300px;
 
-}
-.body{
-	height:1500px;
 }
 
 .cart-table-kkk td{
@@ -338,4 +335,8 @@ text-align:center;
 
 .cart-page-amount{
 	margin-bottom:50px;
+}
+
+.cart-totalamount{
+	color:#993300;
 }

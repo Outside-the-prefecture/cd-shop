@@ -11,6 +11,7 @@
 								<th class="wakusen">商品名</th>
 								<th class="wakusen">価格</th>
 								<th class="wakusen">数量</th>
+								<th class="wakusen">残り在庫数</th>
 								<th class="wakusen"></th>
 								<th class="wakusen">合計金額</th>
 							</tr>
@@ -20,8 +21,8 @@
 						<tr class="wakusen">
 							<td class="wakusen"><span><%= attachment_image_tag cartitem.product, :jacket_image, :fill, 80,
 							80, fallback: "",size: "100*100" %></span></td>
-							<td class="wakusen"><span class="cart-table-td"><%= cartitem.product.name %></span></td>
-							<td class="wakusen"><span class="cart-table-td">￥<%= cartitem.product.price %></span></td>
+							<td class="wakusen"><span class="cart-table-td"><%= link_to cartitem.product.name,product_path(cartitem.product.id) %></span></td>
+							<td class="wakusen"><span class="cart-table-td">￥<%= converting_to_jpy(cartitem.product.price) %></span></td>
 							<td class="wakusen"><span>
 								<%= form_for(cartitem , url: user_cart_item_path(user_id:current_user.id,id:cartitem.id) )  do |f| %>
 								<p>購入枚数</p>
@@ -37,21 +38,33 @@
 						          </ul>
 						        </div>
 						        <% end %>
+						    <td class="wakusen"><span class="cart-table-td">
+						    	<% count = 0 %>
+                                <% number = 0 %>
+                                <% cartitem.product.arrivals.each do |arrival| %>
+                                <% count+=arrival.count %>
+                                <% end %>
+                                <% cartitem.product.order_items.each do |orderitem| %>
+                                <% number+=orderitem.number %>
+                                <% end %>
+                                <%= count-number %>
 
 
 							</td>
 								<td class="wakusen"><span class="cart-table-td"><%= link_to "削除",user_cart_item_path(user_id: @user.id, id: cartitem.id),method: :delete %></span></td>
-								<td class="wakusen"><span class="cart-table-td">￥<%= cartitem.product.price*cartitem.count %></span></td>
+								<td class="wakusen"><span class="cart-table-td">￥<%= converting_to_jpy(cartitem.product.price*cartitem.count) %></span></td>
 								<% @totalprice+=cartitem.product.price*cartitem.count %>
 							</tr>
 							<% end %>
 						</thead>
 					</table>
-					<h2 class="cart-page-amount">商品合計   ￥<%= @totalprice %>
+					<h2 class="cart-page-amount">商品合計   ￥<%= converting_to_jpy(@totalprice) %></h2>
 				                   <% @totalamount=@totalprice*1.1 %>
-				    <h2>税込      ￥<%= "#{@totalamount}".to_i %>
+				    <h2>税込      ￥<%= converting_to_jpy("#{@totalamount}".to_i) %></h2>
+				    <h2>送料      ￥500円</h2>
+				    <h2 class="cart-totalamount">総計      ￥<%= converting_to_jpy("#{@totalamount}".to_i+500) %>
 						<%=link_to "買い物を続ける" ,root_path,class: "btn btn-default"  %>
-						<%= link_to "レジへ進む", new_user_order_path,class: "btn btn-warning"  %>
+						<%= link_to "レジへ進む", new_user_order_path,class: "btn btn-warning"  %></h2>
 					</div>
 				</div>
 			</div>

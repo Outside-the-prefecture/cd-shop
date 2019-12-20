@@ -9,6 +9,20 @@ class OrdersController < ApplicationController
 		@cartitems.each do |f|
 			@product = Product.find_by(id: f.product_id)
 			@totalprice = @product.price * f.count + @totalprice
+			     count = 0
+                 number = 0
+                 f.product.arrivals.each do |arrival|
+                 count+=arrival.count
+                 end
+                 f.product.order_items.each do |orderitem|
+                 number+=orderitem.number
+                 end
+                 if count-number-f.count >=0
+                 else
+                 	@totalprice=0
+		            @totalamount=0
+                 	render "cart_items/index" and return
+                 end
 		end
 		@totalamount=@totalprice*1.1
 	end
