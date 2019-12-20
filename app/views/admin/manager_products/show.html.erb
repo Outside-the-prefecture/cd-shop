@@ -22,7 +22,7 @@
             </tr>
             <tr>
               <th>発売日</th>
-              <td><%= @product.release_date %></td>
+              <td><%= @product.release_date.to_s(:datetime_jp) %></td>
             </tr>
             <tr>
               <th>在庫数</th>
@@ -38,11 +38,11 @@
             </tr>
             <tr>
               <th>価格</th>
-              <td><%= @product.price %></td>
+              <td><%= converting_to_jpy(@product.price) %></td>
             </tr>
             <tr>
               <th>送料</th>
-              <td>500円</td>
+              <td>500</td>
             </tr>
             <tr>
               <th>レコード会社</th>
@@ -110,7 +110,7 @@
             <thead>
               <% @arrivals.each do |arrival| %>
               <tr>
-                <td><%= arrival.datetime %></td>
+                <td><%= arrival.datetime.to_s(:datetime) %></td>
                 <td><%= arrival.count %></td>
               </tr>
               <% end %>

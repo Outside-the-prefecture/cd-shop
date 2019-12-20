@@ -44,7 +44,7 @@
           </tr>
           <tr>
             <th>発売日</th>
-            <td><%= @product.release_date %></td>
+            <td><%= @product.release_date.to_s(:datetime) %></td>
           </tr>
           <tr>
             <th>在庫数</th>
@@ -64,7 +64,7 @@
           </tr>
           <tr>
            <th>送料</th>
-           <td>500円</td>
+           <td>500</td>
          </tr>
          <tr>
           <th>レコード会社</th>

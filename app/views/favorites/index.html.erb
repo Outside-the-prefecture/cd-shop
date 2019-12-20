@@ -16,7 +16,7 @@
 				<% @favorites.each do |favorite| %>
 					<td class="cd"><i class="fas fa-compact-disc fa-spin"></i></td>
 					<td class="moji"><%= link_to favorite.product.name,product_path(favorite.product.id) %></td>
-					<td class="moji"><%= favorite.product.price %>円</td>
+					<td class="moji">￥<%= converting_to_jpy(favorite.product.price) %></td>
 				<% end %>
 			</tbody>
 		</table>
