@@ -4,7 +4,7 @@
 			<h2 class="cart">カート一覧</h2>
 			<div class="col-md-12">
 				<div class="row">
-					<table class='table table-hover table-inverse'>
+					<table class='table table-hover table-inverse cart-table-kkk'>
 						<thead>
 							<tr class="wakusen">
 								<th class="wakusen"></th>
@@ -13,7 +13,6 @@
 								<th class="wakusen">数量</th>
 								<th class="wakusen"></th>
 								<th class="wakusen">合計金額</th>
-								<th colspan="4"></th>
 							</tr>
 						</thead>
 						<thead>
@@ -21,9 +20,10 @@
 						<tr class="wakusen">
 							<td class="wakusen"><span><%= attachment_image_tag cartitem.product, :jacket_image, :fill, 80,
 							80, fallback: "",size: "100*100" %></span></td>
-							<td class="wakusen"><span><%= cartitem.product.name %></span></td>
-							<td class="wakusen"><span>￥<%= cartitem.product.price %></span></td>
-							<td class="wakusen"><span> <%= form_for(cartitem , url: user_cart_item_path(user_id:current_user.id,id:cartitem.id) )  do |f| %>
+							<td class="wakusen"><span class="cart-table-td"><%= cartitem.product.name %></span></td>
+							<td class="wakusen"><span class="cart-table-td">￥<%= cartitem.product.price %></span></td>
+							<td class="wakusen"><span>
+								<%= form_for(cartitem , url: user_cart_item_path(user_id:current_user.id,id:cartitem.id) )  do |f| %>
 								<p>購入枚数</p>
 								<%= f.number_field :count,value: cartitem.count %>
 								<%= f.submit "確定する" %>
@@ -40,14 +40,14 @@
 
 
 							</td>
-								<td class="wakusen"><span><%= link_to "削除",user_cart_item_path(user_id: @user.id, id: cartitem.id),method: :delete %></span></td>
-								<td class="wakusen"><span>￥<%= cartitem.product.price*cartitem.count %></span></td>
-								<td class="wakusen"><span><% @totalprice+=cartitem.product.price*cartitem.count %></span></td>
+								<td class="wakusen"><span class="cart-table-td"><%= link_to "削除",user_cart_item_path(user_id: @user.id, id: cartitem.id),method: :delete %></span></td>
+								<td class="wakusen"><span class="cart-table-td">￥<%= cartitem.product.price*cartitem.count %></span></td>
+								<% @totalprice+=cartitem.product.price*cartitem.count %>
 							</tr>
 							<% end %>
 						</thead>
 					</table>
-					<h2>商品合計   ￥<%= @totalprice %>
+					<h2 class="cart-page-amount">商品合計   ￥<%= @totalprice %>
 				                   <% @totalamount=@totalprice*1.1 %>
 				    <h2>税込      ￥<%= "#{@totalamount}".to_i %>
 						<%=link_to "買い物を続ける" ,root_path,class: "btn btn-default"  %>
