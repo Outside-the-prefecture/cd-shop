@@ -1,6 +1,3 @@
-
-
-
 <div class="body">
 	<h3>
 		<%= @user.last_name %>
@@ -14,12 +11,26 @@
 	<% end %>
 	<br>
 
-	<% @orders.each do |order| %>
-	<%= order.created_at %>
-	<%= order.payment_method %>
-	<%= order.delivery_target_address %>
 
-	<table>
+
+	<% @orders.each do |order| %>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>受注日</th>
+				<th>決済方法</th>
+				<th>お届け先</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><%= order.created_at %></td>
+				<td><%= order.created_at %></td>
+				<td><%= order.delivery_target_address %></td>
+			</tr>
+		</tbody>
+	</table>
+	<table class="table">
 		<thead>
 			<tr>
 				<th>商品名</th>
@@ -31,7 +42,7 @@
 			</tr>
 		</thead>
 		<thead>
-			<% order.order_items do |order_item| %>
+			<% order.order_items.each do |order_item| %>
 			<tr>
 				<td>
 					<%= order_item.product.name %>
@@ -41,9 +52,6 @@
 				</td>
 				<td>
 					<%= order_item.product.status %>
-				</td>
-				<td>
-					<%= order_item.product.price %>
 				</td>
 				<td></td>
 				<td></td>
