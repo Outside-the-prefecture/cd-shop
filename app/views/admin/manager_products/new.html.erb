@@ -1,8 +1,8 @@
-<div class="body">
+<div class="aa">
   <div class="container">
   	<div class="row">
   		<div class="col-xs-6">
-  			<h2>新規投稿</h2>
+  			<h2 class="shinki">新規投稿</h2>
   			<!-- form_for部分 -->
   			<%= form_with(model: @product, url:admin_manager_products_path, local: true) do |f| %>
 
@@ -16,32 +16,32 @@
         </div>
         <% end %>
 
-  			<h4>アーティスト</h4>
+  			<h4 class="aaa">アーティスト</h4>
   			<%= f.collection_select :artist_id, Artist.all, :id, :name, {include_blank: "アーティスト"},
   			class: 'sample' %>
 
-  			<h4>アルバム/シングル名</h4>
+  			<h4 class="aaa">アルバム/シングル名</h4>
   			<%= f.text_field :name %>
 
-  			<h4>ジャケット画像</h4>
+  			<h4 class="aaa">ジャケット画像</h4>
   			<%= f.attachment_field :jacket_image %>
 
-  			<h4>価格(税別)</h4>
+  			<h4 class="aaa">価格(税別)</h4>
   			<%= f.number_field :price %>
 
-  			<h4>発売日</h4>
+  			<h4 class="aaa">発売日</h4>
   			<%= f.text_field :release_date %>
 
-  			<h4>レーベル名</h4>
+  			<h4 class="aaa">レーベル名</h4>
   			<%= f.collection_select :label_id, Label.all, :id, :name, {include_blank: "レーベル"},
   			class: 'sample' %>
 
-  			<h4>ジャンル</h4>
+  			<h4 class="aaa">ジャンル</h4>
   			<%= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: "ジャンル"},
   			class: 'sample' %>
 
   			<div class="discs">
-          <h4>DISC</h4>
+          <h4 class="aaa">DISC</h4>
           <%= f.fields_for :discs do |disc| %>
           <%= render "disc_fields", f: disc %>
           <% end %>
@@ -50,12 +50,11 @@
           </div>
         </div>
 
-        <h4>販売ステータス</h4>
+        <h4 class="aaa">販売ステータス</h4>
         <%= f.text_field :status %>
         <br/>
         <br/>
-        <%= f.submit '新規追加' %>
-
+          <%= f.submit '新規追加',class:"btn btn-warning" %>
         <% end %>
       </div>
 
