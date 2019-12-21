@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
+	skip_before_action :require_admin_login, raise: false
+	skip_before_action :require_login, only:[:search]
+		before_action :correct_user, only: [:edit,:update,:show,:destroy]
 	def show
 		@user = User.find(params[:id])
-		@orders = @user.orders
-		@orders = Order.page(params[:page]).per(2)
+		@orders = @user.orders.page(params[:page]).per(2)
 		@addresses = @user.addresses
 	end
 
@@ -48,4 +50,10 @@ def user_params
 	params.require(:user).permit(:last_name, :first_name, :kana_last_name, :kana_first_name, :email, :phone_number, :postal_code, :address, addresses_attributes: [:address,:user_id,:id,:_destroy])
 end
 
+	def correct_user
+		user=User.find(params[:id])
+		if current_user!=user
+			redirect_to user_path(current_user)
+		end
+	end
 end

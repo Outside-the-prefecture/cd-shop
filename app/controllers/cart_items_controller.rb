@@ -1,5 +1,6 @@
 class CartItemsController < ApplicationController
-
+	skip_before_action :require_admin_login, raise: false
+	before_action :correct_user
 	def index
 		@user=User.find(params[:user_id])
 		@cartitems=@user.cart_items
@@ -55,6 +56,15 @@ class CartItemsController < ApplicationController
 		@cartitem=CartItem.find(params[:id])
 		@cartitem.destroy
 		redirect_to user_cart_items_path(@user.id)
+	end
+
+	private
+
+	  	def correct_user
+		user=User.find(params[:user_id])
+		if current_user!=user
+			redirect_to user_cart_items_path(user_id: current_user.id)
+		end
 	end
 
 end

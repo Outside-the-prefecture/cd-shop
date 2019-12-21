@@ -10,6 +10,11 @@
       </div>
       </div>
       <div class="row product-cart">
+        <% if current_user.nil? %>
+        <%= link_to new_user_session_path do %>
+        <button class="btn btn-primary">カートに入れる</button>
+        <% end %>
+        <% else %>
             <%= form_for(@cartitem , url: user_cart_items_path(current_user) )  do |f| %>
             <% if flash[:notice] %>
       <div class="flash">
@@ -29,6 +34,7 @@
       <%= f.hidden_field :product, :value => @product.id %>
       <%= f.submit "カートに入れる", class: "btn btn-primary col-md-4" %>
     　<% end %>
+    <% end %>
       </div>
     </div>
     <div class="col-md-6">
