@@ -60,7 +60,7 @@ class CartItemsController < ApplicationController
 
 	private
 
-	  	def correct_user
+	def correct_user
 		user=User.find(params[:user_id])
 		if current_user!=user
 			redirect_to user_cart_items_path(user_id: current_user.id)

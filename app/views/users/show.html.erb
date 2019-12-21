@@ -1,37 +1,37 @@
 <div class="baby">
-		<h1>マイページ</h1>
-		<div class="user-info-heading">
+	<h1>マイページ</h1>
+	<div class="user-info-heading">
 		<h3>ユーザー情報</h3>
-        </div>
+	</div>
 
 	<div class="user-info">
-			<p class="user-name">
-				<label>名前&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&thinsp;&thinsp;&thinsp;&thinsp;：</label>
-				<%= @user.last_name %><%= @user.first_name %>
-			</p>
-			<p class="user-address">
-				<label>住所&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&thinsp;&thinsp;&thinsp;&thinsp;：</label>
-				<%= @user.address %>
-			</p>
+		<p class="user-name">
+			<label>名前&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&thinsp;&thinsp;&thinsp;&thinsp;：</label>
+			<%= @user.last_name %><%= @user.first_name %>
+		</p>
+		<p class="user-address">
+			<label>住所&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&thinsp;&thinsp;&thinsp;&thinsp;：</label>
+			<%= @user.address %>
+		</p>
 		<% @addresses.each do |address| %>
-	        <p class="user-address-other">
-	       　&ensp;<%= address.address %>
-	        </p>
-	    <% end %>
-	        <p class="user-post">
-	        	<label>郵便番号&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&nbsp;&nbsp;&thinsp;&thinsp;&thinsp;：</label>
-	        	<%= @user.postal_code %>
-	        </p>
-	        <p class="user-phone">
-	        	<label>電話番号&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&nbsp;&nbsp;&thinsp;&thinsp;&thinsp;：</label>
-	        	<%= @user.phone_number %>
-	        </p>
-	        <p class="user-mail">
-	        	<label>メールアドレス：</label>
-	        	<%= @user.email %>
-	        </p>
-	    <%= link_to edit_user_path(@user),class: "btn btn-warning user-edit" do %>
-			<span>プロフィール編集</span>
+		<p class="user-address-other">
+			　&ensp;<%= address.address %>
+		</p>
+		<% end %>
+		<p class="user-post">
+			<label>郵便番号&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&nbsp;&nbsp;&thinsp;&thinsp;&thinsp;：</label>
+			<%= @user.postal_code %>
+		</p>
+		<p class="user-phone">
+			<label>電話番号&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&nbsp;&nbsp;&thinsp;&thinsp;&thinsp;：</label>
+			<%= @user.phone_number %>
+		</p>
+		<p class="user-mail">
+			<label>メールアドレス：</label>
+			<%= @user.email %>
+		</p>
+		<%= link_to edit_user_path(@user),class: "btn btn-warning user-edit" do %>
+		<span>プロフィール編集</span>
 		<% end %>
 		<%= link_to user_path(@user.id),method: :delete, data:{confirm: "本当に退会しますか？"},class: "btn btn-danger user-destroy" do %>
 		<span>退会</span>
@@ -60,7 +60,7 @@
 			</div>
 		</div>
 	</div>
-</div>
 <%= paginate @orders %>
+</div>
 
 

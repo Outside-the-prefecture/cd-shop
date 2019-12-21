@@ -3,12 +3,10 @@
 		<div class="row">
 			<h3 class="cart">ユーザーネーム</h3>
 			<h3><%= @user.last_name %><%= @user.first_name %></h3>
-			<%= link_to admin_manager_path(@user.id),method: :delete, data:{confirm: "本当に退会させますか？"},class: "btn btn-danger actions" do %>
-			<span>退会</span>
-			<% end %>
-			<%= link_to edit_admin_manager_path(@user.id),class: "btn btn-success actions" do %>
-			<span>編集</span>
-			<% end %><br/>
+			<div class="row">
+			<%= link_to "編集", edit_admin_manager_path(@user.id),class: "btn btn-warning col-md-2 col-md-offset-1" %>
+			<%= link_to "退会", admin_manager_path(@user.id),method: :delete, data:{confirm: "本当に退会させますか？"},class: "btn btn-danger col-md-2 col-md-offset-1" %><br/>
+		    </div>
 			<h3 class="cart">受注一覧</h3>
 			<div class="col-md-12">
 				<div class="row">
