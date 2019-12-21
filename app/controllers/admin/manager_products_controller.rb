@@ -1,4 +1,5 @@
 class Admin::ManagerProductsController < ApplicationController
+	skip_before_action :require_login
 	def index
 		@products =Product.page(params[:page]).per(12)
 	end

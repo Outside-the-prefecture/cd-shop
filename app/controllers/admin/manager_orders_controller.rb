@@ -1,4 +1,5 @@
 class Admin::ManagerOrdersController < ApplicationController
+	skip_before_action :require_login
 	def index
 		@orders=Order.all
 		@orders = Order.page(params[:page]).per(10)

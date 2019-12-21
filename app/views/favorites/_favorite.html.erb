@@ -1,3 +1,6 @@
+<% if current_user.nil? %>
+<%= fa_icon "star-o",class: "star" %>
+<% else %>
 <% if current_user.already_favorited?(@product) %>
 <%= link_to product_favorites_path(product_id: @product.id), method: :delete, remote: true do %>
 <%= fa_icon "star",class: "star" %>
@@ -5,5 +8,6 @@
 <% else %>
 <%= link_to product_favorites_path(product_id: @product.id),method: :post, remote: true do %>
 <%= fa_icon "star-o",class: "star-o" %>
+<% end %>
 <% end %>
 <% end %>

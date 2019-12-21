@@ -1,4 +1,5 @@
 class Admin::LabelsController < ApplicationController
+	skip_before_action :require_login
 	def create
 		@label=Label.new(label_params)
 		if @label.save
