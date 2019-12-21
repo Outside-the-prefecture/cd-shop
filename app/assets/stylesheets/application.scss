@@ -310,7 +310,38 @@ padding-left:600px;
 	margin-bottom:100px;
 }
 
-.manager-orders-table{
-	border: solid 1px;
+footer{
+	height:60px;
+	text-align:center;
+	border-top:solid 1px gray;
+	color:black;
+	line-height:60px;
+	background-color: silver;
+	background:linear-gradient(180deg,silver 0%,silver 40%,silversmoke 60%,silversmoke 100%);
+	margin-top:300px;
+
 }
 
+.cart-table-kkk td{
+text-align:center;
+}
+
+.cart-table-kkk{
+	margin-bottom:50px;
+}
+
+.cart-table-td{
+	line-height:80px;
+}
+
+.cart-page-amount{
+	margin-bottom:50px;
+}
+
+.cart-totalamount{
+	color:#993300;
+}
+
+.flashd{
+	color:red;
+}
