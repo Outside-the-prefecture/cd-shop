@@ -9,7 +9,6 @@
 			<%= link_to edit_admin_manager_path(@user.id),class: "btn btn-success actions" do %>
 			<span>編集</span>
 			<% end %><br/>
-
 			<h3 class="cart">受注一覧</h3>
 			<div class="col-md-12">
 				<div class="row">
@@ -24,7 +23,6 @@
 						</thead>
 					</table>
 					<table class="table table-striped">
-
 						<thead class="test">
 							<tr>
 								<th>商品名</th>
@@ -35,7 +33,6 @@
 								<th>合計金額(税込)</th>
 							</tr>
 						</thead>
-
 						<thead>
 							<% order.order_items.each do |order_item| %>
 							<tr>
@@ -52,10 +49,8 @@
 									<% orderprice =order_item.product.price.to_i*order_item.number.to_i*1.1 %>
 									￥<%= converting_to_jpy(orderprice.to_i) %>
 								</td>
-								<td>
-								</td>
-								<td>
-								</td>
+								<td></td>
+							    <td></td>
 							</tr>
 							<% end %>
 							<tr>
@@ -76,5 +71,5 @@
 				</div>
 			</div>
 		</div>
-     </div>
+	</div>
 </div>
