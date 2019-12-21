@@ -11,11 +11,11 @@
 							<%= product.artist.name %>/&nbsp;&nbsp;<%= product.name %><br/>
 							<p class="kakaku">価格</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>￥<%= converting_to_jpy(product.price) %></strong>
 							<% end %>
-						</div>
-						<% end %>
 					</div>
+						<% end %>
 				</div>
 			</div>
 		</div>
-		<%= paginate @products %>
 	</div>
+	<%= paginate @products %>
+</div>
