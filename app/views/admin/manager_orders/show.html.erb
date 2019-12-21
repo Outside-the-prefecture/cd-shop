@@ -1,61 +1,70 @@
-<h2>受注詳細</h2>
-<table class="product-table">
-	<tr>
-		<th>受注者</th>
-		<td><%= @order.last_name %><%= @order.first_name %></td>
-	</tr>
-	<tr>
-		<th>決済方法</th>
-		<td><%= @order.payment_method %></td>
-	</tr>
-	<tr>
-		<th>お届け先住所</th>
-		<td><%= @order.delivery_target_address %></td>
-	</tr>
-</table>
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
 
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>商品名</th>
-				<th>数量</th>
-				<th>状況</th>
-				<th>小計(税込)</th>
-				<th>送料</th>
-				<th>合計金額(税込)</th>
-			</tr>
-		</thead>
-		<thead>
-			<% @orderitems.each do |order_item| %>
-			<tr>
-				<td>
-					<%= order_item.product.name %>
-				</td>
-				<td>
-					<%=order_item.number %>
-				</td>
-				<td>
-					<%= order_item.product.status %>
-				</td>
-				<td>
-					<% @totalamount=order_item.product.price*order_item.number*1.1 %>
-					<%= @totalamount.to_i %>
-				</td>
-				<td></td>
-				<td></td>
-			</tr>
-			<% end %>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td>
-					<%= @order.shipping_fee %>
-				</td>
-				<td>
-					<%= @order.total_amount %>
-				</td>
-			</tr>
-		</thead>
-	</table>
+				<h2 class="cart">受注詳細</h2>
+				<table class="product-table">
+					<tr>
+						<th>受注者</th>
+						<td><%= @order.last_name %><%= @order.first_name %></td>
+					</tr>
+					<tr>
+						<th>決済方法</th>
+						<td><%= @order.payment_method %></td>
+					</tr>
+					<tr>
+						<th>お届け先住所</th>
+						<td><%= @order.delivery_target_address %></td>
+					</tr>
+				</table>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>商品名</th>
+							<th>数量</th>
+							<th>状況</th>
+							<th>小計(税込)</th>
+							<th>送料</th>
+							<th>合計金額(税込)</th>
+						</tr>
+					</thead>
+					<thead>
+						<% @orderitems.each do |order_item| %>
+						<tr>
+							<td>
+								<%= order_item.product.name %>
+							</td>
+							<td>
+								<%=order_item.number %>
+							</td>
+							<td>
+								<%= order_item.product.status %>
+							</td>
+							<td>
+								<% @totalamount=order_item.product.price*order_item.number*1.1 %>
+								<%= @totalamount.to_i %>
+							</td>
+							<td></td>
+							<td></td>
+						</tr>
+						<% end %>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>
+								<%= @order.shipping_fee %>
+							</td>
+							<td>
+								<%= @order.total_amount %>
+							</td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
