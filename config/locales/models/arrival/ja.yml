@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      arrival:
+    attributes:
+      arrival:
+        count: 入荷枚数
+        datetime: 入荷日
