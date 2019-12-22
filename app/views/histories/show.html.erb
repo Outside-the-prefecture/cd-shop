@@ -1,26 +1,18 @@
 <div class="body">
-	<table>
+	<h2 class="shinki">注文内訳</h2>
+	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th>注文ID</th>
-				<th>注文日時</th>
-				<th>合計金額</th>
-				<th>支払い方法</th>
-				<th>送付先</th>
-			</tr>
-		</thead>
-		<thead>
-			<tr>
-				<td><%= @order.id %></td>
-				<td><%= @order.created_at.to_s(:datetime_jp) %></td>
-				<td><%= @order.total_amount %></td>
-				<td><%= @order.payment_method %></td>
-				<td><%= @order.delivery_target_address %></td>
+				<th>注文ID:&nbsp;&nbsp;&nbsp;<%= @order.id %></th>
+				<th>注文日時:&nbsp;&nbsp;&nbsp;<%= @order.created_at.to_s(:datetime_jp) %></th>
+				<th>合計金額:&nbsp;&nbsp;&nbsp;<%= @order.total_amount %></th>
+				<th>支払い方法:&nbsp;&nbsp;&nbsp;<%= @order.payment_method %></th>
+				<th>送付先:&nbsp;&nbsp;&nbsp;<%= @order.delivery_target_address %></th>
 			</tr>
 		</thead>
 	</table>
-	<h2>注文内訳</h2>
-	<table>
+
+	<table class="table table-hover aiueo">
 		<thead>
 			<tr>
 				<th>商品ID</th>
@@ -32,7 +24,7 @@
 				<th>合計</th>
 			</tr>
 		</thead>
-		<thead>
+		<tbody>
 			<% @orderitems.each do |orderitem| %>
 			<tr>
 				<td><%= orderitem.product.id %></td>
@@ -55,6 +47,6 @@
 				<td><%= @order.shipping_fee %></td>
 				<td><%= @order.total_amount %></td>
 			</tr>
-		</thead>
+		</tbody>
 	</table>
 </div>
