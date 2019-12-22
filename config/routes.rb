@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get "search" => "users#search"
   resources :products,only: [:show] do
     resource :favorites,only: [:create,:destroy]
+    resources :reviews,only: [:create,:edit,:update,:destroy]
   end
   resources :users,only: [:show,:edit,:update] do
     resources :favorites,only: [:index]

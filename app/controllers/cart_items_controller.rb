@@ -10,7 +10,9 @@ class CartItemsController < ApplicationController
 
 	def create
 	     @usercarts=current_user.cart_items
+	     @review=Review.new
 		 @product=Product.find(params[:cart_item][:product])
+		 @reviews=@product.reviews
 	     if @cartitemequal=@usercarts.find_by(product_id: @product.id)
 			@count = params[:cart_item][:count]
 	        @cartitemequal.count=@cartitemequal.count.to_i + @count.to_i

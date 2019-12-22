@@ -6,11 +6,11 @@
 
 	<div class="user-info">
 		<p class="user-name">
-			<label>名前&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&thinsp;&thinsp;&thinsp;&thinsp;：</label>
+			<label>名前&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;：</label>
 			<%= @user.last_name %><%= @user.first_name %>
 		</p>
 		<p class="user-address">
-			<label>住所&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&thinsp;&thinsp;&thinsp;&thinsp;：</label>
+			<label>住所&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;：</label>
 			<%= @user.address %>
 		</p>
 		<% @addresses.each do |address| %>
@@ -19,11 +19,11 @@
 		</p>
 		<% end %>
 		<p class="user-post">
-			<label>郵便番号&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&nbsp;&nbsp;&thinsp;&thinsp;&thinsp;：</label>
+			<label>郵便番号&ensp;&ensp;&ensp;&ensp;&ensp;&nbsp;&thinsp;：</label>
 			<%= @user.postal_code %>
 		</p>
 		<p class="user-phone">
-			<label>電話番号&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&nbsp;&nbsp;&thinsp;&thinsp;&thinsp;：</label>
+			<label>電話番号&ensp;&ensp;&ensp;&ensp;&ensp;&nbsp;&thinsp;：</label>
 			<%= @user.phone_number %>
 		</p>
 		<p class="user-mail">

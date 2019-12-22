@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_18_103848) do
+ActiveRecord::Schema.define(version: 2019_12_21_110051) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "address"
@@ -121,6 +121,15 @@ ActiveRecord::Schema.define(version: 2019_12_18_103848) do
     t.integer "genre_id"
     t.datetime "deleted_at"
     t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "product_id"
+    t.string "content"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

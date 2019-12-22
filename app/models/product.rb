@@ -6,6 +6,7 @@ class Product < ApplicationRecord
 	validates :release_date, presence: true
 	validates :discs, presence: true
 
+	has_many :reviews,dependent: :destroy
 	has_many :arrivals
 	has_many :cart_items
 	has_many :users, through: :cart_items

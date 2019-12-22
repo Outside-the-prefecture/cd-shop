@@ -92,11 +92,12 @@ li{
 .baby{
 	text-align:center;
 	margin:0 auto;
+	font-family:'ヒラギノ角ゴPro W3','Hiragino Kaku Gothic Pro','游ゴシック','Yu Gothic','游ゴシック体','YuGothic',メイリオ,Meiryo,sans-serif;
 }
 .body{
     text-align:center;
     margin:0 auto;
-	font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+	font-family:'ヒラギノ角ゴPro W3','Hiragino Kaku Gothic Pro','游ゴシック','Yu Gothic','游ゴシック体','YuGothic',メイリオ,Meiryo,sans-serif;
 }
 
 .jacket{
@@ -379,3 +380,35 @@ text-align:center;
 	background: linear-gradient(transparent 70%, #a7d6ff 70%);
 }
 
+p.b-break{
+  word-break: break-all;
+}
+
+.review{
+	text-align:left;
+	padding-bottom:5px;
+	padding-left:5px;
+	margin-bottom:5px;
+	border-bottom:solid 1px gray;
+}
+
+.review-create{
+	text-align:left;
+	margin-top:48px;
+}
+
+.review-title{
+	margin-bottom:40px;
+}
+
+.review-count{
+	margin-bottom:25px;
+}
+
+.review-btn{
+	text-align:right;
+}
+
+.review-danger{
+	margin-left:10px;
+}
