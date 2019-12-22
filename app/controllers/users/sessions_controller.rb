@@ -2,7 +2,10 @@
 
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-
+skip_before_action :require_admin_login, raise: false
+skip_before_action :require_login
+before_action :require_admin_already
+before_action :require_user_already,only:[:create,:new]
   # GET /resource/sign_in
   # def new
   #   super

@@ -1,7 +1,14 @@
 class ProductsController < ApplicationController
+	skip_before_action :require_login
+	skip_before_action :require_admin_login, raise: false
+	before_action :require_admin_already
+
+
 	def index
 		@products =Product.page(params[:page]).per(12)
 		@product = Product.new
+		@all_rank = 0
+		@all_ranks = Product.find(Favorite.group(:product_id).order('count(product_id) desc').limit(4).pluck(:product_id))
 	end
 
 	def show
@@ -13,6 +20,8 @@ class ProductsController < ApplicationController
 		@orderitems=@product.order_items
 		@arrivals=@product.arrivals
 		@cartitem=CartItem.new
+		@review=Review.new
+		@reviews=@product.reviews
 	end
 
 	def create

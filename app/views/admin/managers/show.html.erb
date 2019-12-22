@@ -1,77 +1,76 @@
 <div class="body">
-	<h3>
-		<%= @user.last_name %>
-		<%= @user.first_name %>
-	</h3>
-	<%= link_to admin_manager_path(@user.id),method: :delete, data:{confirm: "本当に退会させますか？"},class: "btn btn-danger actions" do %>
-	<span>退会</span>
-	<% end %>
-	<%= link_to edit_admin_manager_path(@user.id),class: "btn btn-success actions" do %>
-	<span>編集</span>
-	<% end %>
-	<br>
-
-
-
-	<% @orders.each do |order| %>
-	<table class="table">
-		<thead>
-			<tr>
-				<th>受注日</th>
-				<th>決済方法</th>
-				<th>お届け先</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><%= order.created_at %></td>
-				<td><%= order.created_at %></td>
-				<td><%= order.delivery_target_address %></td>
-			</tr>
-		</tbody>
-	</table>
-	<table class="table">
-		<thead>
-			<tr>
-				<th>商品名</th>
-				<th>数量</th>
-				<th>状況</th>
-				<th>小計(税込)</th>
-				<th>送料</th>
-				<th>合計金額(税込)</th>
-			</tr>
-		</thead>
-		<thead>
-			<% order.order_items.each do |order_item| %>
-			<tr>
-				<td>
-					<%= order_item.product.name %>
-				</td>
-				<td>
-					<%=order_item.number %>
-				</td>
-				<td>
-					<%= order_item.product.status %>
-				</td>
-				<td></td>
-				<td></td>
-			</tr>
-			<% end %>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td>
-					<%= order.shipping_fee %>
-				</td>
-				<td>
-					<%= order.total_amount %>
-				</td>
-			</tr>
-		</thead>
-	</table>
-	<% end %>
+	<div class="container">
+		<div class="row">
+			<h3 class="cart">ユーザーネーム</h3>
+			<h3><%= @user.last_name %><%= @user.first_name %></h3>
+			<div class="row">
+			<%= link_to "編集", edit_admin_manager_path(@user.id),class: "btn btn-warning col-md-2 col-md-offset-1" %>
+			<%= link_to "退会", admin_manager_path(@user.id),method: :delete, data:{confirm: "本当に退会させますか？"},class: "btn btn-danger col-md-2 col-md-offset-1" %><br/>
+		    </div>
+			<h3 class="cart">受注一覧</h3>
+			<div class="col-md-12">
+				<div class="row">
+					<% @orders.each do |order| %>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>受注日&nbsp;&nbsp;&nbsp;<%= order.created_at.to_s(:datetime) %></th>
+								<th>決済方法&nbsp;&nbsp;&nbsp;<%= order.payment_method %></th>
+								<th>お届け先&nbsp;&nbsp;&nbsp;<%= order.delivery_target_address %></th>
+							</tr>
+						</thead>
+					</table>
+					<table class="table table-striped">
+						<thead class="test">
+							<tr>
+								<th>商品名</th>
+								<th>数量</th>
+								<th>状況</th>
+								<th>小計(税込)</th>
+								<th>送料</th>
+								<th>合計金額(税込)</th>
+							</tr>
+						</thead>
+						<thead>
+							<% order.order_items.each do |order_item| %>
+							<tr>
+								<td class="yuyu">
+									<%= order_item.product.name %>
+								</td>
+								<td>
+									<%=order_item.number %>
+								</td>
+								<td>
+									<%= order_item.product.status %>
+								</td>
+								<td>
+									<% orderprice =order_item.product.price.to_i*order_item.number.to_i*1.1 %>
+									￥<%= converting_to_jpy(orderprice.to_i) %>
+								</td>
+								<td></td>
+							    <td></td>
+							</tr>
+							<% end %>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>
+									<%= order.shipping_fee %>
+								</td>
+								<td>
+									<%= order.total_amount %>
+								</td>
+							</tr>
+						</thead>
+					</table>
+					<% end %>
+				<%= paginate @orderss %>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 

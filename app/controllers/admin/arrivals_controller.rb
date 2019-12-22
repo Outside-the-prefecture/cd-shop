@@ -1,4 +1,5 @@
 class Admin::ArrivalsController < ApplicationController
+  skip_before_action :require_login
 
   def create
   	@product=Product.find(params[:manager_product_id])

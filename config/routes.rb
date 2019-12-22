@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get "search" => "users#search"
   resources :products,only: [:show] do
     resource :favorites,only: [:create,:destroy]
+    resources :reviews,only: [:create,:edit,:update,:destroy]
   end
   resources :users,only: [:show,:edit,:update] do
     resources :favorites,only: [:index]
@@ -33,7 +34,7 @@ Rails.application.routes.draw do
   	resources :manager_products do
       resources :arrivals,only: [:create]
     end
-  	resources :manager_orders,only: [:index,:show]
+  	resources :manager_orders,only: [:index,:show,:update]
   	resources :artists,only: [:create]
   	resources :genres,only: [:create]
   	resources :labels,only: [:create]

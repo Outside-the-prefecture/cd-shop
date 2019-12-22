@@ -1,4 +1,6 @@
 class FavoritesController < ApplicationController
+	skip_before_action :require_admin_login, raise: false
+	before_action :correct_user, only: [:index]
 	def index
 		@user=User.find(params[:user_id])
 		@favorites=@user.favorites
@@ -17,6 +19,8 @@ else
 		@orderitems=@product.order_items
 		@arrivals=@product.arrivals
 		@cartitem=CartItem.new
+		@review=Review.new
+		@reviews=@product.reviews
 		render "products/show"
 	end
   end
@@ -33,7 +37,18 @@ else
 		@orderitems=@product.order_items
 		@arrivals=@product.arrivals
 		@cartitem=CartItem.new
+		@review=Review.new
+		@reviews=@product.reviews
 		render "products/show"
 	end
   end
+
+  private
+
+  	def correct_user
+		user=User.find(params[:user_id])
+		if current_user!=user
+			redirect_to user_favorites_path(user_id: current_user.id)
+		end
+	end
 end
