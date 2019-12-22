@@ -18,6 +18,8 @@ class ProductsController < ApplicationController
 		@orderitems=@product.order_items
 		@arrivals=@product.arrivals
 		@cartitem=CartItem.new
+		@review=Review.new
+		@reviews=@product.reviews
 	end
 
 	def create
