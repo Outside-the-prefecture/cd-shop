@@ -1,6 +1,18 @@
 class OrdersController < ApplicationController
 	skip_before_action :require_admin_login, raise: false
 	before_action :correct_user
+
+	require 'payjp'
+
+	  def purchase
+	    Payjp.api_key = "秘密鍵"
+	    Payjp::Charge.create(
+	      amount: 809, # 決済する値段
+	      card: params['payjp-token'], # フォームを送信すると作成・送信されてくるトークン
+	      currency: 'jpy'
+	    )
+	  end
+
 	def new
 		@user = User.find(params[:user_id])
 		@address = @user.addresses
