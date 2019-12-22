@@ -13,30 +13,40 @@ class CartItemsController < ApplicationController
 	     @review=Review.new
 		 @product=Product.find(params[:cart_item][:product])
 		 @reviews=@product.reviews
-	     if @cartitemequal=@usercarts.find_by(product_id: @product.id)
-			@count = params[:cart_item][:count]
-	        @cartitemequal.count=@cartitemequal.count.to_i + @count.to_i
-	        @cartitemequal.save
-	        flash[:notice]="カートに#{@count}個入りました"
-	        redirect_to product_path(@product.id)
-	    else
-			@cartitem=CartItem.new
-			@cartitem.count = params[:cart_item][:count]
-			@cartitem.product_id =@product.id
-			@cartitem.user_id=current_user.id
-
-			if @cartitem.save
-				flash[:notice]="カートに#{@cartitem.count}個入りました"
-				redirect_to product_path(@product.id)
-
-			else
+		if @product.status=="販売停止中"
 				@discs=@product.discs
-	            @count=0
-	            @number=0
+		        @count=0
+		        @number=0
 				@orderitems=@product.order_items
 				@arrivals=@product.arrivals
-				render "products/show"
-		    end
+				flash[:notice]="現在、#{@product.name}は販売停止中です。"
+			    redirect_to product_path(@product.id)
+	    else
+		     if @cartitemequal=@usercarts.find_by(product_id: @product.id)
+				@count = params[:cart_item][:count]
+				@cartitemequal.count=@cartitemequal.count.to_i + @count.to_i
+				@cartitemequal.save
+				flash[:notice]="カートに#{@count}個入りました"
+				redirect_to product_path(@product.id)
+		    else
+				@cartitem=CartItem.new
+				@cartitem.count = params[:cart_item][:count]
+				@cartitem.product_id =@product.id
+				@cartitem.user_id=current_user.id
+
+				if @cartitem.save
+					flash[:notice]="カートに#{@cartitem.count}個入りました"
+					redirect_to product_path(@product.id)
+
+				else
+					@discs=@product.discs
+		            @count=0
+		            @number=0
+					@orderitems=@product.order_items
+					@arrivals=@product.arrivals
+					render "products/show"
+			    end
+			end
 		end
 	end
 
