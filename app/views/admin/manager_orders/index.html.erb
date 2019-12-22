@@ -4,26 +4,26 @@
 			<h2 class="cart">受注一覧</h2>
 			<div class="col-md-12">
 				<table class='table table-hover table-inverse'>
-						<thead>
-							<tr>
-								<th>受注ID</th>
-								<th>顧客名</th>
-								<th>総計</th>
-								<th>受注日</th>
-								<th>配送ステータス</th>
-							</tr>
-						</thead>
-						<% @orders.each do |order| %>
-						<tbody>
-							<tr>
-								<td>	<%= link_to "#{order.id}", admin_manager_order_path(order.id)  %></td>
-								<td><%= order.last_name %><%= order.first_name %></td>
-								<td><%= order.total_amount %>円</td>
-								<td><%= order.created_at.to_s(:datetime_jp) %></td>
-								<td><%= order.delivery_status %></td>
-							</tr>
-						</tbody>
-						<% end %>
+					<thead>
+						<tr>
+							<th class="jyutyuu">受注ID</th>
+							<th class="jyutyuu">顧客名</th>
+							<th class="jyutyuu">総計</th>
+							<th class="jyutyuu">受注日</th>
+							<th class="jyutyuu">配送ステータス</th>
+						</tr>
+					</thead>
+					<% @orders.each do |order| %>
+					<tbody>
+						<tr>
+							<td><%= link_to "#{order.id}", admin_manager_order_path(order.id)  %></td>
+							<td><%= order.last_name %><%= order.first_name %></td>
+							<td><%= order.total_amount %>円</td>
+							<td><%= order.created_at.to_s(:datetime_jp) %></td>
+							<td><%= order.delivery_status %></td>
+						</tr>
+					</tbody>
+					<% end %>
 				</table>
 				<%= paginate @orders %>
 			</div>
