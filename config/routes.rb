@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   	resources :manager_products do
       resources :arrivals,only: [:create]
     end
-  	resources :manager_orders,only: [:index,:show]
+  	resources :manager_orders,only: [:index,:show,:update]
   	resources :artists,only: [:create]
   	resources :genres,only: [:create]
   	resources :labels,only: [:create]

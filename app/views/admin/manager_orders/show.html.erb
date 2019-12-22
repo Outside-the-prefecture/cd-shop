@@ -64,7 +64,15 @@
 						</tr>
 					</thead>
 				</table>
+
+				<h2>配送ステータス</h2>
+				<%= form_for @order, url: admin_manager_order_path do |f| %>
+				<%= f.text_field :delivery_status %>
+				<%= f.submit '追加' %>
+				<% end %>
 			</div>
 		</div>
 	</div>
 </div>
+
+

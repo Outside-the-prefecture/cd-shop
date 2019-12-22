@@ -13,6 +13,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
     	t.integer :shipping_fee
     	t.integer :total_amount
     	t.string :delivery_target_address
+        t.string :delivery_status , default: "発送準備中"
 
       t.timestamps
     end
