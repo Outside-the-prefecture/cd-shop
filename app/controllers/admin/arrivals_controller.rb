@@ -13,8 +13,7 @@ class Admin::ArrivalsController < ApplicationController
 		@discs=@product.discs
 		@orderitems=@product.order_items
 		@arrivals=@product.arrivals
-		@arrival=Arrival.new
-		render "manager_products/show"
+		render "admin/manager_products/show"
 	end
 
   end
