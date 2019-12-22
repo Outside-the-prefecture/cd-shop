@@ -6,6 +6,7 @@ class Admin::ManagersController < ApplicationController
 
 	def show
 		@user=User.find(params[:id])
+		@orderss = Order.page(params[:page]).per(5)
 		@orders=@user.orders
 	end
 
@@ -34,3 +35,4 @@ private
   	  params.require(:user).permit(:last_name, :first_name, :kana_last_name, :kana_first_name, :email, :phone_number, :postal_code, :address, addresses_attributes: [:address,:user_id,:id,:_destroy])
   end
 end
+

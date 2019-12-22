@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 2019_12_18_103848) do
     t.integer "shipping_fee"
     t.integer "total_amount"
     t.string "delivery_target_address"
+    t.string "delivery_status", default: "発送準備中"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
