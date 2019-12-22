@@ -2,6 +2,8 @@ class ProductsController < ApplicationController
 	skip_before_action :require_login
 	skip_before_action :require_admin_login, raise: false
 	before_action :require_admin_already
+
+
 	def index
 		@products =Product.page(params[:page]).per(12)
 		@product = Product.new
