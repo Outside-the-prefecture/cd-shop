@@ -23,6 +23,7 @@
 
 .row {
 	margin-top: 50px;
+  text-align: center;
 }
 
 .itiran{
@@ -33,13 +34,18 @@
   border: dashed 1px #96c2fe;
   padding: 0.2em 0.5em;
   color: #454545;
+  text-align: left;
 }
 
 .product-table{
   margin-bottom: 50px;
 }
 
-.container{
-  margin-bottom: 50px;
-}
 
+.jii {
+  border-bottom:2px solid #000000;
+  font-size: 30px;
+  text-align: left;
+  margin-top: 50px;
+  font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}

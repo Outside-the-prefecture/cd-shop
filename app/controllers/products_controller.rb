@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
 
 
 	def index
-		@products =Product.page(params[:page]).per(12)
+		@products =Product.page(params[:page]).per(24)
 		@product = Product.new
 		@all_rank = 0
 		@all_ranks = Product.find(Favorite.group(:product_id).order('count(product_id) desc').limit(4).pluck(:product_id))
