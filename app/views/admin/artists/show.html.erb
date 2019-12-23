@@ -13,7 +13,7 @@
 				<h5 class="genre search-artist">人気歌手から探す</h5>
 				<div class="row">
 					<div class="col-md-8 genre">
-						<% @all_ranking.each do |product| %>
+						<% @all_ranks.each do |product| %>
 						<% if @artistname==product.artist.name %>
 						<% else %>
 						    <p class="artist-search-link">
@@ -26,38 +26,7 @@
 				</div>
 			</div>
 			<div class="col-md-9 col-md-offset-1">
-				<p class="jii">人気商品</p>
-				<div class="row">
-					<% @all_ranks.each do |product| %>
-					<% @all_rank = @all_rank+1 %>
-					<div class="col-md-2">
-						<% if @all_rank==1 %>
-						<i class="fas fa-crown first"></i>
-						<% elsif @all_rank==2 %>
-						<i class="fas fa-crown second"></i>
-						<% elsif @all_rank==3 %>
-						<i class="fas fa-crown third"></i>
-						<% else %>
-						<span class="forth">
-						<%= @all_rank %>
-					    </span>
-						<% end %>
-						<br>
-						<%= link_to product_path(product.id) do %>
-						<div class="product-image-margin">
-							<%= attachment_image_tag product, :jacket_image, :fill, 110,110, fallback: "",size: "100*100" %><br/>
-			            </div>
-			            <div class="product-name-artist">
-			            	<%= product.artist.name %>/&nbsp;&nbsp;<%= product.name.truncate(10) %><br/>
-			            </div>
-			            <p class="kakaku">価格</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="price-color"><strong>￥<%= converting_to_jpy(product.price) %></strong></span><br/>
-						<p class="linkborder"><%= product.status %></p>
-						<% end %>
-					</div>
-					<% end %>
-				</div>
-                <%= paginate @products %>
-				<p class= "jii" >商品一覧</p>
+				<p class= "jii" ><%= @artist.name %></p>
 				<div class="row">
 					<% @products.each do |product| %>
 					<div class="col-md-2">
@@ -72,9 +41,8 @@
 					</div>
 					<% end %>
 				</div>
+				<%= paginate @products %>
 			</div>
 		</div>
 	</div>
 </div>
-<%= paginate @products %>
-

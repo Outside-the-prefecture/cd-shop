@@ -5,14 +5,28 @@
 				<h5 class="genre">ジャンルから探す</h5>
 				<% @genres.each do |genre| %>
 				<div class="row">
-					<div class="col-md-12 genre">
+					<div class="col-md-8 genre">
 						<%= link_to genre.name, admin_genre_path(genre.id) %>
 					</div>
 				</div>
 				<% end %>
+				<h5 class="genre search-artist">人気歌手から探す</h5>
+				<div class="row">
+					<div class="col-md-8 genre">
+						<% @all_ranks.each do |product| %>
+						<% if @artistname==product.artist.name %>
+						<% else %>
+						    <p class="artist-search-link">
+							   <%= link_to product.artist.name, admin_artist_path(product.artist.id) %>
+						    </p>
+							<% @artistname = product.artist.name %>
+						<% end %>
+				        <% end %>
+					</div>
+				</div>
 			</div>
 			<div class="col-md-9 col-md-offset-1">
-				<p class= "jii" ><%= @genre.name %>一覧</p>
+				<p class= "jii" ><%= @genre.name %></p>
 				<div class="row">
 					<% @products.each do |product| %>
 					<div class="col-md-2">
