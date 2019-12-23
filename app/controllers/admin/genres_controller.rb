@@ -4,6 +4,9 @@ class Admin::GenresController < ApplicationController
 	def show
 		@genre=Genre.find(params[:id])
 		@products=@genre.products.page(params[:page]).per(24)
+		@artists=Artist.all
+	    @all_ranks = Product.find(Favorite.group(:product_id).order('count(product_id) desc').limit(30).pluck(:product_id))
+		@artistname = ""
 		@genres=Genre.all
 	end
 

@@ -422,9 +422,25 @@ p.b-break{
 .review-edit-head{
 	margin-bottom:40px;
 }
+
+.aiueo{
+	border-collapse:collapse;
+  margin:0 auto;
+}
+
+.aiueo th,td{
+	padding:10px;
+}
 .aiueo th{
+    color:#fff;
+  background:#005ab3;
 	text-align: center;
-	}
+
+}
+
+.aiueo tr:nth-child(odd){
+	background:#e6f2ff;
+}
 
 .fa-crown{
 	font-size:35px;
@@ -492,4 +508,10 @@ p.b-break{
 
 .kai th{
 	text-align: center;
+.search-artist{
+	margin-top:50px;
+}
+
+.artist-search-link{
+	margin-bottom:50px;
 }

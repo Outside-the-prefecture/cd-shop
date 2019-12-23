@@ -1,5 +1,14 @@
 class Admin::ArtistsController < ApplicationController
 	skip_before_action :require_login
+	skip_before_action :require_admin_login,only:[:show]
+	def show
+		@artist=Artist.find(params[:id])
+		@products=@artist.products.page(params[:page]).per(24)
+		@genres=Genre.all
+        @artists=Artist.all
+		@all_ranks = Product.find(Favorite.group(:product_id).order('count(product_id) desc').limit(30).pluck(:product_id))
+		@artistname = ""
+	end
 	def create
 		@artist=Artist.new(artist_params)
 		if @artist.save
