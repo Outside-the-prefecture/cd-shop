@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
 		@genres=Genre.all
 		@artists=Artist.all
 		@all_rank = 0
+		@artistname = ""
 		@all_ranks = Product.find(Favorite.group(:product_id).order('count(product_id) desc').limit(12).pluck(:product_id))
 		@all_ranking = Product.find(Favorite.group(:product_id).order('count(product_id) desc').limit(30).pluck(:product_id))
 	end

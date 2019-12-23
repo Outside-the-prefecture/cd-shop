@@ -30,6 +30,10 @@ class UsersController < ApplicationController
 
 	def search
 		@artist_or_genre_or_song_or_product=params[:option]
+		      @genres=Genre.all
+		      @artists=Artist.all
+		      @artistname = ""
+		      @all_ranks = Product.find(Favorite.group(:product_id).order('count(product_id) desc').limit(30).pluck(:product_id))
 		if    @artist_or_genre_or_song_or_product=="1"
 			  @artists=Artist.where(name: params[:search])
 		elsif @artist_or_genre_or_song_or_product=="2"
