@@ -35,7 +35,7 @@ Rails.application.routes.draw do
       resources :arrivals,only: [:create]
     end
   	resources :manager_orders,only: [:index,:show,:update]
-  	resources :artists,only: [:create]
+  	resources :artists,only: [:create,:show]
   	resources :genres,only: [:create,:show]
   	resources :labels,only: [:create]
   end
