@@ -17,7 +17,7 @@
 					<tbody>
 						<% @favorites.each do |favorite| %>
 						<tr>
-							<td class="cd"><i class="fas fa-compact-disc fa-spin"></i></td>
+							<td class="cd"><i class="fas fa-compact-disc fa-spin compact-disc"></i></td>
 							<td class="k"><%= attachment_image_tag favorite.product, :jacket_image, :fill, 80,80, fallback: "",size: "100*100" %>
 							<td class="moji"><%= link_to favorite.product.name,product_path(favorite.product.id) %></td>
 							<td class="moji">￥<%= converting_to_jpy(favorite.product.price) %></td>
