@@ -1,5 +1,12 @@
 class Admin::GenresController < ApplicationController
 	skip_before_action :require_login
+	skip_before_action :require_admin_login,only:[:show]
+	def show
+		@genre=Genre.find(params[:id])
+		@products=@genre.products.page(params[:page]).per(24)
+		@genres=Genre.all
+	end
+
 	def create
 		@genre=Genre.new(genre_params)
 		if @genre.save

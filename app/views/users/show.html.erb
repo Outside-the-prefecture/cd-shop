@@ -11,7 +11,7 @@
 		</p>
 		<% @addresses.each do |address| %>
 	    	<p class="user-address-other">
-	    		&ensp;<%= address.address %>
+	    		&ensp;&ensp;&ensp;&ensp;&ensp;<%= address.address %>
 	       </p>
 	    <% end %>
 	        <p class="user-post">
@@ -41,12 +41,15 @@
 		        <% @orders.each do |order| %>
 					<div class="col-md-3 col-md-offset-2">
 						<%= link_to "購入詳細",user_history_path(user_id: @user.id , id: order.id),class: "btn-circle-flat" %>
-						<p class="day"><strong>購入日時</strong><br>：<%= order.created_at.to_s(:datetime_jp) %></p>
-						<p class="souhu"><strong>送付先</strong><br>：<%= order.delivery_target_address %></p>
-						<p class="en"><strong>総額</strong><br>：<%= order.total_amount %></p>
+						<p class="day"><strong>購入日時</strong><br><%= order.created_at.to_s(:datetime_jp) %></p>
+						<p class="souhu"><strong>送付先</strong><br><%= order.delivery_target_address %></p>
+						<p class="en"><strong>総額</strong><br>￥<%= converting_to_jpy(order.total_amount) %></p>
+						<p><strong>購入商品</strong><br>
 						<% order.order_items.each do |order_item| %>
-						購入商品：<%= order_item.product.name %>
+						<%= order_item.product.name %>
+						<br>
 		                <% end %>
+		                </p>
 			        </div>
 		        <% end %>
 		        <div class="row">
