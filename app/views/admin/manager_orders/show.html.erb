@@ -19,7 +19,7 @@
 					</tr>
 				</table>
 
-				<table class="table table-striped">
+				<table class="table table-striped ai">
 					<thead>
 						<tr>
 							<th>商品名</th>
@@ -44,7 +44,7 @@
 							</td>
 							<td>
 								<% @totalamount=order_item.product.price*order_item.number*1.1 %>
-								<%= @totalamount.to_i %>
+								<%= converting_to_jpy(@totalamount.to_i) %>
 							</td>
 							<td></td>
 							<td></td>
@@ -59,7 +59,8 @@
 								<%= @order.shipping_fee %>
 							</td>
 							<td>
-								<%= @order.total_amount %>
+							<%= converting_to_jpy(@order.total_amount) %>
+
 							</td>
 						</tr>
 					</thead>
