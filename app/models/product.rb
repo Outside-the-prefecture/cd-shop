@@ -1,5 +1,7 @@
 class Product < ApplicationRecord
 
+    acts_as_paranoid
+
 	validates :name, presence: true
 	validates :jacket_image , presence: true
 	validates :price , presence: true
