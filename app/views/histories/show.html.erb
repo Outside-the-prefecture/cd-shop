@@ -5,7 +5,7 @@
 			<tr>
 				<th>注文ID:&nbsp;&nbsp;&nbsp;<%= @order.id %></th>
 				<th>注文日時:&nbsp;&nbsp;&nbsp;<%= @order.created_at.to_s(:datetime_jp) %></th>
-				<th>合計金額:&nbsp;&nbsp;&nbsp;<%= @order.total_amount %></th>
+				<th>合計金額:&nbsp;&nbsp;&nbsp;<%= converting_to_jpy(@order.total_amount) %></th>
 				<th>支払い方法:&nbsp;&nbsp;&nbsp;<%= @order.payment_method %></th>
 				<th>送付先:&nbsp;&nbsp;&nbsp;<%= @order.delivery_target_address %></th>
 			</tr>
@@ -29,10 +29,10 @@
 			<tr>
 				<td><%= orderitem.product.id %></td>
 				<td><%= orderitem.product.name %></td>
-				<td><%= orderitem.product.price %></td>
+				<td><%= converting_to_jpy(orderitem.product.price) %></td>
 				<td><%= orderitem.number %></td>
 				<td>
-					<%= orderitem.product.price*orderitem.number %>
+					<%= converting_to_jpy(orderitem.product.price*orderitem.number) %>
 				</td>
 				<td></td>
 				<td></td>
@@ -45,7 +45,7 @@
 				<td></td>
 				<td></td>
 				<td><%= @order.shipping_fee %></td>
-				<td><%= @order.total_amount %></td>
+				<td><%= converting_to_jpy(@order.total_amount) %></td>
 			</tr>
 		</tbody>
 	</table>
