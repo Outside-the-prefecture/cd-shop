@@ -35,16 +35,16 @@
 							<% order.order_items.each do |order_item| %>
 							<tr>
 								<td class="yuyu">
-									<%= order_item.product.name %>
+									<%= Product.with_deleted.find(order_item.product_id).name %>
 								</td>
 								<td>
 									<%=order_item.number %>
 								</td>
 								<td>
-									<%= order_item.product.status %>
+									<%= Product.with_deleted.find(order_item.product_id).status %>
 								</td>
 								<td>
-									<% orderprice =order_item.product.price.to_i*order_item.number.to_i*1.1 %>
+									<% orderprice =Product.with_deleted.find(order_item.product_id).price.to_i*order_item.number.to_i*1.1 %>
 									￥<%= converting_to_jpy(orderprice.to_i) %>
 								</td>
 								<td></td>
