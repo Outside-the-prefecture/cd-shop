@@ -8,8 +8,10 @@
           <div class="col-md-2">
             <%= link_to  admin_manager_product_path(product.id), {class: "linkborder"} do %>
             <%= attachment_image_tag product, :jacket_image, :fill, 110,110, fallback: "",size: "100*100" %><br/>
+            <div class="product-name-artist">
             <%= product.artist.name %>/&nbsp;&nbsp;<%= product.name.truncate(10) %><br/>
-            <p class="kakaku">価格</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>￥<%= converting_to_jpy(product.price) %></strong><br/>
+          </div>
+            <p class="kakaku">価格</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="price-color"><strong>￥<%= converting_to_jpy(product.price) %></strong></span><br/>
             <strong>在庫数</strong>&nbsp;&nbsp;&nbsp;&nbsp;
             <% count = 0 %>
             <% number = 0 %>

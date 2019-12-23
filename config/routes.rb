@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     end
   	resources :manager_orders,only: [:index,:show,:update]
   	resources :artists,only: [:create]
-  	resources :genres,only: [:create]
+  	resources :genres,only: [:create,:show]
   	resources :labels,only: [:create]
   end
   patch 'users/:id', to: 'users#destroy'

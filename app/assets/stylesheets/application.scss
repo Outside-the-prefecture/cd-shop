@@ -424,6 +424,7 @@ p.b-break{
 }
 .aiueo th{
 	text-align: center;
+	}
 
 .fa-crown{
 	font-size:35px;
@@ -431,6 +432,7 @@ p.b-break{
 
 .first{
 	color:#FFD700;
+	height:5px;
 }
 
 .second{
@@ -439,8 +441,51 @@ p.b-break{
 
 .third{
 	color:#976B2F;
+	height:5px;
+}
+
+.forth{
+    display:inline-block;
+	height:36px;
+	line-height:36px;
 }
 
 .arrival-touroku{
 	text-align:left;
+}
+.equal-artist{
+	text-align:left;
+}
+
+.genre{
+	text-align:left;
+}
+
+.product-name-artist{
+	height:45px;
+}
+
+.linkborder{
+	margin-bottom:50px;
+}
+
+.price-color{
+	color:#993300;
+}
+
+.product-image-margin{
+	margin-top:5px;
+}
+
+.favorite-table th{
+	text-align:center;
+}
+
+.k{
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+.fa-compact-disc{
+	line-height:80px;
 }

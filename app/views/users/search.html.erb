@@ -9,22 +9,25 @@
                 <% if artist.products.count==0 %>
                     <%= "#{artist.name}の商品は取り扱っておりません。" %>
                 <% else %>
-                    <table class="table table-striped">
-                        <thead>
-                        		<tr>
-                        			<th></th>
-                        			<th><strong><%= artist.name %></strong></th>
-                        		</tr>
-                        </thead>
-                        <% artist.products.each do |product| %>
-                        	<thead>
-                        		<tr>
-                        			<td></td>
-                        			<td><%= link_to product.name,product_path(product.id) %></td>
-                        		</tr>
-                            </thead>
-                        <% end %>
-                    </table>
+                    <div class="container">
+                        <div class="row">
+                            <h4><%= "#{artist.name}" %>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <% artist.products.each do |product| %>
+                                    <div class="col-md-2">
+                                        <%= link_to product_path(product.id) do %>
+                                        <%= attachment_image_tag product, :jacket_image, :fill, 110,110, fallback: "",size: "100*100" %><br/>
+                                        <p class="link"><%= product.name.truncate(8) %></p>
+                                        <p class="kakaku">価格</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>￥<%= converting_to_jpy(product.price) %></strong><br/>
+                                        <p class="linkborder"><%= product.status %></p>
+                                        <% end %>
+                                    </div>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 <% end %>
             <% end %>
         <% end %>
@@ -39,22 +42,25 @@
                 <% if genre.products.count==0 %>
                         <%= "#{genre.name}の商品は取り扱っておりません。" %>
                 <% else %>
-                    <table class="table table-striped">
-                        <thead>
-                        	<tr>
-                        		<th></th>
-                        		<th><strong><%= genre.name %></strong></th>
-                        	</tr>
-                        </thead>
-                        <% genre.products.each do |product| %>
-                        	<thead>
-                        	    <tr>
-                        	    	<td></td>
-                    				<td><%= link_to product.name,product_path(product.id) %></td>
-                        		</tr>
-                        	</thead>
-                        <% end %>
-                    </table>
+                    <div class="container">
+                        <div class="row">
+                            <h4><%= "#{genre.name}" %>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <% genre.products.each do |product| %>
+                                    <div class="col-md-2">
+                                        <%= link_to product_path(product.id) do %>
+                                        <%= attachment_image_tag product, :jacket_image, :fill, 110,110, fallback: "",size: "100*100" %><br/>
+                                        <p class="link"><%= product.artist.name %>/&nbsp;&nbsp;<%= product.name.truncate(8) %></p>
+                                        <p class="kakaku">価格</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>￥<%= converting_to_jpy(product.price) %></strong><br/>
+                                        <p class="linkborder"><%= product.status %></p>
+                                        <% end %>
+                                    </div>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 <% end %>
             <% end %>
         <% end %>
@@ -62,29 +68,45 @@
     <% elsif @artist_or_genre_or_song_or_product=="3" %>
         <h4 class="hit"><%= "#{@songs.count}件の検索結果"%></h4>
         <h2>song</h2>
-        <table class="table table-striped">
-            <% @songs.each do |song| %>
-            	<thead>
-            	    <tr>
-            	    	<td><%= link_to song.name %></td>
-        				<td><%= link_to song.disc.product.name,product_path(song.disc.product.id) %></td>
-            		</tr>
-            	</thead>
-            <% end %>
-        </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <% @songs.each do |song| %>
+                                    <div class="col-md-2">
+                                        <%= link_to product_path(song.disc.product.id) do %>
+                                        <%= attachment_image_tag song.disc.product, :jacket_image, :fill, 110,110, fallback: "",size: "100*100" %><br/>
+                                        <p class="link"><%= song.disc.product.artist.name %>/&nbsp;&nbsp;<%= song.disc.product.name.truncate(8) %></p>
+                                        <p class="kakaku">価格</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>￥<%= converting_to_jpy(song.disc.product.price) %></strong><br/>
+                                        <p class="linkborder"><%= song.disc.product.status %></p>
+                                        <% end %>
+                                    </div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
     <% else %>
         <h4 class="hit"><%= "#{@products.count}件の検索結果"%></h4>
         <h2>product</h2>
-        <table class="table table-striped">
-            <thead>
-                <% @products.each do |product| %>
-            	    <tr>
-            	    	<td></td>
-        				<td><%= link_to product.name,product_path(product) %></td>
-            		</tr>
-                <% end %>
-            </thead>
-        </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <% @products.each do |product| %>
+                                    <div class="col-md-2">
+                                        <%= link_to product_path(product.id) do %>
+                                        <%= attachment_image_tag product, :jacket_image, :fill, 110,110, fallback: "",size: "100*100" %><br/>
+                                        <p class="link"><%= product.artist.name %>/&nbsp;&nbsp;<%= product.name.truncate(8) %></p>
+                                        <p class="kakaku">価格</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>￥<%= converting_to_jpy(product.price) %></strong><br/>
+                                        <p class="linkborder"><%= product.status %></p>
+                                        <% end %>
+                                    </div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
     <% end %>
 </div>

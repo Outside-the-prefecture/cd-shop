@@ -5,9 +5,10 @@
 		</div>
 		<div class="container">
 			<div class="row">
-				<table class="table-striped col-md-12">
+				<table class="table-striped col-md-12 favorite-table">
 					<thead>
 						<tr>
+							<th></th>
 							<th></th>
 							<th>お気に入り商品</th>
 							<th>価格</th>
@@ -17,6 +18,7 @@
 						<% @favorites.each do |favorite| %>
 						<tr>
 							<td class="cd"><i class="fas fa-compact-disc fa-spin"></i></td>
+							<td class="k"><%= attachment_image_tag favorite.product, :jacket_image, :fill, 80,80, fallback: "",size: "100*100" %>
 							<td class="moji"><%= link_to favorite.product.name,product_path(favorite.product.id) %></td>
 							<td class="moji">￥<%= converting_to_jpy(favorite.product.price) %></td>
 						</tr>
