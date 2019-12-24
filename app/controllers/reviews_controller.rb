@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
 	skip_before_action :require_admin_login, raise: false
+	skip_before_action :require_login,only: [:index]
 	before_action :require_admin_already
 	before_action :correct_user,only:[:edit]
 	def index

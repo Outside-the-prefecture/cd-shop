@@ -38,6 +38,20 @@
                             </div>
                             <div class="col-md-9 col-md-offset-1">
                                 <div class="row">
+                                    <% if admin_signed_in? %>
+                                    <% artist.products.each do |product| %>
+                                    <div class="col-md-2">
+                                        <%= link_to admin_manager_product_path(product.id) do %>
+                                        <%= attachment_image_tag product, :jacket_image, :fill, 110,110, fallback: "",size: "100*100" %><br/>
+                                        <div class="product-name-artist">
+                                            <%= product.artist.name %>/&nbsp;&nbsp;<%= product.name.truncate(10) %><br/>
+                                        </div>
+                                        <p class="kakaku">価格</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="price-color"><strong>￥<%= converting_to_jpy(product.price) %></strong></span><br/>
+                                        <p class="linkborder"><%= product.status %></p>
+                                        <% end %>
+                                    </div>
+                                    <% end %>
+                                    <% else %>
                                     <% artist.products.each do |product| %>
                                     <div class="col-md-2">
                                         <%= link_to product_path(product.id) do %>
@@ -49,6 +63,7 @@
                                         <p class="linkborder"><%= product.status %></p>
                                         <% end %>
                                     </div>
+                                    <% end %>
                                     <% end %>
                                 </div>
                             </div>
@@ -97,6 +112,20 @@
                             </div>
                             <div class="col-md-9 col-md-offset-1">
                                 <div class="row">
+                                    <% if admin_signed_in? %>
+                                    <% genre.products.each do |product| %>
+                                    <div class="col-md-2">
+                                        <%= link_to admin_manager_product_path(product.id) do %>
+                                        <%= attachment_image_tag product, :jacket_image, :fill, 110,110, fallback: "",size: "100*100" %><br/>
+                                        <div class="product-name-artist">
+                                            <%= product.artist.name %>/&nbsp;&nbsp;<%= product.name.truncate(10) %><br/>
+                                        </div>
+                                        <p class="kakaku">価格</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="price-color"><strong>￥<%= converting_to_jpy(product.price) %></strong></span><br/>
+                                        <p class="linkborder"><%= product.status %></p>
+                                        <% end %>
+                                    </div>
+                                    <% end %>
+                                    <% else %>
                                     <% genre.products.each do |product| %>
                                     <div class="col-md-2">
                                         <%= link_to product_path(product.id) do %>
@@ -108,6 +137,7 @@
                                         <p class="linkborder"><%= product.status %></p>
                                         <% end %>
                                     </div>
+                                    <% end %>
                                     <% end %>
                                 </div>
                             </div>
@@ -148,6 +178,20 @@
                 </div>
                 <div class="col-md-9 col-md-offset-1">
                     <div class="row">
+                        <% if admin_signed_in? %>
+                        <% @songs.each do |song| %>
+                        <div class="col-md-2">
+                            <%= link_to admin_manager_product_path(song.disc.product.id) do %>
+                            <%= attachment_image_tag song.disc.product, :jacket_image, :fill, 110,110, fallback: "",size: "100*100" %><br/>
+                            <div class="product-name-artist">
+                                <%= song.disc.product.artist.name %>/&nbsp;&nbsp;<%= song.disc.product.name.truncate(10) %><br/>
+                            </div>
+                            <p class="kakaku">価格</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="price-color"><strong>￥<%= converting_to_jpy(song.disc.product.price) %></strong></span><br/>
+                            <p class="linkborder"><%= song.disc.product.status %></p>
+                            <% end %>
+                        </div>
+                        <% end %>
+                        <% else %>
                         <% @songs.each do |song| %>
                         <div class="col-md-2">
                             <%= link_to product_path(song.disc.product.id) do %>
@@ -159,6 +203,7 @@
                             <p class="linkborder"><%= song.disc.product.status %></p>
                             <% end %>
                         </div>
+                        <% end %>
                         <% end %>
                     </div>
                 </div>
@@ -196,6 +241,20 @@
                             </div>
                             <div class="col-md-9 col-md-offset-1">
                                 <div class="row">
+                                    <% if admin_signed_in? %>
+                                    <% @products.each do |product| %>
+                                    <div class="col-md-2">
+                                        <%= link_to admin_manager_product_path(product.id) do %>
+                                        <%= attachment_image_tag product, :jacket_image, :fill, 110,110, fallback: "",size: "100*100" %><br/>
+                                        <div class="product-name-artist">
+                                            <%= product.artist.name %>/&nbsp;&nbsp;<%= product.name.truncate(10) %><br/>
+                                        </div>
+                                        <p class="kakaku">価格</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="price-color"><strong>￥<%= converting_to_jpy(product.price) %></strong></span><br/>
+                                        <p class="linkborder"><%= product.status %></p>
+                                        <% end %>
+                                    </div>
+                                    <% end %>
+                                    <% else %>
                                     <% @products.each do |product| %>
                                     <div class="col-md-2">
                                         <%= link_to product_path(product.id) do %>
@@ -207,6 +266,7 @@
                                         <p class="linkborder"><%= product.status %></p>
                                         <% end %>
                                     </div>
+                                    <% end %>
                                     <% end %>
                                 </div>
                             </div>

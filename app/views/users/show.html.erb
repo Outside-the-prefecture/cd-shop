@@ -46,7 +46,7 @@
 						<p class="en"><strong>総額</strong><br>￥<%= converting_to_jpy(order.total_amount) %></p>
 						<p><strong>購入商品</strong><br>
 						<% order.order_items.each do |order_item| %>
-						<%= order_item.product.name %>
+						<%= Product.with_deleted.find(order_item.product_id).name %>
 						<br>
 		                <% end %>
 		                </p>
