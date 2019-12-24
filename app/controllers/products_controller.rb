@@ -25,7 +25,9 @@ class ProductsController < ApplicationController
 		@arrivals=@product.arrivals
 		@cartitem=CartItem.new
 		@review=Review.new
-		@reviews=@product.reviews
+		@reviewscount=@product.reviews
+		@reviews=Review.where(product_id:@product.id).limit(10)
+		@products=Product.order("RANDOM()").limit(6)
 	end
 
 	def create

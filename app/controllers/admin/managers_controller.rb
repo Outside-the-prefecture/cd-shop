@@ -1,7 +1,7 @@
 class Admin::ManagersController < ApplicationController
 	skip_before_action :require_login
 	def index
-		@users=User.all
+		@users=User.page(params[:page]).per(50)
 	end
 
 	def show
