@@ -6,7 +6,7 @@ class Admin::ArtistsController < ApplicationController
 		@products=@artist.products.page(params[:page]).per(24)
 		@genres=Genre.all
         @artists=Artist.all
-		@all_ranks = Product.find(Favorite.group(:product_id).order('count(product_id) desc').limit(30).pluck(:product_id))
+		@all_ranks = Product.with_deleted.find(Favorite.group(:product_id).order('count(product_id) desc').limit(30).pluck(:product_id))
 		@artistname = ""
 	end
 	def create
