@@ -4,8 +4,8 @@
 			<h3 class="cart">ユーザーネーム</h3>
 			<h3><%= @user.last_name %><%= @user.first_name %></h3>
 			<div class="row">
-			<%= link_to "編集", edit_admin_manager_path(@user.id),class: "btn btn-warning col-md-2 col-md-offset-1" %>
-			<%= link_to "退会", admin_manager_path(@user.id),method: :delete, data:{confirm: "本当に退会させますか？"},class: "btn btn-danger col-md-2 col-md-offset-1" %><br/>
+			<%= link_to "編集", edit_admin_manager_path(@user.id),class: "btn btn-warning col-md-2 col-md-offset-3" %>
+			<%= link_to "退会", admin_manager_path(@user.id),method: :delete, data:{confirm: "本当に退会させますか？"},class: "btn btn-danger col-md-2 col-md-offset-2" %><br/>
 		    </div>
 			<h3 class="cart">受注一覧</h3>
 			<div class="col-md-12">
@@ -21,7 +21,7 @@
 						</thead>
 					</table>
 					<table class="table table-striped">
-						<thead class="test">
+						<thead class="test ai aiueo">
 							<tr>
 								<th>商品名</th>
 								<th>数量</th>
@@ -45,7 +45,7 @@
 								</td>
 								<td>
 									<% orderprice =Product.with_deleted.find(order_item.product_id).price.to_i*order_item.number.to_i*1.1 %>
-									￥<%= converting_to_jpy(orderprice.to_i) %>
+									<%= converting_to_jpy(orderprice.to_i) %>
 								</td>
 								<td></td>
 							    <td></td>
@@ -60,13 +60,13 @@
 									<%= order.shipping_fee %>
 								</td>
 								<td>
-									<%= order.total_amount %>
+									￥<%= converting_to_jpy(order.total_amount) %>
 								</td>
 							</tr>
 						</thead>
 					</table>
 					<% end %>
-				<%= paginate @orderss %>
+				<%= paginate @orders %>
 				</div>
 			</div>
 		</div>
