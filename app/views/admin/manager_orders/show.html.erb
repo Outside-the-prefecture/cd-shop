@@ -18,7 +18,7 @@
 						<td><%= @order.delivery_target_address %></td>
 					</tr>
 				</table>
-				<table class="table table-striped ai">
+				<table class="table table-striped ai aiueo">
 					<thead>
 						<tr>
 							<th>商品名</th>
@@ -58,7 +58,7 @@
 								<%= @order.shipping_fee %>
 							</td>
 							<td>
-							<%= converting_to_jpy(@order.total_amount) %>
+							￥<%= converting_to_jpy(@order.total_amount) %>
 
 							</td>
 						</tr>
