@@ -27,7 +27,8 @@ class ProductsController < ApplicationController
 		@review=Review.new
 		@reviewscount=@product.reviews
 		@reviews=Review.where(product_id:@product.id).limit(10)
-		@products=Product.order("RANDOM()").limit(6)
+		@artist=@product.artist
+		@products=Product.where(artist_id: @artist.id).order("RANDOM()").limit(6)
 	end
 
 	def create
