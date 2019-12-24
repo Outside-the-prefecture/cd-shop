@@ -168,7 +168,7 @@
             <%= link_to product_path(product.id) do %>
                   <%= attachment_image_tag product, :jacket_image, :fill, 110,110, fallback: "",size: "100*100" %><br/>
                   <div class="product-name-artist">
-                    <%= product.artist.name %>/&nbsp;&nbsp;<%= product.name.truncate(10) %><br/>
+                    <%= product.artist.name %>/&nbsp;&nbsp;<%= product.name.truncate(14) %><br/>
                   </div>
                   <p class="kakaku">価格</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="price-color"><strong>￥<%= converting_to_jpy(product.price) %></strong></span><br/>
             <p class="linkborder"><%= product.status %></p>
