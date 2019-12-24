@@ -27,12 +27,12 @@
 		<tbody>
 			<% @orderitems.each do |orderitem| %>
 			<tr>
-				<td><%= orderitem.product.id %></td>
-				<td><%= orderitem.product.name %></td>
-				<td><%= orderitem.product.price %></td>
+				<td><%= Product.with_deleted.find(orderitem.product_id).id %></td>
+				<td><%= Product.with_deleted.find(orderitem.product_id).name %></td>
+				<td><%= Product.with_deleted.find(orderitem.product_id).price %></td>
 				<td><%= orderitem.number %></td>
 				<td>
-					<%= orderitem.product.price*orderitem.number %>
+					<%= Product.with_deleted.find(orderitem.product_id).price*orderitem.number %>
 				</td>
 				<td></td>
 				<td></td>
