@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
 	before_action :correct_user, only: [:index]
 	def index
 		@user=User.find(params[:user_id])
-		@favorites=@user.favorites
+		@favorites=Favorite.where(user_id: @user.id).page(params[:page]).per(10)
 	end
 def create
 	@product=Product.find(params[:product_id])
@@ -20,7 +20,9 @@ else
 		@arrivals=@product.arrivals
 		@cartitem=CartItem.new
 		@review=Review.new
-		@reviews=@product.reviews
+		@reviews=Review.where(product_id:@product.id).limit(10)
+		@products=Product.order("RANDOM()").limit(6)
+		@reviewscount=@product.reviews
 		render "products/show"
 	end
   end
@@ -38,7 +40,9 @@ else
 		@arrivals=@product.arrivals
 		@cartitem=CartItem.new
 		@review=Review.new
-		@reviews=@product.reviews
+		@reviews=Review.where(product_id:@product.id).limit(10)
+		@products=Product.order("RANDOM()").limit(6)
+		@reviewscount=@product.reviews
 		render "products/show"
 	end
   end

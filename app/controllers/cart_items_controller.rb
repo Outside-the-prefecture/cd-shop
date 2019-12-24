@@ -12,7 +12,8 @@ class CartItemsController < ApplicationController
 	     @usercarts=current_user.cart_items
 	     @review=Review.new
 		 @product=Product.find(params[:cart_item][:product])
-		 @reviews=@product.reviews
+		 @reviews=Review.where(product_id:@product.id).limit(10)
+		 @reviewscount=@product.reviews
 		if @product.status=="販売停止中"
 				@discs=@product.discs
 		        @count=0
@@ -44,6 +45,7 @@ class CartItemsController < ApplicationController
 		            @number=0
 					@orderitems=@product.order_items
 					@arrivals=@product.arrivals
+					@products=Product.order("RANDOM()").limit(6)
 					render "products/show"
 			    end
 			end

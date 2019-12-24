@@ -2,6 +2,12 @@ class ReviewsController < ApplicationController
 	skip_before_action :require_admin_login, raise: false
 	before_action :require_admin_already
 	before_action :correct_user,only:[:edit]
+	def index
+		@product=Product.find(params[:product_id])
+		@reviews=Review.where(product_id: @product.id).page(params[:page]).per(10)
+		@review=Review.new
+		@reviewscount=@product.reviews
+	end
 	def create
 		@review=Review.new(review_params)
 		@review.user_id=current_user.id
@@ -17,7 +23,9 @@ class ReviewsController < ApplicationController
 			@orderitems=@product.order_items
 			@arrivals=@product.arrivals
 			@cartitem=CartItem.new
-			@reviews=@product.reviews
+			@reviews=Review.where(product_id:@product.id).limit(10)
+			@reviewscount=@product.reviews
+			@products=Product.order("RANDOM()").limit(6)
 			render "products/show"
 		end
 	end

@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <% if current_user.nil? %>
+    <div class="col-md-4 col-md-offset-1">
+    </div>
+    <% else %>
+    <div class="col-md-3 review-create">
+      <h2 class="review-title">レビューを書く</h2>
+      <%= form_for @review,url: product_reviews_path(product_id: @product.id) do |f| %>
+      <label>コメント</label>
+      <div class="row">
+        <%= f.text_field :content,class: "col-md-8 col-md-offset-1 arrival-text" %><br/>
+      </div>
+      <label>表示ユーザ名</label>
+      <div class="row">
+        <%= f.text_field :name,class: "col-md-8 col-md-offset-1 arrival-count" %><br/>
+      </div>
+      <div class="row">
+        <%= f.submit "レビューを送る",class: "btn btn-success col-md-8 col-md-offset-1 arrival" %><br/>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+    <div class="col-md-8 col-md-offset-1">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h2 class="review-count"><%= "#{@reviewscount.count}件のレビュー" %></h2>
+          <% @reviews.each do |review| %>
+          <div class="review">
+            <div>
+              <p><span><%= fa_icon "user" %></span>&ensp;
+                <% if review.name.empty? %>
+                CD-SHOP カスタマー
+                <% else %>
+                <%= review.name %>
+                <% end %>
+              </p>
+            </div>
+            <div>
+              <p><%= review.created_at.to_s(:datetime) %></p>
+            </div>
+            <div>
+              <p class="b-break"><%= review.content %></p>
+            </div>
+            <% if current_user.nil? %>
+            <% else %>
+            <div class="review-btn">
+              <% if review.user_id==current_user.id %>
+              <%= link_to "編集",edit_product_review_path(product_id: @product.id,id: review.id) %>
+              <% end %>
+              <% if review.user_id==current_user.id %>
+              <%= link_to "削除",product_review_path(product_id: @product.id,id: review.id),method: :delete,class: "review-danger" %>
+              <% end %>
+            </div>
+            <% end %>
+          </div>
+          <% end %>
+          <%= paginate @reviews %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

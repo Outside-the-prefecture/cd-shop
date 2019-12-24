@@ -68,7 +68,7 @@
 
 				<p class="haisou">配送ステータス&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-truck"></i></p>
 				<div class="haisou2">
-				<%= form_for @order, url: admin_manager_order_path do |f| %>
+				<%= form_for @order, url: admin_manager_order_path(@order.id) do |f| %>
 				<%= f.text_field :delivery_status %>
 				<%= f.submit '追加' %>
 				<% end %>
