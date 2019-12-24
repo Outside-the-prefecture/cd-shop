@@ -14,12 +14,15 @@
 				<div class="row">
 					<div class="col-md-8 genre">
 						<% @all_ranks.each do |product| %>
+						<% if product.deleted_at.nil? %>
 						<% if @artistname==product.artist.name %>
 						<% else %>
 						    <p class="artist-search-link">
 							   <%= link_to product.artist.name, admin_artist_path(product.artist.id) %>
 						    </p>
 							<% @artistname = product.artist.name %>
+						<% end %>
+						<% else %>
 						<% end %>
 				        <% end %>
 					</div>

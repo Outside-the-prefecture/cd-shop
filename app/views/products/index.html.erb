@@ -14,12 +14,15 @@
 				<div class="row">
 					<div class="col-md-8 genre">
 						<% @all_ranking.each do |product| %>
+						<% if product.deleted_at.nil? %>
 						<% if @artistname==product.artist.name %>
 						<% else %>
 						    <p class="artist-search-link">
 							   <%= link_to product.artist.name, admin_artist_path(product.artist.id) %>
 						    </p>
 							<% @artistname = product.artist.name %>
+						<% end %>
+						<% else %>
 						<% end %>
 				        <% end %>
 					</div>
@@ -29,6 +32,7 @@
 				<p class="jii">人気商品</p>
 				<div class="row">
 					<% @all_ranks.each do |product| %>
+					<% if product.deleted_at.nil? %>
 					<% @all_rank = @all_rank+1 %>
 					<div class="col-md-2">
 						<% if @all_rank==1 %>
@@ -48,12 +52,16 @@
 							<%= attachment_image_tag product, :jacket_image, :fill, 110,110, fallback: "",size: "100*100" %><br/>
 			            </div>
 			            <div class="product-name-artist">
-			            	<%= product.artist.name %>/&nbsp;&nbsp;<%= product.name.truncate(10) %><br/>
+			            	<%= product.artist.name %>/&nbsp;&nbsp;<%= product.name.truncate(14) %><br/>
 			            </div>
 			            <p class="kakaku">価格</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="price-color"><strong>￥<%= converting_to_jpy(product.price) %></strong></span><br/>
 						<p class="linkborder"><%= product.status %></p>
 						<% end %>
 					</div>
+					<% else %>
+					<div class="col-md-0">
+					</div>
+					<% end %>
 					<% end %>
 				</div>
                 <%= paginate @products %>
@@ -64,7 +72,7 @@
 						<%= link_to product_path(product.id) do %>
 			            <%= attachment_image_tag product, :jacket_image, :fill, 110,110, fallback: "",size: "100*100" %><br/>
 			            <div class="product-name-artist">
-			            	<%= product.artist.name %>/&nbsp;&nbsp;<%= product.name.truncate(10) %><br/>
+			            	<%= product.artist.name %>/&nbsp;&nbsp;<%= product.name.truncate(14) %><br/>
 			            </div>
 			            <p class="kakaku">価格</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="price-color"><strong>￥<%= converting_to_jpy(product.price) %></strong></span><br/>
 						<p class="linkborder"><%= product.status %></p>
