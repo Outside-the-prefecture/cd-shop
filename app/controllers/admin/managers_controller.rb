@@ -6,8 +6,7 @@ class Admin::ManagersController < ApplicationController
 
 	def show
 		@user=User.find(params[:id])
-		@orderss = Order.page(params[:page]).per(5)
-		@orders=@user.orders
+		@orders = Order.where(user_id:@user.id).page(params[:page]).per(10)
 	end
 
 	def edit

@@ -18,7 +18,7 @@
 						<tr>
 							<td><%= link_to "#{order.id}", admin_manager_order_path(order.id)  %></td>
 							<td><%= order.last_name %><%= order.first_name %></td>
-							<td><%= order.total_amount %>円</td>
+							<td><%= converting_to_jpy(order.total_amount) %>円</td>
 							<td><%= order.created_at.to_s(:datetime_jp) %></td>
 							<td><%= order.delivery_status %></td>
 						</tr>
