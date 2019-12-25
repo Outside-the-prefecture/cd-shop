@@ -17,7 +17,7 @@
         <% end %>
 
   			<h4 class="aaa">アーティスト</h4>
-  			<%= f.collection_select :artist_id, Artist.all, :id, :name, {include_blank: "アーティスト"},
+  			<%= f.collection_select :artist_id, @artists, :id, :name, {include_blank: "アーティスト"},
   			class: 'sample' %>
 
   			<h4 class="aaa">アルバム/シングル名</h4>
@@ -33,11 +33,11 @@
   			<%= f.text_field :release_date %>
 
   			<h4 class="aaa">レーベル名</h4>
-  			<%= f.collection_select :label_id, Label.all, :id, :name, {include_blank: "レーベル"},
+  			<%= f.collection_select :label_id, @labels, :id, :name, {include_blank: "レーベル"},
   			class: 'sample' %>
 
   			<h4 class="aaa">ジャンル</h4>
-  			<%= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: "ジャンル"},
+  			<%= f.collection_select :genre_id, @genres, :id, :name, {include_blank: "ジャンル"},
   			class: 'sample' %>
 
   			<div class="discs">

@@ -19,9 +19,9 @@ class Admin::ArtistsController < ApplicationController
 			@product=Product.new
 			@disc=@product.discs.build
 			@song=@disc.songs.build
-			@labels=Label.all
-			@artists=Artist.all
-			@genres=Genre.all
+			@labels=Label.order("name")
+			@artists=Artist.order("name")
+			@genres=Genre.order("name")
 			render template: "admin/manager_products/new"
 		end
 	end
