@@ -20,9 +20,9 @@ class Admin::ManagerProductsController < ApplicationController
 			@artist=Artist.new
 			@genre=Genre.new
 			@product=Product.new
-			@labels=Label.all
-			@artists=Artist.all
-			@genres=Genre.all
+			@labels=Label.order("name")
+			@artists=Artist.order("name")
+			@genres=Genre.order("name")
 	end
 
 	def create
@@ -35,9 +35,9 @@ class Admin::ManagerProductsController < ApplicationController
 			@genre=Genre.new
 			@disc=@product.discs.build
 			@song=@disc.songs.build
-			@labels=Label.all
-			@artists=Artist.all
-			@genres=Genre.all
+			@labels=Label.order("name")
+			@artists=Artist.order("name")
+			@genres=Genre.order("name")
 			render :new
 		end
 	end

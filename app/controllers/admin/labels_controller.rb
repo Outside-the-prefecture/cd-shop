@@ -10,9 +10,9 @@ class Admin::LabelsController < ApplicationController
 			@product=Product.new
 			@disc=@product.discs.build
 			@song=@disc.songs.build
-			@labels=Label.all
-			@artists=Artist.all
-			@genres=Genre.all
+			@labels=Label.order("name")
+			@artists=Artist.order("name")
+			@genres=Genre.order("name")
 			render "admin/manager_products/new"
 		end
 	end
