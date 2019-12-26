@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
+  get 'contacts/new' => "contacts#new"
+  post 'contacts/create' => "contacts#create"
+
+  get "admin/contacts/index" => "admin/contacts#index"
+  get "admin/contacts/show/:id" => "admin/contacts#show",as: "admin_contacts_show"
+
   get 'arrivals/create'
   root "products#index"
+
   # get "admin/managers/sign_in"=>"admins/sessions#new"
   # post "admin/managers/sign_in"=>"admins/sessions#create"
   # delete "admin/managers/sign_out"=> "admins/sessions#destroy"
@@ -31,6 +38,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
   	resources :managers,only: [:index,:show,:edit,:update,:destroy]
+
+    resources :contacts,only: [:index,:show]
+
   	resources :manager_products do
       resources :arrivals,only: [:create]
     end
