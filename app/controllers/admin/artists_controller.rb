@@ -3,7 +3,7 @@ class Admin::ArtistsController < ApplicationController
 	skip_before_action :require_admin_login,only:[:show]
 	def show
 		@artist=Artist.find(params[:id])
-		@products=@artist.products.page(params[:page]).per(24)
+		@products=@artist.products.page(params[:page]).order("id DESC").per(24)
 		@genres=Genre.all
         @artists=Artist.all
 		@all_ranks = Product.with_deleted.find(Favorite.group(:product_id).order('count(product_id) desc').limit(30).pluck(:product_id))

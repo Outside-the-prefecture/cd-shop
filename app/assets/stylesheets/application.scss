@@ -474,7 +474,30 @@ p.b-break{
 }
 
 .genre{
+    text-decoration:none;
 	text-align:left;
+	padding-top:15px;
+	padding-bottom:15px;
+	border-bottom:solid 1px #f2f2f2;
+	color:#646464;
+}
+
+.genre:hover{
+	text-decoration:none;
+	color:#646464;
+}
+
+.genre:hover{
+	background-color:#f2f2f2;
+}
+
+.genre-title{
+	text-align:center;
+
+}
+
+.genre:first-of-type{
+	border-top:solid 1px #f2f2f2;
 }
 
 .product-name-artist{
@@ -516,4 +539,24 @@ p.b-break{
 
 .artist-search-link{
 	margin-bottom:50px;
+}
+
+.image1 {
+background-image: url(assets/arrow.jpg);
+}
+
+#back {
+  position: fixed;
+  right: 60px;
+  bottom: 90px;
+}
+
+#back img {
+  width: 40px;
+}
+
+.linkborder:hover{
+	color:black;
+	text-decoration:none;
+	background-color:#f2f2f2;
 }

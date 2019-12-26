@@ -2,30 +2,26 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-2">
-				<h5 class="genre">ジャンルから探す</h5>
+				<h4 class="genre-title"><strong>ジャンルから探す</strong></h4>
+				<div class="row">
 				<% @genres.each do |genre| %>
-				<div class="row">
-					<div class="col-md-8 genre">
-						<%= link_to genre.name, admin_genre_path(genre.id) %>
-					</div>
-				</div>
+						<%= link_to genre.name, admin_genre_path(genre.id),class: "genre col-md-12" %>
 				<% end %>
-				<h5 class="genre search-artist">人気歌手から探す</h5>
+				</div>
+				<h4 class="genre-title search-artist"><strong>人気歌手から探す</strong></h4>
 				<div class="row">
-					<div class="col-md-8 genre">
 						<% @all_ranking.each do |product| %>
 						<% if product.deleted_at.nil? %>
 						<% if @artistname==product.artist.name %>
 						<% else %>
 						    <p class="artist-search-link">
-							   <%= link_to product.artist.name, admin_artist_path(product.artist.id) %>
+							   <%= link_to product.artist.name, admin_artist_path(product.artist.id),class: "genre col-md-12" %>
 						    </p>
 							<% @artistname = product.artist.name %>
 						<% end %>
 						<% else %>
 						<% end %>
 				        <% end %>
-					</div>
 				</div>
 			</div>
 			<div class="col-md-9 col-md-offset-1">
@@ -33,8 +29,9 @@
 				<div class="row">
 					<% @all_ranks.each do |product| %>
 					<% if product.deleted_at.nil? %>
+					<%= link_to product_path(product.id),class: "linkborder col-md-2" do %>
 					<% @all_rank = @all_rank+1 %>
-					<div class="col-md-2">
+
 						<% if @all_rank==1 %>
 						<i class="fas fa-crown first"></i>
 						<% elsif @all_rank==2 %>
@@ -47,7 +44,6 @@
 					    </span>
 						<% end %>
 						<br>
-						<%= link_to product_path(product.id) do %>
 						<div class="product-image-margin">
 							<%= attachment_image_tag product, :jacket_image, :fill, 110,110, fallback: "",size: "100*100" %><br/>
 			            </div>
@@ -55,9 +51,8 @@
 			            	<%= product.artist.name %>/&nbsp;&nbsp;<%= product.name.truncate(14) %><br/>
 			            </div>
 			            <p class="kakaku">価格</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="price-color"><strong>￥<%= converting_to_jpy(product.price) %></strong></span><br/>
-						<p class="linkborder"><%= product.status %></p>
-						<% end %>
-					</div>
+						<p><%= product.status %></p>
+											<% end %>
 					<% else %>
 					<div class="col-md-0">
 					</div>
@@ -67,16 +62,14 @@
 				<p class= "jii" >商品一覧</p>
 				<div class="row">
 					<% @products.each do |product| %>
-					<div class="col-md-2">
-						<%= link_to product_path(product.id) do %>
+					<%= link_to product_path(product.id),class: "linkborder col-md-2" do %>
 			            <%= attachment_image_tag product, :jacket_image, :fill, 110,110, fallback: "",size: "100*100" %><br/>
 			            <div class="product-name-artist">
 			            	<%= product.artist.name %>/&nbsp;&nbsp;<%= product.name.truncate(14) %><br/>
 			            </div>
 			            <p class="kakaku">価格</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="price-color"><strong>￥<%= converting_to_jpy(product.price) %></strong></span><br/>
-						<p class="linkborder"><%= product.status %></p>
+						<p><%= product.status %></p>
 						<% end %>
-					</div>
 					<% end %>
 				</div>
 			</div>
