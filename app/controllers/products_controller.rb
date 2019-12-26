@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
 
 
 	def index
-		@products =Product.page(params[:page]).per(24)
+		@products =Product.order("id DESC").page(params[:page]).per(24)
 		@product = Product.new
 		@genres=Genre.all
 		@artists=Artist.all

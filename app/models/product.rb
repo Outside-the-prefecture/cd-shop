@@ -9,7 +9,7 @@ acts_as_paranoid
 
 	has_many :reviews,dependent: :destroy
 	has_many :arrivals
-	has_many :cart_items
+	has_many :cart_items,dependent: :destroy
 	has_many :users, through: :cart_items
 	has_many :order_items
 	has_many :orders, through: :order_items
