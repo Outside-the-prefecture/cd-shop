@@ -1,0 +1,28 @@
+<h2 class="cart">お問い合わせ</h2>
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<% @contacts.each do |contact| %>
+			<table class="table ai">
+				<thead>
+					<tr>
+						<th>メールアドレス</th>
+						<th>お問い合わせ内容</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><%= link_to admin_contact_path(contact.id) do %>
+							<%= contact.email %>
+							<% end %>
+						</td>
+						<td>
+							<%= contact.message.truncate(10) %>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<% end %>
+		</div>
+	</div>
+</div>
